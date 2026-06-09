@@ -1,22 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Asif - Digital Profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* --- CSS DESIGN VARIABLES (THEMING & DESIGN SYSTEM) --- */
+        :root {
+            --bg-body: #0d0e12;
+            --bg-card: #07080a;
+            --bg-element: #16181d;
+            --bg-element-hover: #20242c;
+            --bg-dropdown: #101114;
+            --text-main: #ffffff;
+            --text-muted: #98a0a6;
+            --border-color: rgba(255, 255, 255, 0.05);
+            --accent-blue: #3897f1;
+            --btn-primary: #1b74e4;
+            --btn-primary-hover: #155cb4;
+            --shadow-wrapper: rgba(0, 0, 0, 0.8);
+        }
+
+        [data-theme="light"] {
+            --bg-body: #f4f6f9;
+            --bg-card: #ffffff;
+            --bg-element: #f0f2f5;
+            --bg-element-hover: #e4e6eb;
+            --bg-dropdown: #f9fafb;
+            --text-main: #1c1e21;
+            --text-muted: #65676b;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --accent-blue: #1877f2;
+            --btn-primary: #1877f2;
+            --btn-primary-hover: #135cb1;
+            --shadow-wrapper: rgba(0, 0, 0, 0.15);
+        }
+
         /* Global & Layout Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
         }
 
         body {
-            background-color: #0d0e12;
-            color: #ffffff;
+            background-color: var(--bg-body);
+            color: var(--text-main);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -28,16 +60,57 @@
         .phone-wrapper {
             width: 100%;
             max-width: 412px;
-            background-color: #07080a;
+            background-color: var(--bg-card);
             border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-color);
             padding: 24px;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 30px 70px var(--shadow-wrapper);
             position: relative;
             overflow: hidden;
         }
+
+        /* --- CONTROLS HEADER BAR (THEME & LANGUAGE TOGGLES) --- */
+        .controls-header {
+            position: absolute;
+            top: 20px;
+            left: 24px;
+            right: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        /* Language Toggle Switcher Button Style */
+        .lang-btn {
+            background: var(--bg-element);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .lang-btn:hover { background: var(--bg-element-hover); }
+
+        .theme-btn {
+            background: var(--bg-element);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+        .theme-btn:hover { background: var(--bg-element-hover); }
 
         /* --- PREMIUM HERO SECTION WITH MESH BACKGROUND --- */
         .profile-hero {
@@ -46,9 +119,9 @@
             align-items: center;
             text-align: center;
             margin: -24px -24px 25px -24px;
-            padding: 40px 24px 20px 24px;
+            padding: 55px 24px 20px 24px;
             position: relative;
-            background: linear-gradient(to bottom, rgba(7, 8, 10, 0.2) 0%, #07080a 95%), 
+            background: linear-gradient(to bottom, rgba(7, 8, 10, 0.1) 0%, var(--bg-card) 95%), 
                         url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&q=80&w=600') no-repeat top center;
             background-size: cover;
         }
@@ -66,7 +139,7 @@
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
-            border: 2px solid #3897f1;
+            border: 2px solid var(--accent-blue);
             box-shadow: 0 0 20px rgba(56, 151, 241, 0.3);
         }
 
@@ -84,8 +157,13 @@
             justify-content: center;
             align-items: center;
             font-size: 0.75rem;
-            border: 2px solid #07080a;
+            border: 2px solid var(--bg-card);
             z-index: 3;
+        }
+        /* Fix verified position for RTL orientation */
+        [dir="rtl"] .verified-badge {
+            right: auto;
+            left: 4px;
         }
 
         .profile-hero h1 {
@@ -94,16 +172,47 @@
             letter-spacing: -0.3px;
             margin-bottom: 4px;
             z-index: 2;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        /* --- DYNAMIC STATUS INDICATOR STYLING --- */
+        .status-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-element);
+            border: 1px solid var(--border-color);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+            z-index: 2;
+            color: var(--text-main);
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: #4cd964;
+        }
+
+        .status-dot.pulse {
+            animation: statusPulse 1.8s infinite ease-in-out;
+        }
+
+        @keyframes statusPulse {
+            0% { box-shadow: 0 0 0 0 rgba(76, 217, 100, 0.6); }
+            70% { box-shadow: 0 0 0 6px rgba(76, 217, 100, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(76, 217, 100, 0); }
         }
 
         .profile-title {
             font-size: 0.95rem;
-            color: #3897f1;
+            color: var(--accent-blue);
             font-weight: 500;
             margin-bottom: 14px;
             z-index: 2;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
         }
 
         .meta-info-list {
@@ -111,7 +220,7 @@
             flex-direction: column;
             gap: 6px;
             font-size: 0.85rem;
-            color: #98a0a6;
+            color: var(--text-muted);
             z-index: 2;
         }
 
@@ -123,8 +232,13 @@
         }
 
         .meta-item i {
-            color: #3897f1;
+            color: var(--accent-blue);
             font-size: 0.9rem;
+        }
+
+        /* Flip back the directional icons for layout uniformity when reading in RTL */
+        [dir="rtl"] .meta-item i.fa-location-arrow {
+            transform: scaleX(-1);
         }
 
         /* --- QUICK ACTION PILLS (ROW) --- */
@@ -140,18 +254,14 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: #16181d;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--bg-element);
+            border: 1px solid var(--border-color);
             border-radius: 14px;
             height: 64px;
-            color: #ffffff;
+            color: var(--text-main);
             text-decoration: none;
-            transition: background 0.2s;
         }
-
-        .action-pill:hover {
-            background: #20242c;
-        }
+        .action-pill:hover { background: var(--bg-element-hover); }
 
         .action-pill i {
             font-size: 1.1rem;
@@ -160,7 +270,7 @@
 
         .action-pill span {
             font-size: 0.65rem;
-            color: #98a0a6;
+            color: var(--text-muted);
             font-weight: 500;
         }
 
@@ -169,19 +279,24 @@
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            color: #98a0a6;
+            color: var(--text-muted);
             font-weight: 600;
             margin-bottom: 16px;
             padding-left: 2px;
+        }
+        [dir="rtl"] .section-heading {
+            padding-left: 0;
+            padding-right: 2px;
+            letter-spacing: 0;
         }
 
         /* --- STYLISH NAVIGATION LISTS (BUSINESS) --- */
         .link-list-group {
             display: flex;
             flex-direction: column;
-            background: #16181d;
+            background: var(--bg-element);
             border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
             margin-bottom: 30px;
             overflow: hidden;
         }
@@ -191,28 +306,20 @@
             align-items: center;
             justify-content: space-between;
             padding: 16px;
-            color: #ffffff;
+            color: var(--text-main);
             text-decoration: none;
             font-size: 0.92rem;
             font-weight: 500;
-            transition: background 0.2s;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            cursor: pointer;
             background: transparent;
-            border-left: none;
-            border-right: none;
-            border-top: none;
+            border: none;
             width: 100%;
             text-align: left;
+            cursor: pointer;
+            border-bottom: 1px solid var(--border-color);
         }
-
-        .list-item:last-of-type {
-            border-bottom: none;
-        }
-
-        .list-item:hover {
-            background: #20242c;
-        }
+        [dir="rtl"] .list-item { text-align: right; }
+        .list-item:last-of-type { border-bottom: none; }
+        .list-item:hover { background: var(--bg-element-hover); }
 
         .list-item-left {
             display: flex;
@@ -222,29 +329,33 @@
 
         .list-item-left i {
             font-size: 1.05rem;
-            color: #98a0a6;
+            color: var(--text-muted);
             width: 20px;
             text-align: center;
         }
 
         .list-item .fa-chevron-right {
             font-size: 0.75rem;
-            color: #4e555b;
+            color: var(--text-muted);
             transition: transform 0.3s ease;
         }
 
+        /* Correct Chevron arrow direction configuration based on application flow */
+        [dir="rtl"] .list-item .fa-chevron-right {
+            transform: rotate(180deg);
+        }
         .list-item.active .fa-chevron-right {
-            transform: rotate(90deg);
-            color: #3897f1;
+            transform: rotate(90deg) !important;
+            color: var(--accent-blue);
         }
 
         /* --- INTERACTIVE SERVICES BOX PANEL --- */
         .services-dropdown-panel {
             max-height: 0;
             overflow: hidden;
-            background: #101114;
+            background: var(--bg-dropdown);
             transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .services-panel-content {
@@ -258,22 +369,17 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             padding: 12px;
             border-radius: 12px;
             font-size: 0.85rem;
-            color: #e2e4e9;
-            transition: border-color 0.2s;
+            color: var(--text-main);
         }
-
-        .service-tag-item:hover {
-            border-color: rgba(56, 151, 241, 0.4);
-            background: rgba(56, 151, 241, 0.02);
-        }
+        .service-tag-item:hover { border-color: var(--accent-blue); }
 
         .service-tag-item i {
-            color: #3897f1;
+            color: var(--accent-blue);
             font-size: 0.95rem;
             width: 16px;
             text-align: center;
@@ -288,8 +394,8 @@
         }
 
         .social-box {
-            background: #16181d;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--bg-element);
+            border: 1px solid var(--border-color);
             border-radius: 16px;
             height: 76px;
             display: flex;
@@ -297,12 +403,10 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            transition: transform 0.2s, background 0.2s;
         }
-
         .social-box:hover {
             transform: translateY(-3px);
-            background: #20242c;
+            background: var(--bg-element-hover);
         }
 
         .social-box i {
@@ -312,21 +416,21 @@
 
         .social-box span {
             font-size: 0.68rem;
-            color: #98a0a6;
+            color: var(--text-muted);
             font-weight: 500;
         }
 
         /* Brand Colors */
         .social-box.instagram i { color: #e1306c; }
         .social-box.facebook i { color: #1877f2; }
-        .social-box.tiktok i { color: #ffffff; }
-        .social-box.twitter i { color: #ffffff; }
+        .social-box.tiktok i { color: var(--text-main); }
+        .social-box.twitter i { color: var(--text-main); }
         .social-box.youtube i { color: #ff0000; }
         .social-box.linkedin i { color: #0077b5; }
         .social-box.telegram i { color: #26a5e4; }
         .social-box.snapchat i { color: #fffc00; }
         .social-box.discord i { color: #5865f2; }
-        .social-box.threads i { color: #ffffff; }
+        .social-box.threads i { color: var(--text-main); }
         .social-box.pinterest i { color: #bd081c; }
         .social-box.reddit i { color: #ff4500; }
 
@@ -341,7 +445,7 @@
         .btn-primary-blue {
             width: 100%;
             height: 50px;
-            background: #1b74e4;
+            background: var(--btn-primary);
             color: white;
             border: none;
             border-radius: 12px;
@@ -352,17 +456,15 @@
             align-items: center;
             gap: 8px;
             cursor: pointer;
-            transition: background 0.2s, opacity 0.2s;
         }
-
-        .btn-primary-blue:hover { background: #155cb4; }
+        .btn-primary-blue:hover { background: var(--btn-primary-hover); }
 
         .btn-outline-dark {
             width: 100%;
             height: 50px;
             background: transparent;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
             font-size: 0.95rem;
             font-weight: 600;
@@ -371,15 +473,57 @@
             align-items: center;
             gap: 8px;
             cursor: pointer;
-            transition: background 0.2s;
+        }
+        .btn-outline-dark:hover { background: var(--bg-element-hover); }
+
+        /* --- TIMED SMART VCARD POP-UP REMINDER MODAL --- */
+        .vcard-popup-reminder {
+            position: absolute;
+            bottom: -120px;
+            left: 16px;
+            right: 16px;
+            background: #1c1e24;
+            border: 1px solid rgba(56, 151, 241, 0.25);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            z-index: 100;
+            transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        [data-theme="light"] .vcard-popup-reminder {
+            background: #ffffff;
+            border: 1px solid rgba(24, 119, 242, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        .vcard-popup-reminder.visible {
+            bottom: 16px;
+        }
+        .vcard-popup-text {
+            font-size: 0.82rem;
+            line-height: 1.4;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+        .vcard-popup-btn {
+            background: var(--accent-blue);
+            color: #ffffff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
         }
 
-        .btn-outline-dark:hover { background: rgba(255, 255, 255, 0.05); }
-
         @media (max-width: 480px) {
-            body { padding: 0; background-color: #07080a; }
+            body { padding: 0; background-color: var(--bg-card); }
             .phone-wrapper { border-radius: 0; border: none; min-height: 100vh; box-shadow: none; }
-            .profile-hero { margin: -50px -20px 25px -20px; padding: 65px 20px 20px 20px; }
+            .profile-hero { margin: -50px -20px 25px -20px; padding: 75px 20px 20px 20px; }
         }
     </style>
 </head>
@@ -387,101 +531,322 @@
 
     <div class="phone-wrapper">
         
+        <div class="controls-header">
+            <button id="lang-toggle" class="lang-btn" aria-label="Switch Language">AR</button>
+            <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+        
         <section class="profile-hero">
             <div class="avatar-container">
                 <img id="profile-display-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400" alt="Muhammad Asif">
                 <div class="verified-badge"><i class="fa-solid fa-check"></i></div>
             </div>
+            
+            <div id="status-badge" class="status-container">
+                <span id="status-dot" class="status-dot pulse"></span>
+                <span id="status-text">Checking Status...</span>
+            </div>
+
             <h1>Muhammad Asif</h1>
-            <p class="profile-title">Key Account Assistant & BRM</p>
+            <p id="profile-title" class="profile-title">Key Account Assistant & BRM</p>
             
             <div class="meta-info-list">
-                <div class="meta-item"><i class="fa-solid fa-location-dot"></i> Doha, Qatar</div>
-                <div class="meta-item"><i class="fa-solid fa-globe"></i> www.yourfirm.com</div>
-                <div class="meta-item"><i class="fa-solid fa-building"></i> Audit & Assurance Firm</div>
+                <div class="meta-item"><i class="fa-solid fa-location-dot"></i> <span id="meta-location">Doha, Qatar</span></div>
+                <div class="meta-item"><i class="fa-solid fa-globe"></i> <span>www.yourfirm.com</span></div>
+                <div class="meta-item"><i class="fa-solid fa-building"></i> <span id="meta-firm">Audit & Assurance Firm</span></div>
             </div>
         </section>
 
         <section class="quick-actions-row">
-            <a href="tel:+97412345678" class="action-pill">
+            <a href="tel:+97412345678" class="action-pill interaction-track" data-label="Phone Call Clicked">
                 <i class="fa-solid fa-phone"></i>
-                <span>Call</span>
+                <span data-i18n="call">Call</span>
             </a>
-            <a href="https://api.whatsapp.com/send?phone=97412345678&text=%E2%9A%A0%EF%B8%8F%20*PARKING%20ALERT*%20%E2%9A%A0%EF%B8%8F%0A%0AHi%20there!%20Your%20vehicle%20is%20blocking%20my%20car.%20Could%20you%20please%20move%20it?" target="_blank" class="action-pill">
+            <a href="https://api.whatsapp.com/send?phone=97412345678&text=%E2%9A%A0%EF%B8%8F%20*PARKING%20ALERT*%20%E2%9A%A0%EF%B8%8F%0A%0AHi%20there!%20Your%20vehicle%20is%20blocking%20my%20car.%20Could%20you%20please%20move%20it?" target="_blank" class="action-pill interaction-track" data-label="WhatsApp Mask Triggered">
                 <i class="fa-brands fa-whatsapp"></i>
                 <span>WhatsApp</span>
             </a>
-            <a href="mailto:asif@yourfirm.com" class="action-pill">
+            <a href="mailto:asif@yourfirm.com" class="action-pill interaction-track" data-label="Email Sent Trigger">
                 <i class="fa-regular fa-envelope"></i>
-                <span>Email</span>
+                <span data-i18n="email">Email</span>
             </a>
-            <a href="#" class="action-pill">
+            <a href="#" class="action-pill interaction-track" data-label="Meeting Calendar Opened">
                 <i class="fa-regular fa-calendar-days"></i>
-                <span>Meeting</span>
+                <span data-i18n="meeting">Meeting</span>
             </a>
-            <a href="https://maps.google.com" target="_blank" class="action-pill">
+            <a href="https://maps.google.com" target="_blank" class="action-pill interaction-track" data-label="Office Location Mapped">
                 <i class="fa-solid fa-location-arrow"></i>
-                <span>Location</span>
+                <span data-i18n="location">Location</span>
             </a>
         </section>
 
-        <h2 class="section-heading">Business</h2>
+        <h2 id="heading-business" class="section-heading">Business</h2>
         <nav class="link-list-group">
-            <a href="#" class="list-item">
-                <div class="list-item-left"><i class="fa-regular fa-folder-open"></i> Portfolio</div>
+            <a href="#" class="list-item interaction-track" data-label="Portfolio File Viewed">
+                <div class="list-item-left"><i class="fa-regular fa-folder-open"></i> <span data-i18n="portfolio">Portfolio</span></div>
                 <i class="fa-solid fa-chevron-right"></i>
             </a>
             
-            <button id="services-trigger" class="list-item">
-                <div class="list-item-left"><i class="fa-solid fa-briefcase"></i> Services</div>
+            <button id="services-trigger" class="list-item interaction-track" data-label="Services Panel Expanded">
+                <div class="list-item-left"><i class="fa-solid fa-briefcase"></i> <span data-i18n="services">Services</span></div>
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
             
             <div id="services-panel" class="services-dropdown-panel">
                 <div class="services-panel-content">
-                    <div class="service-tag-item"><i class="fa-solid fa-calculator"></i> Accounts</div>
-                    <div class="service-tag-item"><i class="fa-solid fa-magnifying-glass-chart"></i> Audit</div>
-                    <div class="service-tag-item"><i class="fa-solid fa-receipt"></i> Taxes</div>
-                    <div class="service-tag-item"><i class="fa-solid fa-scale-balanced"></i> Compliance</div>
+                    <div class="service-tag-item"><i class="fa-solid fa-calculator"></i> <span data-i18n="svc-accounts">Accounts</span></div>
+                    <div class="service-tag-item"><i class="fa-solid fa-magnifying-glass-chart"></i> <span data-i18n="svc-audit">Audit</span></div>
+                    <div class="service-tag-item"><i class="fa-solid fa-receipt"></i> <span data-i18n="svc-taxes">Taxes</span></div>
+                    <div class="service-tag-item"><i class="fa-solid fa-scale-balanced"></i> <span data-i18n="svc-compliance">Compliance</span></div>
                 </div>
             </div>
 
-            <a href="#" class="list-item">
-                <div class="list-item-left"><i class="fa-regular fa-file-lines"></i> Case Studies</div>
+            <a href="#" class="list-item interaction-track" data-label="Case Studies Viewed">
+                <div class="list-item-left"><i class="fa-regular fa-file-lines"></i> <span data-i18n="case-studies">Case Studies</span></div>
                 <i class="fa-solid fa-chevron-right"></i>
             </a>
             <a href="#" class="list-item">
-                <div class="list-item-left"><i class="fa-regular fa-file-pdf"></i> Company Profile (PDF)</div>
+                <div class="list-item-left"><i class="fa-regular fa-file-pdf"></i> <span data-i18n="company-profile">Company Profile (PDF)</span></div>
                 <i class="fa-solid fa-chevron-right"></i>
             </a>
         </nav>
 
-        <h2 class="section-heading">Social Media</h2>
+        <h2 id="heading-social" class="section-heading">Social Media</h2>
         <section class="social-media-grid">
-            <a href="#" class="social-box instagram"><i class="fa-brands fa-instagram"></i><span>Instagram</span></a>
-            <a href="#" class="social-box facebook"><i class="fa-brands fa-facebook-f"></i><span>Facebook</span></a>
-            <a href="#" class="social-box tiktok"><i class="fa-brands fa-tiktok"></i><span>TikTok</span></a>
-            <a href="#" class="social-box twitter"><i class="fa-brands fa-x-twitter"></i><span>X (Twitter)</span></a>
+            <a href="#" class="social-box instagram interaction-track" data-label="Instagram Visited"><i class="fa-brands fa-instagram"></i><span>Instagram</span></a>
+            <a href="#" class="social-box facebook interaction-track" data-label="Facebook Visited"><i class="fa-brands fa-facebook-f"></i><span>Facebook</span></a>
+            <a href="#" class="social-box tiktok interaction-track" data-label="TikTok Visited"><i class="fa-brands fa-tiktok"></i><span>TikTok</span></a>
+            <a href="#" class="social-box twitter interaction-track" data-label="Twitter X Visited"><i class="fa-brands fa-x-twitter"></i><span>X (Twitter)</span></a>
             
-            <a href="#" class="social-box youtube"><i class="fa-brands fa-youtube"></i><span>YouTube</span></a>
-            <a href="#" class="social-box linkedin"><i class="fa-brands fa-linkedin-in"></i><span>LinkedIn</span></a>
-            <a href="#" class="social-box telegram"><i class="fa-brands fa-telegram"></i><span>Telegram</span></a>
-            <a href="#" class="social-box snapchat"><i class="fa-brands fa-snapchat"></i><span>Snapchat</span></a>
+            <a href="#" class="social-box youtube interaction-track" data-label="YouTube Visited"><i class="fa-brands fa-youtube"></i><span>YouTube</span></a>
+            <a href="#" class="social-box linkedin interaction-track" data-label="LinkedIn Profile Hit"><i class="fa-brands fa-linkedin-in"></i><span>LinkedIn</span></a>
+            <a href="#" class="social-box telegram interaction-track" data-label="Telegram Channel Link"><i class="fa-brands fa-telegram"></i><span>Telegram</span></a>
+            <a href="#" class="social-box snapchat interaction-track" data-label="Snapchat Added"><i class="fa-brands fa-snapchat"></i><span>Snapchat</span></a>
             
-            <a href="#" class="social-box discord"><i class="fa-brands fa-discord"></i><span>Discord</span></a>
-            <a href="#" class="social-box threads"><i class="fa-brands fa-threads"></i><span>Threads</span></a>
-            <a href="#" class="social-box pinterest"><i class="fa-brands fa-pinterest-p"></i><span>Pinterest</span></a>
-            <a href="#" class="social-box reddit"><i class="fa-brands fa-reddit-alien"></i><span>Reddit</span></a>
+            <a href="#" class="social-box discord interaction-track" data-label="Discord Joined"><i class="fa-brands fa-discord"></i><span>Discord</span></a>
+            <a href="#" class="social-box threads interaction-track" data-label="Threads Profile Opened"><i class="fa-brands fa-threads"></i><span>Threads</span></a>
+            <a href="#" class="social-box pinterest interaction-track" data-label="Pinterest Board Shared"><i class="fa-brands fa-pinterest-p"></i><span>Pinterest</span></a>
+            <a href="#" class="social-box reddit interaction-track" data-label="Reddit User Linked"><i class="fa-brands fa-reddit-alien"></i><span>Reddit</span></a>
         </section>
 
         <section class="cta-container">
-            <button id="share-profile-btn" class="btn-primary-blue"><i class="fa-solid fa-share-nodes"></i> Share My Profile</button>
-            <button id="vcard-btn" class="btn-outline-dark"><i class="fa-regular fa-address-card"></i> Download vCard</button>
+            <button id="share-profile-btn" class="btn-primary-blue"><i class="fa-solid fa-share-nodes"></i> <span data-i18n="btn-share">Share My Profile</span></button>
+            <button id="vcard-btn" class="btn-outline-dark"><i class="fa-regular fa-address-card"></i> <span id="vcard-btn-text" data-i18n="btn-vcard">Download vCard</span></button>
         </section>
+
+        <div id="vcard-reminder" class="vcard-popup-reminder">
+            <div id="vcard-reminder-text" class="vcard-popup-text">
+                Don't lose touch! Tap here to save Muhammad Asif directly to your contacts.
+            </div>
+            <button id="vcard-popup-download" class="vcard-popup-btn">Save</button>
+        </div>
 
     </div>
 
     <script>
+        /* ==========================================================================
+           1. TRANSLATION DICTIONARY MAP & ENGLISH/ARABIC SWITCHER ENGINE
+           ========================================================================== */
+        let currentLanguage = 'en';
+        
+        const translations = {
+            en: {
+                title: "Key Account Assistant & BRM",
+                location: "Doha, Qatar",
+                firm: "Audit & Assurance Firm",
+                business: "Business",
+                social: "Social Media",
+                call: "Call",
+                email: "Email",
+                meeting: "Meeting",
+                location_pill: "Location",
+                portfolio: "Portfolio",
+                services: "Services",
+                "svc-accounts": "Accounts",
+                "svc-audit": "Audit",
+                "svc-taxes": "Taxes",
+                "svc-compliance": "Compliance",
+                "case-studies": "Case Studies",
+                "company-profile": "Company Profile (PDF)",
+                "btn-share": "Share My Profile",
+                "btn-vcard": "Download vCard",
+                "vcard-reminder": "Don't lose touch! Tap here to save Muhammad Asif directly to your contacts.",
+                "vcard-save": "Save",
+                "copied": "Link Copied!",
+                "status-on": "Available (Qatar Time)",
+                "status-off": "🌙 Out of Office"
+            },
+            ar: {
+                title: "مساعد رئيسي للحسابات ومدير علاقات العملاء",
+                location: "الدوحة، قطر",
+                firm: "شركة تدقيق واستشارات مالية",
+                business: "الأعمال",
+                social: "مواقع التواصل",
+                call: "اتصال",
+                email: "إيميل",
+                meeting: "اجتماع",
+                location_pill: "الموقع",
+                portfolio: "المحفظة",
+                services: "الخدمات",
+                "svc-accounts": "الحسابات",
+                "svc-audit": "التدقيق",
+                "svc-taxes": "الضرائب",
+                "svc-compliance": "الامتثال",
+                "case-studies": "دراسات الحالة",
+                "company-profile": "ملف الشركة (PDF)",
+                "btn-share": "مشاركة ملفي الشخصي",
+                "btn-vcard": "حفظ جهة الاتصال",
+                "vcard-reminder": "لا تفقد الاتصال! اضغط هنا لحفظ محمد آصف مباشرة في هاتفك.",
+                "vcard-save": "حفظ",
+                "copied": "تم نسخ الرابط!",
+                "status-on": "متاح حالياً (توقيت قطر)",
+                "status-off": "🌙 خارج أوقات العمل"
+            }
+        };
+
+        const langToggleBtn = document.getElementById('lang-toggle');
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            document.documentElement.setAttribute('lang', lang);
+            langToggleBtn.innerText = lang === 'en' ? 'AR' : 'EN';
+
+            // Static translations mapping loop strings
+            document.getElementById('profile-title').innerText = translations[lang].title;
+            document.getElementById('meta-location').innerText = translations[lang].location;
+            document.getElementById('meta-firm').innerText = translations[lang].firm;
+            document.getElementById('heading-business').innerText = translations[lang].business;
+            document.getElementById('heading-social').innerText = translations[lang].social;
+            document.getElementById('vcard-reminder-text').innerText = translations[lang].vcard-reminder;
+            document.getElementById('vcard-popup-download').innerText = translations[lang].vcard-save;
+
+            // Attribute injection translate loops
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const translationKey = element.getAttribute('data-i18n');
+                if (translations[lang][translationKey]) {
+                    // Retain icon components tags intact if present inside structures
+                    const icon = element.querySelector('i');
+                    if (icon) {
+                        element.innerHTML = '';
+                        element.appendChild(icon);
+                        element.appendChild(document.createTextNode(' ' + translations[lang][translationKey]));
+                    } else {
+                        element.innerText = translations[lang][translationKey];
+                    }
+                }
+            });
+
+            updateQatarStatus(); // Force status block string translation update instantly
+            logStartupAnalytics('Language Changed', `Switched view context profile language metrics into target locale: ${lang}`);
+        }
+
+        langToggleBtn.addEventListener('click', () => {
+            setLanguage(currentLanguage === 'en' ? 'ar' : 'en');
+        });
+
+
+        /* ==========================================================================
+           2. QATAR LOCAL TIME ZONE (AST) ACTIVE STATUS ENGINE
+           ========================================================================== */
+        function updateQatarStatus() {
+            const dot = document.getElementById('status-dot');
+            const text = document.getElementById('status-text');
+            
+            const now = new Date();
+            const qatarTimeString = now.toLocaleString("en-US", {timeZone: "Asia/Qatar", hour: 'numeric', hour12: false});
+            const currentQatarHour = parseInt(qatarTimeString, 10);
+
+            // True Configuration Bounds: Online between 8:00 AM (8) and 6:00 PM (18)
+            if (currentQatarHour >= 8 && currentQatarHour < 18) {
+                dot.style.backgroundColor = "#4cd964";
+                dot.classList.add('pulse');
+                text.innerText = translations[currentLanguage].status-on;
+            } else {
+                dot.style.backgroundColor = "#ff3b30";
+                dot.classList.remove('pulse');
+                text.innerText = translations[currentLanguage].status-off;
+            }
+        }
+        updateQatarStatus();
+        setInterval(updateQatarStatus, 60000);
+
+
+        /* ==========================================================================
+           3. LIGHT / DARK THEME TOGGLE ENGINE
+           ========================================================================== */
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = themeToggleBtn.querySelector('i');
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            let targetTheme = 'dark';
+            
+            if (currentTheme === 'dark') {
+                targetTheme = 'light';
+                themeIcon.className = 'fa-solid fa-sun';
+            } else {
+                themeIcon.className = 'fa-solid fa-moon';
+            }
+            
+            document.documentElement.setAttribute('data-theme', targetTheme);
+            logStartupAnalytics('Theme Toggled', `Switched profile presentation layer to: ${targetTheme}`);
+        });
+
+
+        /* ==========================================================================
+           4. NFC STARTUP ANALYTICS TRACKER HOOK
+           ========================================================================== */
+        let hasVcardBeenDownloaded = false;
+
+        function logStartupAnalytics(actionName, secondaryMetadata) {
+            const hitPayload = {
+                event: actionName,
+                timestamp: new Date().toISOString(),
+                locationUrl: window.location.href,
+                details: secondaryMetadata
+            };
+            console.log(`%c[NFC STARTUP ANALYTICS]:`, "color: #3897f1; font-weight: bold;", hitPayload);
+            
+            // Production Hook Blueprint:
+            // fetch('https://your-analytics-api.com/track', { method: 'POST', body: JSON.stringify(hitPayload) });
+        }
+
+        // Initialized Landing page load capture tracker entry point
+        logStartupAnalytics('Profile Page Discovered', 'User opened profile and completed layout sequence loads.');
+
+        document.querySelectorAll('.interaction-track').forEach(element => {
+            element.addEventListener('click', () => {
+                const label = element.getAttribute('data-label') || element.innerText.trim();
+                logStartupAnalytics('Link Component Clicked', `User interacted with element: ${label}`);
+            });
+        });
+
+
+        /* ==========================================================================
+           5. 15-SECOND TIMED VCARD POP-UP REMINDER CONTROLLER
+           ========================================================================== */
+        const vcardReminderModal = document.getElementById('vcard-reminder');
+        
+        setTimeout(() => {
+            // Trigger popup slide container view condition logic block if contact has not been grabbed yet
+            if (!hasVcardBeenDownloaded) {
+                vcardReminderModal.classList.add('visible');
+                logStartupAnalytics('vCard Popup Shown', '15-second contact acquisition reminder panel triggered into view.');
+            }
+        }, 15000);
+
+        document.getElementById('vcard-popup-download').addEventListener('click', () => {
+            vcardReminderModal.classList.remove('visible');
+            document.getElementById('vcard-btn').click(); // Fires primary assembly bundle down
+        });
+
+
+        /* ==========================================================================
+           6. CORE PROFILE INTERACTIONS (vCard Generation, Web Sharing & Accordion)
+           ========================================================================== */
         // Smooth Accordion Dropdown logic for Services Menu Row
         const trigger = document.getElementById('services-trigger');
         const panel = document.getElementById('services-panel');
@@ -489,7 +854,6 @@
         trigger.addEventListener('click', (e) => {
             e.preventDefault();
             trigger.classList.toggle('active');
-            
             if (panel.style.maxHeight && panel.style.maxHeight !== "0px") {
                 panel.style.maxHeight = "0px";
             } else {
@@ -497,42 +861,34 @@
             }
         });
 
-        // Native Mobile Share System & Intelligent Clipboard Backup Script
+        // Mobile Native Share Systems & Clipboard Fallbacks
         const shareBtn = document.getElementById('share-profile-btn');
         shareBtn.addEventListener('click', async () => {
+            logStartupAnalytics('Share Button Tapped', 'Fired user layout data transmission request systems.');
             const shareData = {
                 title: 'Muhammad Asif - Digital Profile',
-                text: 'Check out the professional digital profile of Muhammad Asif (Key Account Assistant & BRM).',
-                url: window.location.href // Dynamically grabs your exact live GitHub Pages link URL
+                text: 'Check out the professional digital profile of Muhammad Asif.',
+                url: window.location.href
             };
 
-            // If user is on a mobile device supporting native apps sharing
             if (navigator.share) {
-                try {
-                    await navigator.share(shareData);
-                } catch (err) {
-                    console.log('Share dismissed or closed.');
-                }
+                try { await navigator.share(shareData); } catch (err) {}
             } else {
-                // Clipboard fallback system for desktop viewports
                 try {
                     await navigator.clipboard.writeText(window.location.href);
                     const originalText = shareBtn.innerHTML;
-                    shareBtn.innerHTML = `<i class="fa-solid fa-check"></i> Link Copied!`;
-                    shareBtn.style.opacity = "0.8";
-                    
-                    setTimeout(() => {
-                        shareBtn.innerHTML = originalText;
-                        shareBtn.style.opacity = "1";
-                    }, 2500);
-                } catch (err) {
-                    alert('Could not copy link automatically. Please copy the URL from your address bar!');
-                }
+                    shareBtn.innerHTML = `<i class="fa-solid fa-check"></i> ${translations[currentLanguage].copied}`;
+                    setTimeout(() => { shareBtn.innerHTML = originalText; }, 2500);
+                } catch (err) { alert('URL Link copying alternative trigger fallback routines.'); }
             }
         });
 
-        // Script Processing VCard generation
-        document.getElementById('vcard-btn').addEventListener('click', async () => {
+        // Processing structured VCard contact files download generation routines
+        async function triggerVcardDownload() {
+            hasVcardBeenDownloaded = true;
+            vcardReminderModal.classList.remove('visible'); // Dismiss if currently up
+            logStartupAnalytics('vCard Download Started', 'Processing contact vcf compilation modules.');
+            
             const imageUrl = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150';
             let base64PhotoText = '';
             
@@ -564,7 +920,9 @@
             link.href = URL.createObjectURL(blobFile);
             link.download = 'Muhammad_Asif.vcf';
             link.click();
-        });
+        }
+
+        document.getElementById('vcard-btn').addEventListener('click', triggerVcardDownload);
     </script>
 </body>
 </html>

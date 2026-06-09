@@ -523,7 +523,7 @@
         @media (max-width: 480px) {
             body { padding: 0; background-color: var(--bg-card); }
             .phone-wrapper { border-radius: 0; border: none; min-height: 100vh; box-shadow: none; }
-            .profile-hero { margin: -50px -20px 25px -20px; padding: 75px 20px 20px 20px; }
+            .profile-hero { margin: -50px -20px 25px -20px; padding: 65px 20px 20px 20px; }
         }
     </style>
 </head>
@@ -578,7 +578,7 @@
             </a>
             <a href="https://maps.google.com" target="_blank" class="action-pill interaction-track" data-label="Office Location Mapped">
                 <i class="fa-solid fa-location-arrow"></i>
-                <span data-i18n="location">Location</span>
+                <span data-i18n="location_pill">Location</span>
             </a>
         </section>
 
@@ -672,8 +672,8 @@
                 "company-profile": "Company Profile (PDF)",
                 "btn-share": "Share My Profile",
                 "btn-vcard": "Download vCard",
-                "vcard-reminder": "Don't lose touch! Tap here to save Muhammad Asif directly to your contacts.",
-                "vcard-save": "Save",
+                "vcard_reminder": "Don't lose touch! Tap here to save Muhammad Asif directly to your contacts.",
+                "vcard_save": "Save",
                 "copied": "Link Copied!",
                 "status-on": "Available (Qatar Time)",
                 "status-off": "🌙 Out of Office"
@@ -698,8 +698,8 @@
                 "company-profile": "ملف الشركة (PDF)",
                 "btn-share": "مشاركة ملفي الشخصي",
                 "btn-vcard": "حفظ جهة الاتصال",
-                "vcard-reminder": "لا تفقد الاتصال! اضغط هنا لحفظ محمد آصف مباشرة في هاتفك.",
-                "vcard-save": "حفظ",
+                "vcard_reminder": "لا تفقد الاتصال! اضغط هنا لحفظ محمد آصف مباشرة في هاتفك.",
+                "vcard_save": "حفظ",
                 "copied": "تم نسخ الرابط!",
                 "status-on": "متاح حالياً (توقيت قطر)",
                 "status-off": "🌙 خارج أوقات العمل"
@@ -714,20 +714,19 @@
             document.documentElement.setAttribute('lang', lang);
             langToggleBtn.innerText = lang === 'en' ? 'AR' : 'EN';
 
-            // Static translations mapping loop strings
+            // Static translations mapping
             document.getElementById('profile-title').innerText = translations[lang].title;
             document.getElementById('meta-location').innerText = translations[lang].location;
             document.getElementById('meta-firm').innerText = translations[lang].firm;
             document.getElementById('heading-business').innerText = translations[lang].business;
             document.getElementById('heading-social').innerText = translations[lang].social;
-            document.getElementById('vcard-reminder-text').innerText = translations[lang].vcard-reminder;
-            document.getElementById('vcard-popup-download').innerText = translations[lang].vcard-save;
+            document.getElementById('vcard-reminder-text').innerText = translations[lang]["vcard_reminder"];
+            document.getElementById('vcard-popup-download').innerText = translations[lang]["vcard_save"];
 
             // Attribute injection translate loops
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const translationKey = element.getAttribute('data-i18n');
                 if (translations[lang][translationKey]) {
-                    // Retain icon components tags intact if present inside structures
                     const icon = element.querySelector('i');
                     if (icon) {
                         element.innerHTML = '';
@@ -740,7 +739,7 @@
             });
 
             updateQatarStatus(); // Force status block string translation update instantly
-            logStartupAnalytics('Language Changed', `Switched view context profile language metrics into target locale: ${lang}`);
+            logStartupAnalytics('Language Changed', `Switched language view parameters to: ${lang}`);
         }
 
         langToggleBtn.addEventListener('click', () => {
@@ -759,15 +758,14 @@
             const qatarTimeString = now.toLocaleString("en-US", {timeZone: "Asia/Qatar", hour: 'numeric', hour12: false});
             const currentQatarHour = parseInt(qatarTimeString, 10);
 
-            // True Configuration Bounds: Online between 8:00 AM (8) and 6:00 PM (18)
             if (currentQatarHour >= 8 && currentQatarHour < 18) {
                 dot.style.backgroundColor = "#4cd964";
                 dot.classList.add('pulse');
-                text.innerText = translations[currentLanguage].status-on;
+                text.innerText = translations[currentLanguage]["status-on"];
             } else {
                 dot.style.backgroundColor = "#ff3b30";
                 dot.classList.remove('pulse');
-                text.innerText = translations[currentLanguage].status-off;
+                text.innerText = translations[currentLanguage]["status-off"];
             }
         }
         updateQatarStatus();
@@ -792,12 +790,12 @@
             }
             
             document.documentElement.setAttribute('data-theme', targetTheme);
-            logStartupAnalytics('Theme Toggled', `Switched profile presentation layer to: ${targetTheme}`);
+            logStartupAnalytics('Theme Toggled', `Switched layout presentation theme to: ${targetTheme}`);
         });
 
 
         /* ==========================================================================
-           4. NFC STARTUP ANALYTICS TRACKER HOOK
+           4. NFC STARTUP ANALYTICS TRACKER HOOK (Consoles logs view events clearly)
            ========================================================================== */
         let hasVcardBeenDownloaded = false;
 
@@ -808,19 +806,17 @@
                 locationUrl: window.location.href,
                 details: secondaryMetadata
             };
-            console.log(`%c[NFC STARTUP ANALYTICS]:`, "color: #3897f1; font-weight: bold;", hitPayload);
-            
-            // Production Hook Blueprint:
-            // fetch('https://your-analytics-api.com/track', { method: 'POST', body: JSON.stringify(hitPayload) });
+            // This displays inside your browser console (F12) to track views/clicks live!
+            console.log(`%c[NFC STARTUP ANALYTICS LOG]:`, "color: #3897f1; font-weight: bold; padding: 4px;", hitPayload);
         }
 
-        // Initialized Landing page load capture tracker entry point
-        logStartupAnalytics('Profile Page Discovered', 'User opened profile and completed layout sequence loads.');
+        // Log page views metric immediately upon bootup
+        logStartupAnalytics('Profile Page Discovered', 'User landed and viewed the digital profile dashboard.');
 
         document.querySelectorAll('.interaction-track').forEach(element => {
             element.addEventListener('click', () => {
                 const label = element.getAttribute('data-label') || element.innerText.trim();
-                logStartupAnalytics('Link Component Clicked', `User interacted with element: ${label}`);
+                logStartupAnalytics('Link Component Clicked', `User clicked link: ${label}`);
             });
         });
 
@@ -831,16 +827,15 @@
         const vcardReminderModal = document.getElementById('vcard-reminder');
         
         setTimeout(() => {
-            // Trigger popup slide container view condition logic block if contact has not been grabbed yet
             if (!hasVcardBeenDownloaded) {
                 vcardReminderModal.classList.add('visible');
-                logStartupAnalytics('vCard Popup Shown', '15-second contact acquisition reminder panel triggered into view.');
+                logStartupAnalytics('vCard Popup Shown', '15-second contact collection prompt popped up.');
             }
         }, 15000);
 
         document.getElementById('vcard-popup-download').addEventListener('click', () => {
             vcardReminderModal.classList.remove('visible');
-            document.getElementById('vcard-btn').click(); // Fires primary assembly bundle down
+            document.getElementById('vcard-btn').click(); 
         });
 
 
@@ -864,7 +859,7 @@
         // Mobile Native Share Systems & Clipboard Fallbacks
         const shareBtn = document.getElementById('share-profile-btn');
         shareBtn.addEventListener('click', async () => {
-            logStartupAnalytics('Share Button Tapped', 'Fired user layout data transmission request systems.');
+            logStartupAnalytics('Share Button Tapped', 'User requested to generate and share profile link.');
             const shareData = {
                 title: 'Muhammad Asif - Digital Profile',
                 text: 'Check out the professional digital profile of Muhammad Asif.',
@@ -879,15 +874,15 @@
                     const originalText = shareBtn.innerHTML;
                     shareBtn.innerHTML = `<i class="fa-solid fa-check"></i> ${translations[currentLanguage].copied}`;
                     setTimeout(() => { shareBtn.innerHTML = originalText; }, 2500);
-                } catch (err) { alert('URL Link copying alternative trigger fallback routines.'); }
+                } catch (err) { alert('URL Link copied to clipboard.'); }
             }
         });
 
         // Processing structured VCard contact files download generation routines
         async function triggerVcardDownload() {
             hasVcardBeenDownloaded = true;
-            vcardReminderModal.classList.remove('visible'); // Dismiss if currently up
-            logStartupAnalytics('vCard Download Started', 'Processing contact vcf compilation modules.');
+            vcardReminderModal.classList.remove('visible'); 
+            logStartupAnalytics('vCard Download Started', 'User clicked and downloaded the vCard file.');
             
             const imageUrl = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150';
             let base64PhotoText = '';

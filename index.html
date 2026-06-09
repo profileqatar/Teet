@@ -233,7 +233,6 @@
             transition: transform 0.3s ease;
         }
 
-        /* Active Rotation state for arrow icon */
         .list-item.active .fa-chevron-right {
             transform: rotate(90deg);
             color: #3897f1;
@@ -353,7 +352,7 @@
             align-items: center;
             gap: 8px;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background 0.2s, opacity 0.2s;
         }
 
         .btn-primary-blue:hover { background: #155cb4; }
@@ -476,7 +475,7 @@
         </section>
 
         <section class="cta-container">
-            <button class="btn-primary-blue"><i class="fa-solid fa-share-nodes"></i> Share My Profile</button>
+            <button id="share-profile-btn" class="btn-primary-blue"><i class="fa-solid fa-share-nodes"></i> Share My Profile</button>
             <button id="vcard-btn" class="btn-outline-dark"><i class="fa-regular fa-address-card"></i> Download vCard</button>
         </section>
 
@@ -494,8 +493,41 @@
             if (panel.style.maxHeight && panel.style.maxHeight !== "0px") {
                 panel.style.maxHeight = "0px";
             } else {
-                // Dynamically sets container height based on scroll bounds for smooth CSS transition
                 panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+
+        // Native Mobile Share System & Intelligent Clipboard Backup Script
+        const shareBtn = document.getElementById('share-profile-btn');
+        shareBtn.addEventListener('click', async () => {
+            const shareData = {
+                title: 'Muhammad Asif - Digital Profile',
+                text: 'Check out the professional digital profile of Muhammad Asif (Key Account Assistant & BRM).',
+                url: window.location.href // Dynamically grabs your exact live GitHub Pages link URL
+            };
+
+            // If user is on a mobile device supporting native apps sharing
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    console.log('Share dismissed or closed.');
+                }
+            } else {
+                // Clipboard fallback system for desktop viewports
+                try {
+                    await navigator.clipboard.writeText(window.location.href);
+                    const originalText = shareBtn.innerHTML;
+                    shareBtn.innerHTML = `<i class="fa-solid fa-check"></i> Link Copied!`;
+                    shareBtn.style.opacity = "0.8";
+                    
+                    setTimeout(() => {
+                        shareBtn.innerHTML = originalText;
+                        shareBtn.style.opacity = "1";
+                    }, 2500);
+                } catch (err) {
+                    alert('Could not copy link automatically. Please copy the URL from your address bar!');
+                }
             }
         });
 

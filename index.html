@@ -36,17 +36,21 @@
             flex-direction: column;
             box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
             position: relative;
+            overflow: hidden;
         }
 
-        /* --- PROFILE HEADER SECTION --- */
+        /* --- PREMIUM HERO SECTION WITH MESH BACKGROUND --- */
         .profile-hero {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            margin-top: 15px;
-            margin-bottom: 25px;
+            margin: -24px -24px 25px -24px;
+            padding: 40px 24px 20px 24px;
             position: relative;
+            background: linear-gradient(to bottom, rgba(7, 8, 10, 0.2) 0%, #07080a 95%), 
+                        url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&q=80&w=600') no-repeat top center;
+            background-size: cover;
         }
 
         .avatar-container {
@@ -54,6 +58,7 @@
             width: 110px;
             height: 110px;
             margin-bottom: 16px;
+            z-index: 2;
         }
 
         .avatar-container img {
@@ -61,7 +66,8 @@
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 2px solid #3897f1;
+            box-shadow: 0 0 20px rgba(56, 151, 241, 0.3);
         }
 
         /* Verified Tick Badge Styling */
@@ -79,6 +85,7 @@
             align-items: center;
             font-size: 0.75rem;
             border: 2px solid #07080a;
+            z-index: 3;
         }
 
         .profile-hero h1 {
@@ -86,6 +93,8 @@
             font-weight: 600;
             letter-spacing: -0.3px;
             margin-bottom: 4px;
+            z-index: 2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
 
         .profile-title {
@@ -93,6 +102,8 @@
             color: #3897f1;
             font-weight: 500;
             margin-bottom: 14px;
+            z-index: 2;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
         }
 
         .meta-info-list {
@@ -101,6 +112,7 @@
             gap: 6px;
             font-size: 0.85rem;
             color: #98a0a6;
+            z-index: 2;
         }
 
         .meta-item {
@@ -163,7 +175,7 @@
             padding-left: 2px;
         }
 
-        /* --- STYLISH NAVIGATION LISTS (BUSINESS/FEATURES) --- */
+        /* --- STYLISH NAVIGATION LISTS (BUSINESS) --- */
         .link-list-group {
             display: flex;
             flex-direction: column;
@@ -185,9 +197,16 @@
             font-weight: 500;
             transition: background 0.2s;
             border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            cursor: pointer;
+            background: transparent;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            width: 100%;
+            text-align: left;
         }
 
-        .list-item:last-child {
+        .list-item:last-of-type {
             border-bottom: none;
         }
 
@@ -211,9 +230,57 @@
         .list-item .fa-chevron-right {
             font-size: 0.75rem;
             color: #4e555b;
+            transition: transform 0.3s ease;
         }
 
-        /* --- SOCIAL MEDIA GRID (4x4 EXACT MATCH) --- */
+        /* Active Rotation state for arrow icon */
+        .list-item.active .fa-chevron-right {
+            transform: rotate(90deg);
+            color: #3897f1;
+        }
+
+        /* --- INTERACTIVE SERVICES BOX PANEL --- */
+        .services-dropdown-panel {
+            max-height: 0;
+            overflow: hidden;
+            background: #101114;
+            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .services-panel-content {
+            padding: 18px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .service-tag-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: #e2e4e9;
+            transition: border-color 0.2s;
+        }
+
+        .service-tag-item:hover {
+            border-color: rgba(56, 151, 241, 0.4);
+            background: rgba(56, 151, 241, 0.02);
+        }
+
+        .service-tag-item i {
+            color: #3897f1;
+            font-size: 0.95rem;
+            width: 16px;
+            text-align: center;
+        }
+
+        /* --- SOCIAL MEDIA GRID (4x4) --- */
         .social-media-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -250,7 +317,7 @@
             font-weight: 500;
         }
 
-        /* Custom Social Icon Brand Colors Matching UI Aesthetics */
+        /* Brand Colors */
         .social-box.instagram i { color: #e1306c; }
         .social-box.facebook i { color: #1877f2; }
         .social-box.tiktok i { color: #ffffff; }
@@ -264,7 +331,7 @@
         .social-box.pinterest i { color: #bd081c; }
         .social-box.reddit i { color: #ff4500; }
 
-        /* --- ACTION CTAS (PRIMARY BLUE & OUTLINE) --- */
+        /* --- ACTION CTAS --- */
         .cta-container {
             display: flex;
             flex-direction: column;
@@ -286,13 +353,10 @@
             align-items: center;
             gap: 8px;
             cursor: pointer;
-            text-decoration: none;
             transition: background 0.2s;
         }
 
-        .btn-primary-blue:hover {
-            background: #155cb4;
-        }
+        .btn-primary-blue:hover { background: #155cb4; }
 
         .btn-outline-dark {
             width: 100%;
@@ -311,14 +375,12 @@
             transition: background 0.2s;
         }
 
-        .btn-outline-dark:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
+        .btn-outline-dark:hover { background: rgba(255, 255, 255, 0.05); }
 
-        /* --- RESPONSIVE OPTIMIZATION --- */
         @media (max-width: 480px) {
             body { padding: 0; background-color: #07080a; }
             .phone-wrapper { border-radius: 0; border: none; min-height: 100vh; box-shadow: none; }
+            .profile-hero { margin: -50px -20px 25px -20px; padding: 65px 20px 20px 20px; }
         }
     </style>
 </head>
@@ -370,10 +432,21 @@
                 <div class="list-item-left"><i class="fa-regular fa-folder-open"></i> Portfolio</div>
                 <i class="fa-solid fa-chevron-right"></i>
             </a>
-            <a href="#" class="list-item">
+            
+            <button id="services-trigger" class="list-item">
                 <div class="list-item-left"><i class="fa-solid fa-briefcase"></i> Services</div>
                 <i class="fa-solid fa-chevron-right"></i>
-            </a>
+            </button>
+            
+            <div id="services-panel" class="services-dropdown-panel">
+                <div class="services-panel-content">
+                    <div class="service-tag-item"><i class="fa-solid fa-calculator"></i> Accounts</div>
+                    <div class="service-tag-item"><i class="fa-solid fa-magnifying-glass-chart"></i> Audit</div>
+                    <div class="service-tag-item"><i class="fa-solid fa-receipt"></i> Taxes</div>
+                    <div class="service-tag-item"><i class="fa-solid fa-scale-balanced"></i> Compliance</div>
+                </div>
+            </div>
+
             <a href="#" class="list-item">
                 <div class="list-item-left"><i class="fa-regular fa-file-lines"></i> Case Studies</div>
                 <i class="fa-solid fa-chevron-right"></i>
@@ -410,6 +483,23 @@
     </div>
 
     <script>
+        // Smooth Accordion Dropdown logic for Services Menu Row
+        const trigger = document.getElementById('services-trigger');
+        const panel = document.getElementById('services-panel');
+
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            trigger.classList.toggle('active');
+            
+            if (panel.style.maxHeight && panel.style.maxHeight !== "0px") {
+                panel.style.maxHeight = "0px";
+            } else {
+                // Dynamically sets container height based on scroll bounds for smooth CSS transition
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+
+        // Script Processing VCard generation
         document.getElementById('vcard-btn').addEventListener('click', async () => {
             const imageUrl = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150';
             let base64PhotoText = '';
@@ -422,7 +512,7 @@
                     reader.onloadend = () => resolve(reader.result.split(',')[1]);
                     reader.readAsDataURL(blob);
                 });
-            } catch (e) { console.log('Using basic plain text parsing parameters.'); }
+            } catch (e) {}
 
             const vcardLines = [
                 "BEGIN:VCARD",

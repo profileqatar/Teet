@@ -22,21 +22,6 @@
             --shadow-wrapper: rgba(0, 0, 0, 0.8);
         }
 
-        [data-theme="light"] {
-            --bg-body: #f4f6f9;
-            --bg-card: #ffffff;
-            --bg-element: #f0f2f5;
-            --bg-element-hover: #e4e6eb;
-            --bg-dropdown: #f9fafb;
-            --text-main: #1c1e21;
-            --text-muted: #65676b;
-            --border-color: rgba(0, 0, 0, 0.08);
-            --accent-blue: #1877f2;
-            --btn-primary: #1877f2;
-            --btn-primary-hover: #135cb1;
-            --shadow-wrapper: rgba(0, 0, 0, 0.15);
-        }
-
         /* Global & Layout Reset */
         * {
             margin: 0;
@@ -71,16 +56,21 @@
             overflow: hidden;
         }
 
-        /* --- CONTROLS HEADER BAR (THEME & LANGUAGE TOGGLES) --- */
+        /* --- CONTROLS HEADER BAR (LANGUAGE TOGGLE) --- */
         .controls-header {
             position: absolute;
             top: 20px;
             left: 24px;
             right: 24px;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end; /* Pushes the button to the right since moon is removed */
             align-items: center;
             z-index: 10;
+        }
+
+        /* Fix positioning alignment context for RTL flow */
+        [dir="rtl"] .controls-header {
+            justify-content: flex-start;
         }
 
         /* Language Toggle Switcher Button Style */
@@ -96,21 +86,6 @@
             letter-spacing: 0.5px;
         }
         .lang-btn:hover { background: var(--bg-element-hover); }
-
-        .theme-btn {
-            background: var(--bg-element);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 0.95rem;
-        }
-        .theme-btn:hover { background: var(--bg-element-hover); }
 
         /* --- PREMIUM HERO SECTION WITH MESH BACKGROUND --- */
         .profile-hero {
@@ -476,54 +451,108 @@
         }
         .btn-outline-dark:hover { background: var(--bg-element-hover); }
 
-        /* --- TIMED SMART VCARD POP-UP REMINDER MODAL --- */
-        .vcard-popup-reminder {
-            position: absolute;
-            bottom: -120px;
-            left: 16px;
-            right: 16px;
-            background: #1c1e24;
-            border: 1px solid rgba(56, 151, 241, 0.25);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-            border-radius: 20px;
-            padding: 16px;
+        /* --- PREMIUM CENTERED SCREEN MODAL REMINDER POP-UP --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(4, 5, 6, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             display: flex;
+            justify-content: center;
             align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            z-index: 100;
-            transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
         }
-        [data-theme="light"] .vcard-popup-reminder {
-            background: #ffffff;
-            border: 1px solid rgba(24, 119, 242, 0.2);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+
+        .modal-overlay.visible {
+            opacity: 1;
+            pointer-events: auto;
         }
-        .vcard-popup-reminder.visible {
-            bottom: 16px;
+
+        .vcard-popup-reminder {
+            width: 90%;
+            max-width: 340px;
+            background: #16181d;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+            border-radius: 28px;
+            padding: 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: scale(0.85);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+
+        .modal-overlay.visible .vcard-popup-reminder {
+            transform: scale(1);
+        }
+
+        .vcard-popup-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(56, 151, 241, 0.1);
+            color: var(--accent-blue);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+        }
+
         .vcard-popup-text {
-            font-size: 0.82rem;
-            line-height: 1.4;
+            font-size: 0.92rem;
+            line-height: 1.5;
             color: var(--text-main);
             font-weight: 500;
+            margin-bottom: 24px;
         }
+
+        .modal-btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+        }
+
         .vcard-popup-btn {
-            background: var(--accent-blue);
+            background: var(--btn-primary);
             color: #ffffff;
             border: none;
-            padding: 8px 14px;
-            border-radius: 10px;
-            font-size: 0.78rem;
+            width: 100%;
+            height: 46px;
+            border-radius: 12px;
+            font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
-            white-space: nowrap;
         }
+        .vcard-popup-btn:hover { background: var(--btn-primary-hover); }
+
+        .vcard-popup-close-btn {
+            background: transparent;
+            color: var(--text-muted);
+            border: none;
+            width: 100%;
+            height: 40px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .vcard-popup-close-btn:hover { color: var(--text-main); }
 
         @media (max-width: 480px) {
             body { padding: 0; background-color: var(--bg-card); }
             .phone-wrapper { border-radius: 0; border: none; min-height: 100vh; box-shadow: none; }
-            .profile-hero { margin: -50px -20px 25px -20px; padding: 65px 20px 20px 20px; }
+            .profile-hero { margin: -50px -20px 25px -20px; padding: 75px 20px 20px 20px; }
         }
     </style>
 </head>
@@ -533,9 +562,6 @@
         
         <div class="controls-header">
             <button id="lang-toggle" class="lang-btn" aria-label="Switch Language">AR</button>
-            <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
-                <i class="fa-solid fa-moon"></i>
-            </button>
         </div>
         
         <section class="profile-hero">
@@ -549,7 +575,7 @@
                 <span id="status-text">Checking Status...</span>
             </div>
 
-            <h1>Muhammad Asif</h1>
+            <h1 id="profile-name">Muhammad Asif</h1>
             <p id="profile-title" class="profile-title">Key Account Assistant & BRM</p>
             
             <div class="meta-info-list">
@@ -636,13 +662,19 @@
             <button id="vcard-btn" class="btn-outline-dark"><i class="fa-regular fa-address-card"></i> <span id="vcard-btn-text" data-i18n="btn-vcard">Download vCard</span></button>
         </section>
 
-        <div id="vcard-reminder" class="vcard-popup-reminder">
-            <div id="vcard-reminder-text" class="vcard-popup-text">
-                Don't lose touch! Tap here to save Muhammad Asif directly to your contacts.
-            </div>
-            <button id="vcard-popup-download" class="vcard-popup-btn">Save</button>
-        </div>
+    </div>
 
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="vcard-popup-reminder">
+            <div class="vcard-popup-icon"><i class="fa-regular fa-address-book"></i></div>
+            <div id="vcard-reminder-text" class="vcard-popup-text">
+                Don't lose touch! Save Muhammad Asif directly to your contacts list.
+            </div>
+            <div class="modal-btn-group">
+                <button id="vcard-popup-download" class="vcard-popup-btn">Save Contact</button>
+                <button id="vcard-popup-close" class="vcard-popup-close-btn">Not Now</button>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -653,6 +685,7 @@
         
         const translations = {
             en: {
+                name: "Muhammad Asif",
                 title: "Key Account Assistant & BRM",
                 location: "Doha, Qatar",
                 firm: "Audit & Assurance Firm",
@@ -672,13 +705,15 @@
                 "company-profile": "Company Profile (PDF)",
                 "btn-share": "Share My Profile",
                 "btn-vcard": "Download vCard",
-                "vcard_reminder": "Don't lose touch! Tap here to save Muhammad Asif directly to your contacts.",
-                "vcard_save": "Save",
+                "vcard_reminder": "Don't lose touch! Save Muhammad Asif directly to your contacts list.",
+                "vcard_save": "Save Contact",
+                "vcard_cancel": "Not Now",
                 "copied": "Link Copied!",
                 "status-on": "Available (Qatar Time)",
                 "status-off": "🌙 Out of Office"
             },
             ar: {
+                name: "محمد آصف",
                 title: "مساعد رئيسي للحسابات ومدير علاقات العملاء",
                 location: "الدوحة، قطر",
                 firm: "شركة تدقيق واستشارات مالية",
@@ -698,8 +733,9 @@
                 "company-profile": "ملف الشركة (PDF)",
                 "btn-share": "مشاركة ملفي الشخصي",
                 "btn-vcard": "حفظ جهة الاتصال",
-                "vcard_reminder": "لا تفقد الاتصال! اضغط هنا لحفظ محمد آصف مباشرة في هاتفك.",
-                "vcard_save": "حفظ",
+                "vcard_reminder": "لا تفقد الاتصال! احفظ محمد آصف مباشرة في قائمة جهات الاتصال الخاصة بك.",
+                "vcard_save": "حفظ جهة الاتصال",
+                "vcard_cancel": "ليس الآن",
                 "copied": "تم نسخ الرابط!",
                 "status-on": "متاح حالياً (توقيت قطر)",
                 "status-off": "🌙 خارج أوقات العمل"
@@ -715,6 +751,7 @@
             langToggleBtn.innerText = lang === 'en' ? 'AR' : 'EN';
 
             // Static translations mapping
+            document.getElementById('profile-name').innerText = translations[lang].name;
             document.getElementById('profile-title').innerText = translations[lang].title;
             document.getElementById('meta-location').innerText = translations[lang].location;
             document.getElementById('meta-firm').innerText = translations[lang].firm;
@@ -722,6 +759,7 @@
             document.getElementById('heading-social').innerText = translations[lang].social;
             document.getElementById('vcard-reminder-text').innerText = translations[lang]["vcard_reminder"];
             document.getElementById('vcard-popup-download').innerText = translations[lang]["vcard_save"];
+            document.getElementById('vcard-popup-close').innerText = translations[lang]["vcard_cancel"];
 
             // Attribute injection translate loops
             document.querySelectorAll('[data-i18n]').forEach(element => {
@@ -738,8 +776,8 @@
                 }
             });
 
-            updateQatarStatus(); // Force status block string translation update instantly
-            logStartupAnalytics('Language Changed', `Switched language view parameters to: ${lang}`);
+            updateQatarStatus(); // Force status translation update instantly
+            logStartupAnalytics('Language Changed', `Switched view language context to: ${lang}`);
         }
 
         langToggleBtn.addEventListener('click', () => {
@@ -773,29 +811,7 @@
 
 
         /* ==========================================================================
-           3. LIGHT / DARK THEME TOGGLE ENGINE
-           ========================================================================== */
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeIcon = themeToggleBtn.querySelector('i');
-
-        themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            let targetTheme = 'dark';
-            
-            if (currentTheme === 'dark') {
-                targetTheme = 'light';
-                themeIcon.className = 'fa-solid fa-sun';
-            } else {
-                themeIcon.className = 'fa-solid fa-moon';
-            }
-            
-            document.documentElement.setAttribute('data-theme', targetTheme);
-            logStartupAnalytics('Theme Toggled', `Switched layout presentation theme to: ${targetTheme}`);
-        });
-
-
-        /* ==========================================================================
-           4. NFC STARTUP ANALYTICS TRACKER HOOK (Consoles logs view events clearly)
+           3. NFC STARTUP ANALYTICS TRACKER HOOK (Consoles logs view events clearly)
            ========================================================================== */
         let hasVcardBeenDownloaded = false;
 
@@ -806,7 +822,6 @@
                 locationUrl: window.location.href,
                 details: secondaryMetadata
             };
-            // This displays inside your browser console (F12) to track views/clicks live!
             console.log(`%c[NFC STARTUP ANALYTICS LOG]:`, "color: #3897f1; font-weight: bold; padding: 4px;", hitPayload);
         }
 
@@ -822,25 +837,32 @@
 
 
         /* ==========================================================================
-           5. 15-SECOND TIMED VCARD POP-UP REMINDER CONTROLLER
+           4. 15-SECOND TIMED VCARD POP-UP REMINDER CONTROLLER
            ========================================================================== */
-        const vcardReminderModal = document.getElementById('vcard-reminder');
+        const modalOverlay = document.getElementById('modal-overlay');
+        const closePopupBtn = document.getElementById('vcard-popup-close');
         
         setTimeout(() => {
             if (!hasVcardBeenDownloaded) {
-                vcardReminderModal.classList.add('visible');
-                logStartupAnalytics('vCard Popup Shown', '15-second contact collection prompt popped up.');
+                modalOverlay.classList.add('visible');
+                logStartupAnalytics('vCard Popup Shown', '15-second centered contact collection modal appeared.');
             }
         }, 15000);
 
+        // Dismiss Modal handler via Not Now Button click
+        closePopupBtn.addEventListener('click', () => {
+            modalOverlay.classList.remove('visible');
+            logStartupAnalytics('vCard Popup Dismissed', 'User clicked Not Now to cancel contact save.');
+        });
+
         document.getElementById('vcard-popup-download').addEventListener('click', () => {
-            vcardReminderModal.classList.remove('visible');
+            modalOverlay.classList.remove('visible');
             document.getElementById('vcard-btn').click(); 
         });
 
 
         /* ==========================================================================
-           6. CORE PROFILE INTERACTIONS (vCard Generation, Web Sharing & Accordion)
+           5. CORE PROFILE INTERACTIONS (vCard Generation, Web Sharing & Accordion)
            ========================================================================== */
         // Smooth Accordion Dropdown logic for Services Menu Row
         const trigger = document.getElementById('services-trigger');
@@ -881,7 +903,7 @@
         // Processing structured VCard contact files download generation routines
         async function triggerVcardDownload() {
             hasVcardBeenDownloaded = true;
-            vcardReminderModal.classList.remove('visible'); 
+            modalOverlay.classList.remove('visible'); 
             logStartupAnalytics('vCard Download Started', 'User clicked and downloaded the vCard file.');
             
             const imageUrl = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150';

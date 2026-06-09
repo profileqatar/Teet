@@ -597,7 +597,7 @@
     <div class="phone-wrapper">
         
         <div class="controls-header">
-            <button id="lang-toggle" class="lang-btn" aria-label="Switch Language">AR</button>
+            <button id="lang-toggle" class="lang-btn" aria-label="Switch Language">عربي</button>
             <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
                 <i class="fa-solid fa-moon"></i>
             </button>
@@ -787,7 +787,7 @@
             currentLanguage = lang;
             document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
             document.documentElement.setAttribute('lang', lang);
-            langToggleBtn.innerText = lang === 'en' ? 'AR' : 'EN';
+            langToggleBtn.innerText = lang === 'en' ? 'عربي' : 'EN';
 
             // Static translations mapping
             document.getElementById('profile-name').innerText = translations[lang].name;

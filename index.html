@@ -132,42 +132,56 @@
 
         .avatar-container {
             position: relative;
-            width: 110px;
-            height: 110px;
+            width: 96px;
+            height: 96px;
             margin-bottom: 16px;
             z-index: 2;
         }
 
+        /* PREMIUM GOLD RING EFFECT */
         .avatar-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
-            border: 2px solid var(--accent-blue);
-            box-shadow: 0 0 20px rgba(56, 151, 241, 0.3);
+            border: 2.5px solid #d4af37;
+            animation: goldGlowPulse 2.5s infinite ease-in-out;
+        }
+
+        @keyframes goldGlowPulse {
+            0% { 
+                box-shadow: 0 0 8px rgba(212, 175, 55, 0.4); 
+            }
+            50% { 
+                box-shadow: 0 0 22px rgba(212, 175, 55, 0.85), 
+                            0 0 30px rgba(212, 175, 55, 0.4); 
+            }
+            100% { 
+                box-shadow: 0 0 8px rgba(212, 175, 55, 0.4); 
+            }
         }
 
         /* Verified Tick Badge Styling */
         .verified-badge {
             position: absolute;
-            bottom: 2px;
-            right: 4px;
+            bottom: 1px;
+            right: 2px;
             background-color: #0084ff;
             color: #ffffff;
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             border: 2px solid var(--bg-card);
             z-index: 3;
         }
         /* Fix verified position for RTL orientation */
         [dir="rtl"] .verified-badge {
             right: auto;
-            left: 4px;
+            left: 2px;
         }
 
         .profile-hero h1 {
@@ -240,7 +254,6 @@
             font-size: 0.9rem;
         }
 
-        /* Flip back the directional icons for layout uniformity when reading in RTL */
         [dir="rtl"] .meta-item i.fa-location-arrow {
             transform: scaleX(-1);
         }
@@ -344,7 +357,6 @@
             transition: transform 0.3s ease;
         }
 
-        /* Correct Chevron arrow direction configuration based on application flow */
         [dir="rtl"] .list-item .fa-chevron-right {
             transform: rotate(180deg);
         }
@@ -365,7 +377,7 @@
         .services-panel-content {
             padding: 18px 20px;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 12px;
         }
 
@@ -438,7 +450,6 @@
         .social-box.pinterest i { color: #bd081c; }
         .social-box.reddit i { color: #ff4500; }
 
-        /* Light theme adjustments for TikTok/X icons */
         [data-theme="light"] .social-box.tiktok i,
         [data-theme="light"] .social-box.twitter i,
         [data-theme="light"] .social-box.threads i {
@@ -615,33 +626,33 @@
             </div>
 
             <h1 id="profile-name">Muhammad Asif</h1>
-            <p id="profile-title" class="profile-title">Key Account Assistant & BRM</p>
+            <p id="profile-title" class="profile-title">Business Operations Executive</p>
             
             <div class="meta-info-list">
                 <div class="meta-item"><i class="fa-solid fa-location-dot"></i> <span id="meta-location">Doha, Qatar</span></div>
-                <div class="meta-item"><i class="fa-solid fa-globe"></i> <span>www.yourfirm.com</span></div>
-                <div class="meta-item"><i class="fa-solid fa-building"></i> <span id="meta-firm">Audit & Assurance Firm</span></div>
+                <div class="meta-item"><i class="fa-solid fa-globe"></i> <span>www.abc.com</span></div>
+                <div class="meta-item"><i class="fa-solid fa-building"></i> <span id="meta-firm">Abc Enterprise Limited</span></div>
             </div>
         </section>
 
         <section class="quick-actions-row">
-            <a href="tel:+97412345678" class="action-pill interaction-track" data-label="Phone Call Clicked">
+            <a href="tel:+97431697639" class="action-pill interaction-track" data-label="Phone Call Clicked">
                 <i class="fa-solid fa-phone"></i>
                 <span data-i18n="call">Call</span>
             </a>
-            <a href="https://api.whatsapp.com/send?phone=97412345678&text=%E2%9A%A0%EF%B8%8F%20*PARKING%20ALERT*%20%E2%9A%A0%EF%B8%8F%0A%0AHi%20there!%20Your%20vehicle%20is%20blocking%20my%20car.%20Could%20you%20please%20move%20it?" target="_blank" class="action-pill interaction-track" data-label="WhatsApp Mask Triggered">
+            <a href="https://wa.me/97431697639" target="_blank" class="action-pill interaction-track" data-label="WhatsApp Clicked">
                 <i class="fa-brands fa-whatsapp"></i>
                 <span>WhatsApp</span>
             </a>
-            <a href="mailto:asif@yourfirm.com" class="action-pill interaction-track" data-label="Email Sent Trigger">
+            <a href="mailto:asifone77@gmail.com" class="action-pill interaction-track" data-label="Email Sent Trigger">
                 <i class="fa-regular fa-envelope"></i>
                 <span data-i18n="email">Email</span>
             </a>
-            <a href="#" class="action-pill interaction-track" data-label="Meeting Calendar Opened">
+            <a href="https://wa.me/97431697639?text=Hey%20can%20we%20schedule%20a%20meeting" target="_blank" class="action-pill interaction-track" data-label="Meeting WhatsApp Clicked">
                 <i class="fa-regular fa-calendar-days"></i>
                 <span data-i18n="meeting">Meeting</span>
             </a>
-            <a href="https://maps.google.com" target="_blank" class="action-pill interaction-track" data-label="Office Location Mapped">
+            <a href="#" target="_blank" class="action-pill interaction-track" data-label="Office Location Mapped">
                 <i class="fa-solid fa-location-arrow"></i>
                 <span data-i18n="location_pill">Location</span>
             </a>
@@ -649,7 +660,7 @@
 
         <h2 id="heading-business" class="section-heading">Business</h2>
         <nav class="link-list-group">
-            <a href="#" class="list-item interaction-track" data-label="Portfolio File Viewed">
+            <a href="https://wa.me/97431697639" target="_blank" class="list-item interaction-track" data-label="Portfolio File Viewed">
                 <div class="list-item-left"><i class="fa-regular fa-folder-open"></i> <span data-i18n="portfolio">Portfolio</span></div>
                 <i class="fa-solid fa-chevron-right"></i>
             </a>
@@ -661,17 +672,12 @@
             
             <div id="services-panel" class="services-dropdown-panel">
                 <div class="services-panel-content">
-                    <div class="service-tag-item"><i class="fa-solid fa-calculator"></i> <span data-i18n="svc-accounts">Accounts</span></div>
-                    <div class="service-tag-item"><i class="fa-solid fa-magnifying-glass-chart"></i> <span data-i18n="svc-audit">Audit</span></div>
-                    <div class="service-tag-item"><i class="fa-solid fa-receipt"></i> <span data-i18n="svc-taxes">Taxes</span></div>
-                    <div class="service-tag-item"><i class="fa-solid fa-scale-balanced"></i> <span data-i18n="svc-compliance">Compliance</span></div>
+                    <div class="service-tag-item"><i class="fa-solid fa-comments"></i> <span data-i18n="svc-consultation">Consultation</span></div>
+                    <div class="service-tag-item"><i class="fa-solid fa-lightbulb"></i> <span data-i18n="svc-solutions">Business Solutions</span></div>
+                    <div class="service-tag-item"><i class="fa-solid fa-gears"></i> <span data-i18n="svc-operations">Operations Services</span></div>
                 </div>
             </div>
 
-            <a href="#" class="list-item interaction-track" data-label="Case Studies Viewed">
-                <div class="list-item-left"><i class="fa-regular fa-file-lines"></i> <span data-i18n="case-studies">Case Studies</span></div>
-                <i class="fa-solid fa-chevron-right"></i>
-            </a>
             <a href="#" class="list-item">
                 <div class="list-item-left"><i class="fa-regular fa-file-pdf"></i> <span data-i18n="company-profile">Company Profile (PDF)</span></div>
                 <i class="fa-solid fa-chevron-right"></i>
@@ -725,9 +731,9 @@
         const translations = {
             en: {
                 name: "Muhammad Asif",
-                title: "Key Account Assistant & BRM",
+                title: "Business Operations Executive",
                 location: "Doha, Qatar",
-                firm: "Audit & Assurance Firm",
+                firm: "Abc Enterprise Limited",
                 business: "Business",
                 social: "Social Media",
                 call: "Call",
@@ -736,11 +742,9 @@
                 location_pill: "Location",
                 portfolio: "Portfolio",
                 services: "Services",
-                "svc-accounts": "Accounts",
-                "svc-audit": "Audit",
-                "svc-taxes": "Taxes",
-                "svc-compliance": "Compliance",
-                "case-studies": "Case Studies",
+                "svc-consultation": "Consultation",
+                "svc-solutions": "Business Solutions",
+                "svc-operations": "Operations Services",
                 "company-profile": "Company Profile (PDF)",
                 "btn-share": "Share My Profile",
                 "btn-vcard": "Download vCard",
@@ -753,22 +757,20 @@
             },
             ar: {
                 name: "محمد آصف",
-                title: "مساعد رئيسي للحسابات ومدير علاقات العملاء",
+                title: "تنفيذي عمليات تجارية",
                 location: "الدوحة، قطر",
-                firm: "شركة تدقيق واستشارات مالية",
+                firm: "شركة إيه بي سي للمشاريع المحدودة",
                 business: "الأعمال",
                 social: "مواقع التواصل",
                 call: "اتصال",
                 email: "إيميل",
                 meeting: "اجتماع",
                 location_pill: "الموقع",
-                portfolio: "المحفظة",
+                portfolio: "المحفظة الأعمال",
                 services: "الخدمات",
-                "svc-accounts": "الحسابات",
-                "svc-audit": "التدقيق",
-                "svc-taxes": "الضرائب",
-                "svc-compliance": "الامتثال",
-                "case-studies": "دراسات الحالة",
+                "svc-consultation": "استشارات",
+                "svc-solutions": "حلول الأعمال",
+                "svc-operations": "خدمات العمليات",
                 "company-profile": "ملف الشركة (PDF)",
                 "btn-share": "مشاركة ملفي الشخصي",
                 "btn-vcard": "حفظ جهة الاتصال",
@@ -789,7 +791,6 @@
             document.documentElement.setAttribute('lang', lang);
             langToggleBtn.innerText = lang === 'en' ? 'عربي' : 'EN';
 
-            // Static translations mapping
             document.getElementById('profile-name').innerText = translations[lang].name;
             document.getElementById('profile-title').innerText = translations[lang].title;
             document.getElementById('meta-location').innerText = translations[lang].location;
@@ -800,7 +801,6 @@
             document.getElementById('vcard-popup-download').innerText = translations[lang]["vcard_save"];
             document.getElementById('vcard-popup-close').innerText = translations[lang]["vcard_cancel"];
 
-            // Attribute injection translate loops
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const translationKey = element.getAttribute('data-i18n');
                 if (translations[lang][translationKey]) {
@@ -872,7 +872,7 @@
 
 
         /* ==========================================================================
-           4. NFC STARTUP ANALYTICS TRACKER HOOK (Consoles logs view events clearly)
+           4. NFC STARTUP ANALYTICS TRACKER HOOK
            ========================================================================== */
         let hasVcardBeenDownloaded = false;
 
@@ -922,7 +922,7 @@
 
         /* ==========================================================================
            6. CORE PROFILE INTERACTIONS (vCard Generation, Web Sharing & Accordion)
-           ========================================================================== */
+           ========================================================================= */
         const trigger = document.getElementById('services-trigger');
         const panel = document.getElementById('services-panel');
 
@@ -940,8 +940,8 @@
         shareBtn.addEventListener('click', async () => {
             logStartupAnalytics('Share Button Tapped', 'User requested to generate and share profile link.');
             const shareData = {
-                title: 'Muhammad Asif - Digital Profile',
-                text: 'Check out the professional digital profile of Muhammad Asif.',
+                title: "Muhammad Asif - Digital Profile",
+                text: "Check out the professional digital profile of Muhammad Asif.",
                 url: window.location.href
             };
 
@@ -962,7 +962,7 @@
             modalOverlay.classList.remove('visible'); 
             logStartupAnalytics('vCard Download Started', 'User clicked and downloaded the vCard file.');
             
-            const imageUrl = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150';
+            const imageUrl = window.location.origin + window.location.pathname.replace('index.html', '') + 'Screenshot_20260526_003701_WhatsApp.jpg';
             let base64PhotoText = '';
             
             try {
@@ -973,19 +973,27 @@
                     reader.onloadend = () => resolve(reader.result.split(',')[1]);
                     reader.readAsDataURL(blob);
                 });
-            } catch (e) {}
+            } catch (e) {
+                console.error("Image asset conversion error fallback triggered:", e);
+            }
 
             const vcardLines = [
                 "BEGIN:VCARD",
                 "VERSION:3.0",
                 "N:Asif;Muhammad;;;",
                 "FN:Muhammad Asif",
-                "ORG:Audit Firm Team",
-                "TITLE:Key Account Assistant & BRM",
-                "TEL;TYPE=CELL;TYPE=PREF:+97412345678",
-                "EMAIL;TYPE=PREF,INTERNET:asif@yourfirm.com"
+                "ORG:Abc Enterprise Limited",
+                "TITLE:Business Operations Executive",
+                "TEL;TYPE=CELL;TYPE=PREF:+97431697639",
+                "EMAIL;TYPE=PREF,INTERNET:asifone77@gmail.com",
+                "URL:https://www.abc.com"
             ];
-            if (base64PhotoText) vcardLines.push("PHOTO;TYPE=JPEG;ENCODING=b:" + base64PhotoText);
+            
+            if (base64PhotoText) {
+                vcardLines.push("PHOTO;TYPE=JPEG;ENCODING=b:" + base64PhotoText);
+            } else {
+                vcardLines.push("PHOTO;VALUE=URL:" + imageUrl);
+            }
             vcardLines.push("END:VCARD");
 
             const blobFile = new Blob([vcardLines.join("\r\n")], { type: 'text/vcard;charset=utf-8;' });

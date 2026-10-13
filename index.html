@@ -11,13 +11,13 @@
             --bg-body-1: #03030f;
             --bg-body-2: #09021a;
             --bg-body-3: #001220;
-            /* Set card background opacity to 20% for maximum visibility of stars */
-            --bg-card: rgba(11, 15, 30, 0.2);
-            --bg-element: rgba(0, 243, 255, 0.1);
-            --bg-element-hover: rgba(0, 243, 255, 0.28);
+            /* Reduced dark blue opacity to let stars show through nicely */
+            --bg-card: rgba(11, 15, 30, 0.45);
+            --bg-element: rgba(0, 243, 255, 0.08);
+            --bg-element-hover: rgba(0, 243, 255, 0.25);
             --text-main: #ffffff;
             --text-muted: #9bb1de;
-            --border-color: rgba(0, 243, 255, 0.35);
+            --border-color: rgba(0, 243, 255, 0.3);
             --border-glow: rgba(0, 243, 255, 0.9);
             --accent-cyan: #00f3ff;
             --accent-purple: #b5179e;
@@ -31,7 +31,7 @@
             --bg-body-1: #060818;
             --bg-body-2: #120c24;
             --bg-body-3: #021a24;
-            --bg-card: rgba(18, 22, 48, 0.25);
+            --bg-card: rgba(18, 22, 48, 0.55);
             --text-main: #ffffff;
             --text-muted: #b0c2e0;
         }
@@ -88,8 +88,8 @@
             box-shadow: var(--shadow-neon);
             position: relative;
             z-index: 2;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             animation: containerEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1);
         }
 

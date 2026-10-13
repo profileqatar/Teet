@@ -6,13 +6,13 @@
     <title>Muhammad Asif - Digital Profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- SOLID COSMIC DESIGN SYSTEM --- */
+        /* --- DYNAMIC COSMIC DESIGN SYSTEM --- */
         :root {
             --bg-body-1: #03030f;
             --bg-body-2: #09021a;
             --bg-body-3: #001220;
-            /* Solid opaque dark card background */
-            --bg-card: #0b0f1e;
+            /* Reduced dark blue opacity to let stars show through nicely */
+            --bg-card: rgba(11, 15, 30, 0.45);
             --bg-element: rgba(0, 243, 255, 0.08);
             --bg-element-hover: rgba(0, 243, 255, 0.25);
             --text-main: #ffffff;
@@ -23,15 +23,15 @@
             --accent-purple: #b5179e;
             --accent-pink: #f72585;
             --btn-gradient: linear-gradient(135deg, #7209b7 0%, #00f3ff 100%);
-            --shadow-neon: 0 0 50px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 243, 255, 0.25);
-            --modal-bg: #0c1024;
+            --shadow-neon: 0 0 45px rgba(0, 243, 255, 0.2);
+            --modal-bg: rgba(12, 16, 36, 0.92);
         }
 
         [data-theme="light"] {
             --bg-body-1: #060818;
             --bg-body-2: #120c24;
             --bg-body-3: #021a24;
-            --bg-card: #121630;
+            --bg-card: rgba(18, 22, 48, 0.55);
             --text-main: #ffffff;
             --text-muted: #b0c2e0;
         }
@@ -75,7 +75,7 @@
             pointer-events: none;
         }
 
-        /* Solid Container Card (Non-transparent) */
+        /* Glassmorphic Cyber Container Card */
         .phone-wrapper {
             width: 100%;
             max-width: 400px;
@@ -88,6 +88,8 @@
             box-shadow: var(--shadow-neon);
             position: relative;
             z-index: 2;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             animation: containerEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -119,6 +121,7 @@
             align-items: center;
             gap: 6px;
             box-shadow: 0 0 12px rgba(0, 243, 255, 0.2);
+            backdrop-filter: blur(6px);
         }
 
         .lang-btn:hover, .theme-btn:hover {
@@ -175,7 +178,7 @@
             right: -2px;
             bottom: -2px;
             border-radius: 50%;
-            background: #0b0f1e;
+            background: #090c1a;
             z-index: 1;
         }
 
@@ -206,7 +209,7 @@
             align-items: center;
             font-size: 0.75rem;
             font-weight: 900;
-            border: 2px solid #0b0f1e;
+            border: 2px solid #090c1a;
             z-index: 3;
             box-shadow: 0 0 12px var(--accent-cyan);
         }
@@ -245,6 +248,7 @@
             font-weight: 700;
             margin-bottom: 14px;
             color: #ffffff;
+            backdrop-filter: blur(5px);
             box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
         }
 
@@ -306,6 +310,7 @@
             text-decoration: none;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(6px);
         }
 
         .action-pill::after {
@@ -388,6 +393,7 @@
             align-items: center;
             gap: 10px;
             cursor: pointer;
+            backdrop-filter: blur(6px);
         }
 
         .btn-outline-cyber:hover {
@@ -404,6 +410,7 @@
             width: 100%;
             height: 100%;
             background: rgba(2, 2, 8, 0.88);
+            backdrop-filter: blur(12px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -490,7 +497,7 @@
         .vcard-popup-close-btn:hover { color: var(--text-main); }
 
         @media (max-width: 480px) {
-            body { padding: 0; }
+            body { padding: 0; background: transparent; }
             .phone-wrapper { border-radius: 0; border: none; min-height: 100vh; justify-content: center; }
         }
     </style>

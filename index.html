@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Asif</title>
+    <title>Muhammad Asif - Digital Futuristic Profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -71,41 +71,96 @@
             pointer-events: none;
         }
 
-        /* Glassmorphic Cyber Card Wrapper */
+        /* Frameless Seamless Floating Wrapper */
         .phone-wrapper {
             width: 100%;
-            max-width: 410px;
-            background: var(--bg-card);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-radius: 32px;
-            border: 1px solid var(--border-glow);
-            padding: 28px 24px;
+            max-width: 440px;
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border-radius: 0;
+            border: none;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            box-shadow: var(--shadow-orb);
+            box-shadow: none;
             position: relative;
             z-index: 2;
             animation: containerEntrance 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Outer Cyber Frame Glow Corner Highlights */
+        /* Removed border frame highlights */
         .phone-wrapper::before {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            border-radius: 33px;
-            padding: 1px;
-            background: linear-gradient(135deg, var(--neon-cyan), transparent 40%, var(--neon-purple), transparent 80%, var(--neon-cyan));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
+            display: none;
         }
 
         @keyframes containerEntrance {
-            0% { opacity: 0; transform: translateY(40px) scale(0.92); }
+            0% { opacity: 0; transform: translateY(30px) scale(0.95); }
             100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Navigation & Controls Header */
+        .controls-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            z-index: 10;
+        }
+
+        .lang-btn, .theme-btn {
+            background: rgba(18, 10, 48, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glow);
+            color: var(--neon-cyan);
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+        /* Quick Action Matrix Floating Cards */
+        .action-pill {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(18, 10, 48, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            height: 76px;
+            color: var(--text-main);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        /* Action CTAs Floating Styles */
+        .btn-outline-cyber {
+            width: 100%;
+            height: 54px;
+            background: rgba(18, 10, 48, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            color: var(--text-main);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
         /* Navigation & Controls Header */

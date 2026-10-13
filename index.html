@@ -3,51 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Asif - Digital Profile</title>
+    <title>Muhammad Asif - Digital Futuristic Profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* --- DYNAMIC COSMIC DESIGN SYSTEM --- */
         :root {
-            --bg-body-1: #03030f;
-            --bg-body-2: #09021a;
-            --bg-body-3: #001220;
-            /* Reduced dark blue opacity to let stars show through nicely */
-            --bg-card: rgba(11, 15, 30, 0.45);
-            --bg-element: rgba(0, 243, 255, 0.08);
-            --bg-element-hover: rgba(0, 243, 255, 0.25);
+            /* Futuristic Violet & Quantum Neon Theme */
+            --bg-deep: #08031a;
+            --bg-gradient-1: #0e0529;
+            --bg-gradient-2: #190942;
+            --bg-card: rgba(18, 10, 48, 0.72);
+            --bg-element: rgba(0, 240, 255, 0.08);
+            --bg-element-hover: rgba(0, 240, 255, 0.22);
+            
             --text-main: #ffffff;
-            --text-muted: #9bb1de;
-            --border-color: rgba(0, 243, 255, 0.3);
-            --border-glow: rgba(0, 243, 255, 0.9);
-            --accent-cyan: #00f3ff;
-            --accent-purple: #b5179e;
-            --accent-pink: #f72585;
-            --btn-gradient: linear-gradient(135deg, #7209b7 0%, #00f3ff 100%);
-            --shadow-neon: 0 0 45px rgba(0, 243, 255, 0.2);
-            --modal-bg: rgba(12, 16, 36, 0.92);
+            --text-muted: #a4b3e6;
+            
+            --border-glow: rgba(0, 240, 255, 0.35);
+            --border-purple: rgba(177, 61, 255, 0.4);
+            
+            --neon-cyan: #00f0ff;
+            --neon-blue: #3b82f6;
+            --neon-purple: #b13dff;
+            --neon-magenta: #f72585;
+            
+            --btn-gradient: linear-gradient(135deg, #8013ff 0%, #00f0ff 100%);
+            --shadow-orb: 0 0 45px rgba(0, 240, 255, 0.25), 0 0 90px rgba(177, 61, 255, 0.2);
         }
 
         [data-theme="light"] {
-            --bg-body-1: #060818;
-            --bg-body-2: #120c24;
-            --bg-body-3: #021a24;
-            --bg-card: rgba(18, 22, 48, 0.55);
+            --bg-deep: #0b0726;
+            --bg-gradient-1: #150d3d;
+            --bg-gradient-2: #221257;
+            --bg-card: rgba(26, 16, 64, 0.82);
             --text-main: #ffffff;
-            --text-muted: #b0c2e0;
+            --text-muted: #b8c7f5;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
         }
 
         body {
-            background: linear-gradient(135deg, var(--bg-body-1), var(--bg-body-2), var(--bg-body-3));
-            background-size: 300% 300%;
-            animation: cosmicGradientShift 14s ease infinite;
+            background: radial-gradient(circle at 50% 30%, var(--bg-gradient-2) 0%, var(--bg-gradient-1) 50%, var(--bg-deep) 100%);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
@@ -58,14 +60,8 @@
             position: relative;
         }
 
-        @keyframes cosmicGradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Fullscreen Galaxy Canvas */
-        #galaxy-canvas {
+        /* Fullscreen Holographic Interactive Particle Canvas */
+        #orb-canvas {
             position: fixed;
             top: 0;
             left: 0;
@@ -75,30 +71,44 @@
             pointer-events: none;
         }
 
-        /* Glassmorphic Cyber Container Card */
+        /* Glassmorphic Cyber Card Wrapper */
         .phone-wrapper {
             width: 100%;
-            max-width: 400px;
+            max-width: 410px;
             background: var(--bg-card);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
             border-radius: 32px;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--border-glow);
             padding: 28px 24px;
             display: flex;
             flex-direction: column;
-            box-shadow: var(--shadow-neon);
+            box-shadow: var(--shadow-orb);
             position: relative;
             z-index: 2;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            animation: containerEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: containerEntrance 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Outer Cyber Frame Glow Corner Highlights */
+        .phone-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 33px;
+            padding: 1px;
+            background: linear-gradient(135deg, var(--neon-cyan), transparent 40%, var(--neon-purple), transparent 80%, var(--neon-cyan));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
         }
 
         @keyframes containerEntrance {
-            0% { opacity: 0; transform: translateY(35px) scale(0.92); }
-            100% { opacity: 0.99; transform: translateY(0) scale(1); }
+            0% { opacity: 0; transform: translateY(40px) scale(0.92); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* Header Navigation Tools */
+        /* Navigation & Controls Header */
         .controls-header {
             display: flex;
             justify-content: space-between;
@@ -109,9 +119,9 @@
 
         .lang-btn, .theme-btn {
             background: var(--bg-element);
-            border: 1px solid var(--border-color);
-            color: var(--accent-cyan);
-            padding: 7px 16px;
+            border: 1px solid var(--border-glow);
+            color: var(--neon-cyan);
+            padding: 8px 18px;
             border-radius: 20px;
             cursor: pointer;
             font-size: 0.8rem;
@@ -119,20 +129,19 @@
             letter-spacing: 1px;
             display: flex;
             align-items: center;
-            gap: 6px;
-            box-shadow: 0 0 12px rgba(0, 243, 255, 0.2);
-            backdrop-filter: blur(6px);
+            gap: 7px;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
         }
 
         .lang-btn:hover, .theme-btn:hover {
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 22px rgba(0, 240, 255, 0.45);
             transform: translateY(-2px);
         }
 
         .theme-btn {
-            width: 36px;
-            height: 36px;
+            width: 38px;
+            height: 38px;
             padding: 0;
             justify-content: center;
             border-radius: 50%;
@@ -144,30 +153,30 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 24px;
             position: relative;
         }
 
         .avatar-frame {
             position: relative;
-            width: 110px;
-            height: 110px;
+            width: 114px;
+            height: 114px;
             margin-bottom: 18px;
         }
 
-        /* Rotating Cosmic Orbit Ring */
+        /* Pulsing Holographic Ring Around Avatar */
         .avatar-frame::before {
             content: '';
             position: absolute;
-            top: -7px;
-            left: -7px;
-            right: -7px;
-            bottom: -7px;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
             border-radius: 50%;
-            background: conic-gradient(from 0deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink), var(--accent-cyan));
-            animation: spinRing 4s linear infinite;
+            background: conic-gradient(from 0deg, var(--neon-cyan), var(--neon-purple), var(--neon-magenta), var(--neon-cyan));
+            animation: spinRing 5s linear infinite;
             z-index: 1;
-            filter: blur(3px);
+            filter: blur(4px);
         }
 
         .avatar-frame::after {
@@ -178,7 +187,7 @@
             right: -2px;
             bottom: -2px;
             border-radius: 50%;
-            background: #090c1a;
+            background: #0f0826;
             z-index: 1;
         }
 
@@ -199,57 +208,48 @@
             position: absolute;
             bottom: 2px;
             right: 2px;
-            background: var(--accent-cyan);
-            color: #000;
-            width: 24px;
-            height: 24px;
+            background: var(--neon-cyan);
+            color: #08031a;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 900;
-            border: 2px solid #090c1a;
+            border: 2px solid #08031a;
             z-index: 3;
-            box-shadow: 0 0 12px var(--accent-cyan);
+            box-shadow: 0 0 14px var(--neon-cyan);
         }
 
-        /* Name Typography with Gradient Glow */
+        /* Futuristic Name Styling */
         .profile-hero h1 {
-            font-size: 1.85rem;
+            font-size: 1.9rem;
             font-weight: 800;
             letter-spacing: -0.5px;
-            margin-bottom: 4px;
-            background: linear-gradient(135deg, #ffffff 20%, var(--accent-cyan) 100%);
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #ffffff 20%, var(--neon-cyan) 80%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 25px rgba(0, 243, 255, 0.4);
+            text-shadow: 0 0 28px rgba(0, 240, 255, 0.4);
         }
 
-        .profile-title {
-            font-size: 0.95rem;
-            color: var(--accent-cyan);
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 14px;
-            text-transform: uppercase;
-        }
-
-        /* Quantum Status Indicator Pill */
+        /* Quantum Status Pillar */
         .status-container {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(0, 243, 255, 0.08);
-            border: 1px solid rgba(0, 243, 255, 0.35);
-            padding: 6px 16px;
+            background: rgba(0, 240, 255, 0.08);
+            border: 1px solid rgba(0, 240, 255, 0.35);
+            padding: 6px 18px;
             border-radius: 20px;
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             font-weight: 700;
             margin-bottom: 14px;
             color: #ffffff;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+            box-shadow: 0 0 16px rgba(0, 240, 255, 0.2);
+            letter-spacing: 0.3px;
         }
 
         .status-dot {
@@ -257,7 +257,7 @@
             height: 8px;
             border-radius: 50%;
             background-color: #00ffcc;
-            box-shadow: 0 0 10px #00ffcc;
+            box-shadow: 0 0 12px #00ffcc;
         }
 
         .status-dot.pulse {
@@ -274,7 +274,7 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
         }
 
@@ -286,10 +286,10 @@
         }
 
         .meta-item i {
-            color: var(--accent-cyan);
+            color: var(--neon-cyan);
         }
 
-        /* Action Grid (4 Buttons) */
+        /* Quick Action Matrix (4 Hex-inspired Buttons) */
         .quick-actions-row {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -303,14 +303,13 @@
             align-items: center;
             justify-content: center;
             background: var(--bg-element);
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--border-glow);
             border-radius: 18px;
-            height: 72px;
+            height: 74px;
             color: var(--text-main);
             text-decoration: none;
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(6px);
         }
 
         .action-pill::after {
@@ -320,7 +319,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(60deg, transparent, rgba(0, 243, 255, 0.2), transparent);
+            background: linear-gradient(60deg, transparent, rgba(0, 240, 255, 0.25), transparent);
             transform: rotate(30deg);
             transition: 0.5s;
         }
@@ -330,20 +329,20 @@
         }
 
         .action-pill:hover {
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 22px rgba(0, 243, 255, 0.4);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 24px rgba(0, 240, 255, 0.45);
             transform: translateY(-4px);
             background: var(--bg-element-hover);
         }
 
         .action-pill i {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             margin-bottom: 6px;
-            color: var(--accent-cyan);
+            color: var(--neon-cyan);
         }
 
         .action-pill span {
-            font-size: 0.7rem;
+            font-size: 0.72rem;
             color: var(--text-muted);
             font-weight: 600;
         }
@@ -357,7 +356,7 @@
 
         .btn-primary-neon {
             width: 100%;
-            height: 52px;
+            height: 54px;
             background: var(--btn-gradient);
             color: #ffffff;
             border: none;
@@ -369,22 +368,22 @@
             align-items: center;
             gap: 10px;
             cursor: pointer;
-            box-shadow: 0 0 25px rgba(0, 243, 255, 0.4);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.45);
             letter-spacing: 0.5px;
         }
 
         .btn-primary-neon:hover {
             transform: translateY(-2px);
-            box-shadow: 0 0 38px rgba(0, 243, 255, 0.75);
-            filter: brightness(1.1);
+            box-shadow: 0 0 42px rgba(0, 240, 255, 0.8);
+            filter: brightness(1.15);
         }
 
         .btn-outline-cyber {
             width: 100%;
-            height: 52px;
-            background: rgba(0, 243, 255, 0.05);
+            height: 54px;
+            background: rgba(0, 240, 255, 0.05);
             color: var(--text-main);
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--border-glow);
             border-radius: 16px;
             font-size: 0.95rem;
             font-weight: 700;
@@ -393,13 +392,12 @@
             align-items: center;
             gap: 10px;
             cursor: pointer;
-            backdrop-filter: blur(6px);
         }
 
         .btn-outline-cyber:hover {
-            border-color: var(--accent-cyan);
+            border-color: var(--neon-cyan);
             background: var(--bg-element-hover);
-            box-shadow: 0 0 22px rgba(0, 243, 255, 0.35);
+            box-shadow: 0 0 26px rgba(0, 240, 255, 0.4);
         }
 
         /* Modal Overlay */
@@ -409,7 +407,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(2, 2, 8, 0.88);
+            background: rgba(4, 2, 14, 0.88);
             backdrop-filter: blur(12px);
             display: flex;
             justify-content: center;
@@ -425,9 +423,9 @@
         .vcard-popup-reminder {
             width: 90%;
             max-width: 340px;
-            background: var(--modal-bg);
+            background: rgba(20, 10, 50, 0.95);
             border: 1px solid var(--border-glow);
-            box-shadow: 0 0 50px rgba(0, 243, 255, 0.35);
+            box-shadow: 0 0 50px rgba(0, 240, 255, 0.4);
             border-radius: 28px;
             padding: 24px;
             text-align: center;
@@ -443,8 +441,8 @@
         .vcard-popup-icon {
             width: 60px;
             height: 60px;
-            background: rgba(0, 243, 255, 0.1);
-            color: var(--accent-cyan);
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--neon-cyan);
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -452,7 +450,7 @@
             font-size: 1.5rem;
             margin-bottom: 16px;
             border: 1px solid var(--border-glow);
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
         }
 
         .vcard-popup-text {
@@ -480,7 +478,7 @@
             font-size: 0.95rem;
             font-weight: 800;
             cursor: pointer;
-            box-shadow: 0 0 18px rgba(0, 243, 255, 0.35);
+            box-shadow: 0 0 18px rgba(0, 240, 255, 0.35);
         }
 
         .vcard-popup-close-btn {
@@ -497,15 +495,15 @@
         .vcard-popup-close-btn:hover { color: var(--text-main); }
 
         @media (max-width: 480px) {
-            body { padding: 0; background: transparent; }
+            body { padding: 0; }
             .phone-wrapper { border-radius: 0; border: none; min-height: 100vh; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Fullscreen Galaxy & Shooting Star Canvas -->
-    <canvas id="galaxy-canvas"></canvas>
+    <!-- Fullscreen Holographic Particle Orb Canvas -->
+    <canvas id="orb-canvas"></canvas>
 
     <div class="phone-wrapper">
         
@@ -530,7 +528,6 @@
             </div>
 
             <h1 id="profile-name">Muhammad Asif</h1>
-            <p id="profile-title" class="profile-title">Business Operations Executive</p>
             
             <div class="meta-info-list">
                 <div class="meta-item"><i class="fa-solid fa-location-dot"></i> <span id="meta-location">Doha, Qatar</span></div>
@@ -583,125 +580,152 @@
     </div>
 
     <script>
-        const canvas = document.getElementById('galaxy-canvas');
+        // Interactive 3D Holographic Orb Sphere Particle Engine
+        const canvas = document.getElementById('orb-canvas');
         const ctx = canvas.getContext('2d');
-        let stars = [];
-        let meteors = [];
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+        let width, height;
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
         }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
+        window.addEventListener('resize', resize);
+        resize();
 
-        class Star {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2.6 + 0.8;
-                this.alpha = Math.random();
-                this.alphaChange = (Math.random() * 0.025 + 0.008) * (Math.random() < 0.5 ? 1 : -1);
-                this.color = ['#ffffff', '#00f0ff', '#e0aaff', '#f72585', '#4cc9f0'][Math.floor(Math.random() * 5)];
+        // Orb particle system variables
+        const numParticles = 420;
+        const sphereRadius = Math.min(window.innerWidth, window.innerHeight) * 0.32;
+        const particles = [];
+        let rotationX = 0;
+        let rotationY = 0;
+
+        // Create 3D points distributed on sphere surface using Fibonacci Spiral
+        const phi = Math.PI * (3 - Math.sqrt(5)); // Golden ratio angle
+        for (let i = 0; i < numParticles; i++) {
+            const y = 1 - (i / (numParticles - 1)) * 2; // y goes from 1 to -1
+            const radiusAtY = Math.sqrt(1 - y * y);
+            const theta = phi * i;
+
+            const x = Math.cos(theta) * radiusAtY;
+            const z = Math.sin(theta) * radiusAtY;
+
+            particles.push({
+                x: x * sphereRadius,
+                y: y * sphereRadius,
+                z: z * sphereRadius,
+                baseX: x * sphereRadius,
+                baseY: y * sphereRadius,
+                baseZ: z * sphereRadius,
+                pulse: Math.random() * Math.PI * 2,
+                size: Math.random() * 2 + 1,
+                color: ['#00f0ff', '#3b82f6', '#b13dff', '#e0aaff'][Math.floor(Math.random() * 4)]
+            });
+        }
+
+        // Particle connections/waves
+        let waveTime = 0;
+
+        function renderOrb() {
+            ctx.clearRect(0, 0, width, height);
+            waveTime += 0.02;
+
+            // Subtle rotation movement
+            rotationY += 0.005;
+            rotationX += 0.002;
+
+            const centerX = width / 2;
+            const centerY = height / 2 - 20;
+
+            const cosY = Math.cos(rotationY);
+            const sinY = Math.sin(rotationY);
+            const cosX = Math.cos(rotationX);
+            const sinX = Math.sin(rotationX);
+
+            // Projected 2D points storage for drawing futuristic connection lines
+            const projectedPoints = [];
+
+            for (let i = 0; i < particles.length; i++) {
+                const p = particles[i];
+
+                // Wave distortion effect inspired by Pythia glowing orb
+                const wave = Math.sin(p.pulse + waveTime) * 12;
+                const radiusFactor = 1 + Math.sin(p.y * 0.01 + waveTime * 1.5) * 0.08;
+
+                let x = p.baseX * radiusFactor;
+                let y = p.baseY * radiusFactor + wave;
+                let z = p.baseZ * radiusFactor;
+
+                // 3D Rotation around Y axis
+                let x1 = x * cosY - z * sinY;
+                let z1 = z * cosY + x * sinY;
+
+                // 3D Rotation around X axis
+                let y1 = y * cosX - z1 * sinX;
+                let z2 = z1 * cosX + y * sinX;
+
+                // Perspective projection
+                const perspective = 600;
+                const scale = perspective / (perspective + z2 + sphereRadius);
+                const projX = centerX + x1 * scale;
+                const projY = centerY + y1 * scale;
+
+                const alpha = Math.max(0.1, (z2 + sphereRadius) / (sphereRadius * 2));
+
+                projectedPoints.push({ x: projX, y: projY, z: z2, scale, alpha, color: p.color, size: p.size });
             }
-            update() {
-                this.alpha += this.alphaChange;
-                if (this.alpha <= 0.2 || this.alpha >= 1) {
-                    this.alphaChange *= -1;
+
+            // Draw futuristic energy connections between near points
+            ctx.lineWidth = 0.5;
+            for (let i = 0; i < projectedPoints.length; i += 3) {
+                for (let j = i + 1; j < projectedPoints.length; j += 4) {
+                    const p1 = projectedPoints[i];
+                    const p2 = projectedPoints[j];
+
+                    const dx = p1.x - p2.x;
+                    const dy = p1.y - p2.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 55) {
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.strokeStyle = `rgba(0, 240, 255, ${0.18 * (1 - dist / 55) * p1.alpha})`;
+                        ctx.stroke();
+                    }
                 }
             }
-            draw() {
+
+            // Draw particle nodes
+            for (let i = 0; i < projectedPoints.length; i++) {
+                const p = projectedPoints[i];
                 ctx.save();
-                ctx.globalAlpha = Math.max(0.2, this.alpha);
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
-                ctx.shadowBlur = this.size * 7;
-                ctx.shadowColor = this.color;
+                ctx.arc(p.x, p.y, p.size * p.scale, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.globalAlpha = p.alpha;
+                ctx.shadowBlur = 12 * p.scale;
+                ctx.shadowColor = p.color;
                 ctx.fill();
                 ctx.restore();
             }
+
+            requestAnimationFrame(renderOrb);
         }
 
-        class Meteor {
-            constructor() {
-                this.reset();
-            }
-            reset() {
-                this.x = Math.random() * canvas.width * 1.5 - canvas.width * 0.25;
-                this.y = -60;
-                this.length = Math.random() * 140 + 80;
-                this.speed = Math.random() * 11 + 6;
-                this.size = Math.random() * 2 + 1;
-            }
-            update() {
-                this.x += this.speed;
-                this.y += this.speed * 0.85;
-                if (this.y > canvas.height + 120 || this.x > canvas.width + 120) {
-                    this.reset();
-                }
-            }
-            draw() {
-                ctx.save();
-                const gradient = ctx.createLinearGradient(
-                    this.x, this.y, 
-                    this.x - this.length, this.y - this.length * 0.85
-                );
-                gradient.addColorStop(0, '#00f0ff');
-                gradient.addColorStop(0.5, '#f72585');
-                gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        renderOrb();
 
-                ctx.strokeStyle = gradient;
-                ctx.lineWidth = this.size;
-                ctx.beginPath();
-                ctx.moveTo(this.x, this.y);
-                ctx.lineTo(this.x - this.length, this.y - this.length * 0.85);
-                ctx.stroke();
-                ctx.restore();
-            }
-        }
-
-        for (let i = 0; i < 180; i++) {
-            stars.push(new Star());
-        }
-        for (let i = 0; i < 4; i++) {
-            meteors.push(new Meteor());
-        }
-
-        function animateGalaxy() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            const grad1 = ctx.createRadialGradient(canvas.width * 0.25, canvas.height * 0.25, 10, canvas.width * 0.25, canvas.height * 0.25, 320);
-            grad1.addColorStop(0, 'rgba(181, 23, 158, 0.22)');
-            grad1.addColorStop(1, 'rgba(3, 3, 15, 0)');
-            ctx.fillStyle = grad1;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            const grad2 = ctx.createRadialGradient(canvas.width * 0.75, canvas.height * 0.75, 10, canvas.width * 0.75, canvas.height * 0.75, 360);
-            grad2.addColorStop(0, 'rgba(0, 243, 255, 0.2)');
-            grad2.addColorStop(1, 'rgba(3, 3, 15, 0)');
-            ctx.fillStyle = grad2;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            stars.forEach(star => {
-                star.update();
-                star.draw();
-            });
-
-            meteors.forEach(meteor => {
-                meteor.update();
-                meteor.draw();
-            });
-
-            requestAnimationFrame(animateGalaxy);
-        }
-        animateGalaxy();
+        // Mouse interaction to subtly rotate orb
+        window.addEventListener('mousemove', (e) => {
+            const mouseX = (e.clientX - width / 2) / width;
+            const mouseY = (e.clientY - height / 2) / height;
+            rotationY += mouseX * 0.02;
+            rotationX += mouseY * 0.02;
+        });
 
         let currentLanguage = 'en';
         const translations = {
             en: {
                 name: "Muhammad Asif",
-                title: "Business Operations Executive",
                 location: "Doha, Qatar",
                 call: "Call",
                 meeting: "Meeting",
@@ -717,7 +741,6 @@
             },
             ar: {
                 name: "محمد آصف",
-                title: "تنفيذي عمليات تجارية",
                 location: "الدوحة، قطر",
                 call: "اتصال",
                 meeting: "اجتماع",
@@ -743,7 +766,6 @@
             langText.innerText = lang === 'en' ? 'عربي' : 'EN';
 
             document.getElementById('profile-name').innerText = translations[lang].name;
-            document.getElementById('profile-title').innerText = translations[lang].title;
             document.getElementById('meta-location').innerText = translations[lang].location;
             document.getElementById('vcard-reminder-text').innerText = translations[lang]["vcard_reminder"];
             document.getElementById('vcard-popup-download').innerText = translations[lang]["vcard_save"];
@@ -865,7 +887,6 @@
                 "VERSION:3.0",
                 "N:Asif;Muhammad;;;",
                 "FN:Muhammad Asif",
-                "TITLE:Business Operations Executive",
                 "TEL;TYPE=CELL;TYPE=PREF:+97451736746"
             ];
             

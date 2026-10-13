@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Asif - Digital Profile</title>
+    <title>Muhammad - Digital Profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* --- FUTURISTIC COSMIC DESIGN SYSTEM --- */
@@ -474,7 +474,7 @@
         
         <section class="profile-hero">
             <div class="avatar-frame">
-                <img id="profile-display-img" src="Screenshot_20260526_003701_WhatsApp.jpg" alt="Muhammad Asif">
+                <img id="profile-display-img" src="Screenshot_20260526_003701_WhatsApp.jpg" alt="Muhammad">
                 <div class="verified-badge"><i class="fa-solid fa-check"></i></div>
             </div>
             
@@ -483,7 +483,7 @@
                 <span id="status-text">Checking Status...</span>
             </div>
 
-            <h1 id="profile-name">Muhammad Asif</h1>
+            <h1 id="profile-name">Muhammad</h1>
             
             <div class="meta-info-list">
                 <div class="meta-item"><i class="fa-solid fa-location-dot"></i> <span id="meta-location">Doha, Qatar</span></div>
@@ -523,7 +523,7 @@
         <div class="vcard-popup-reminder">
             <div class="vcard-popup-icon"><i class="fa-solid fa-user-plus"></i></div>
             <div id="vcard-reminder-text" class="vcard-popup-text">
-                Save Muhammad Asif directly to your phone contacts list.
+                Save Muhammad directly to your phone contacts list.
             </div>
             <div class="modal-btn-group">
                 <button id="vcard-popup-download" class="vcard-popup-btn">Save Contact</button>
@@ -650,26 +650,26 @@
         let currentLanguage = 'en';
         const translations = {
             en: {
-                name: "Muhammad Asif",
+                name: "Muhammad",
                 location: "Doha, Qatar",
                 call: "Call",
                 meeting: "Meeting",
                 location_pill: "Location",
                 "btn-vcard": "Download vCard",
-                "vcard_reminder": "Save Muhammad Asif directly to your phone contacts list.",
+                "vcard_reminder": "Save Muhammad directly to your phone contacts list.",
                 "vcard_save": "Save Contact",
                 "vcard_cancel": "Not Now",
                 "status-on": "Active Now (Qatar Time)",
                 "status-off": "🌙 Standby / Offline"
             },
             ar: {
-                name: "محمد آصف",
+                name: "محمد",
                 location: "الدوحة، قطر",
                 call: "اتصال",
                 meeting: "اجتماع",
                 location_pill: "الموقع",
                 "btn-vcard": "حفظ جهة الاتصال",
-                "vcard_reminder": "احفظ جهة اتصال محمد آصف مباشرة في هاتفك.",
+                "vcard_reminder": "احفظ جهة اتصال محمد مباشرة في هاتفك.",
                 "vcard_save": "حفظ جهة الاتصال",
                 "vcard_cancel": "ليس الآن",
                 "status-on": "نشط حالياً (توقيت قطر)",
@@ -786,8 +786,8 @@
             const vcardLines = [
                 "BEGIN:VCARD",
                 "VERSION:3.0",
-                "N:Asif;Muhammad;;;",
-                "FN:Muhammad Asif",
+                "N:;Muhammad;;;",
+                "FN:Muhammad",
                 "TEL;TYPE=CELL;TYPE=PREF:+97451736746"
             ];
             
@@ -801,7 +801,7 @@
             const blobFile = new Blob([vcardLines.join("\r\n")], { type: 'text/vcard;charset=utf-8;' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blobFile);
-            link.download = 'Muhammad_Asif.vcf';
+            link.download = 'Muhammad.vcf';
             link.click();
         }
 

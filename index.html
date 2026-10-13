@@ -6,12 +6,13 @@
     <title>Muhammad Asif - Digital Profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- DYNAMIC SHIFTING COSMIC GRADIENT SYSTEM --- */
+        /* --- SOLID COSMIC DESIGN SYSTEM --- */
         :root {
             --bg-body-1: #03030f;
             --bg-body-2: #09021a;
             --bg-body-3: #001220;
-            --bg-card: rgba(10, 14, 30, 0.48);
+            /* Solid opaque dark card background */
+            --bg-card: #0b0f1e;
             --bg-element: rgba(0, 243, 255, 0.08);
             --bg-element-hover: rgba(0, 243, 255, 0.25);
             --text-main: #ffffff;
@@ -22,15 +23,15 @@
             --accent-purple: #b5179e;
             --accent-pink: #f72585;
             --btn-gradient: linear-gradient(135deg, #7209b7 0%, #00f3ff 100%);
-            --shadow-neon: 0 0 50px rgba(0, 243, 255, 0.22), inset 0 0 15px rgba(0, 243, 255, 0.1);
-            --modal-bg: rgba(8, 12, 26, 0.95);
+            --shadow-neon: 0 0 50px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 243, 255, 0.25);
+            --modal-bg: #0c1024;
         }
 
         [data-theme="light"] {
             --bg-body-1: #060818;
             --bg-body-2: #120c24;
             --bg-body-3: #021a24;
-            --bg-card: rgba(18, 22, 48, 0.58);
+            --bg-card: #121630;
             --text-main: #ffffff;
             --text-muted: #b0c2e0;
         }
@@ -44,7 +45,6 @@
         }
 
         body {
-            /* Animated Shifting Gradient Background */
             background: linear-gradient(135deg, var(--bg-body-1), var(--bg-body-2), var(--bg-body-3));
             background-size: 300% 300%;
             animation: cosmicGradientShift 14s ease infinite;
@@ -75,7 +75,7 @@
             pointer-events: none;
         }
 
-        /* Glassmorphic Cosmic Profile Container Card */
+        /* Solid Container Card (Non-transparent) */
         .phone-wrapper {
             width: 100%;
             max-width: 400px;
@@ -88,8 +88,6 @@
             box-shadow: var(--shadow-neon);
             position: relative;
             z-index: 2;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             animation: containerEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -121,7 +119,6 @@
             align-items: center;
             gap: 6px;
             box-shadow: 0 0 12px rgba(0, 243, 255, 0.2);
-            backdrop-filter: blur(8px);
         }
 
         .lang-btn:hover, .theme-btn:hover {
@@ -178,7 +175,7 @@
             right: -2px;
             bottom: -2px;
             border-radius: 50%;
-            background: #080b1a;
+            background: #0b0f1e;
             z-index: 1;
         }
 
@@ -209,7 +206,7 @@
             align-items: center;
             font-size: 0.75rem;
             font-weight: 900;
-            border: 2px solid #080b1a;
+            border: 2px solid #0b0f1e;
             z-index: 3;
             box-shadow: 0 0 12px var(--accent-cyan);
         }
@@ -248,7 +245,6 @@
             font-weight: 700;
             margin-bottom: 14px;
             color: #ffffff;
-            backdrop-filter: blur(5px);
             box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
         }
 
@@ -310,7 +306,6 @@
             text-decoration: none;
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(8px);
         }
 
         .action-pill::after {
@@ -393,7 +388,6 @@
             align-items: center;
             gap: 10px;
             cursor: pointer;
-            backdrop-filter: blur(8px);
         }
 
         .btn-outline-cyber:hover {
@@ -410,7 +404,6 @@
             width: 100%;
             height: 100%;
             background: rgba(2, 2, 8, 0.88);
-            backdrop-filter: blur(15px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -497,14 +490,14 @@
         .vcard-popup-close-btn:hover { color: var(--text-main); }
 
         @media (max-width: 480px) {
-            body { padding: 0; background: transparent; }
+            body { padding: 0; }
             .phone-wrapper { border-radius: 0; border: none; min-height: 100vh; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Fullscreen Hyper-Visible Galaxy & Shooting Star Canvas -->
+    <!-- Fullscreen Galaxy & Shooting Star Canvas -->
     <canvas id="galaxy-canvas"></canvas>
 
     <div class="phone-wrapper">
@@ -583,9 +576,6 @@
     </div>
 
     <script>
-        /* ==========================================================================
-           1. HYPER-VISIBLE GALAXY & METEOR CANVAS ANIMATION ENGINE
-           ========================================================================== */
         const canvas = document.getElementById('galaxy-canvas');
         const ctx = canvas.getContext('2d');
         let stars = [];
@@ -674,7 +664,6 @@
         function animateGalaxy() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
-            // Dynamic Nebula Clouds
             const grad1 = ctx.createRadialGradient(canvas.width * 0.25, canvas.height * 0.25, 10, canvas.width * 0.25, canvas.height * 0.25, 320);
             grad1.addColorStop(0, 'rgba(181, 23, 158, 0.22)');
             grad1.addColorStop(1, 'rgba(3, 3, 15, 0)');
@@ -701,12 +690,7 @@
         }
         animateGalaxy();
 
-
-        /* ==========================================================================
-           2. TRANSLATION & LANGUAGE ENGINE
-           ========================================================================== */
         let currentLanguage = 'en';
-        
         const translations = {
             en: {
                 name: "Muhammad Asif",
@@ -771,7 +755,6 @@
                     }
                 }
             });
-
             updateQatarStatus(); 
         }
 
@@ -779,14 +762,9 @@
             setLanguage(currentLanguage === 'en' ? 'ar' : 'en');
         });
 
-
-        /* ==========================================================================
-           3. LIVE QATAR TIME ZONE STATUS INDICATOR
-           ========================================================================== */
         function updateQatarStatus() {
             const dot = document.getElementById('status-dot');
             const text = document.getElementById('status-text');
-            
             const now = new Date();
             const qatarTimeString = now.toLocaleString("en-US", {timeZone: "Asia/Qatar", hour: 'numeric', hour12: false});
             const currentQatarHour = parseInt(qatarTimeString, 10);
@@ -804,31 +782,21 @@
         updateQatarStatus();
         setInterval(updateQatarStatus, 60000);
 
-
-        /* ==========================================================================
-           4. THEME TOGGLE ENGINE
-           ========================================================================== */
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeIcon = themeToggleBtn.querySelector('i');
 
         themeToggleBtn.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             let targetTheme = 'dark';
-            
             if (currentTheme === 'dark') {
                 targetTheme = 'light';
                 themeIcon.className = 'fa-solid fa-sun';
             } else {
                 themeIcon.className = 'fa-solid fa-moon';
             }
-            
             document.documentElement.setAttribute('data-theme', targetTheme);
         });
 
-
-        /* ==========================================================================
-           5. VCARD DOWNLOAD & SHARE ENGINE
-           ========================================================================== */
         const modalOverlay = document.getElementById('modal-overlay');
         const closePopupBtn = document.getElementById('vcard-popup-close');
         let hasVcardBeenDownloaded = false;

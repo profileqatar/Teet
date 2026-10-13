@@ -3,33 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Asif</title>
+    <title>Muhammad Asif - Digital Profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- GALAXY COSMIC DESIGN SYSTEM WITH GRADIENT OVERLAYER --- */
+        /* --- FUTURISTIC COSMIC DESIGN SYSTEM --- */
         :root {
-            --bg-body: #020207;
-            /* Sleek dark glass card with clean opacity */
-            --bg-card: rgba(8, 11, 20, 0.72);
-            --bg-element: rgba(0, 243, 255, 0.06);
-            --bg-element-hover: rgba(0, 243, 255, 0.18);
+            --bg-body: #03030a;
+            --bg-card: rgba(12, 16, 32, 0.45);
+            --bg-element: rgba(0, 240, 255, 0.08);
+            --bg-element-hover: rgba(0, 240, 255, 0.22);
             --text-main: #ffffff;
-            --text-muted: #8a99ad;
-            --border-color: rgba(0, 243, 255, 0.2);
-            --border-glow: rgba(0, 243, 255, 0.6);
-            --accent-cyan: #00f3ff;
-            --accent-pink: #ff0055;
-            --accent-purple: #9d00ff;
-            --btn-gradient: linear-gradient(135deg, #00f3ff 0%, #ff0055 100%);
-            --shadow-neon: 0 0 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 243, 255, 0.15);
-            --modal-bg: rgba(8, 12, 22, 0.95);
+            --text-muted: #a0b2ce;
+            --border-color: rgba(0, 240, 255, 0.25);
+            --border-glow: rgba(0, 240, 255, 0.8);
+            --accent-cyan: #00f0ff;
+            --accent-purple: #9d4edd;
+            --accent-pink: #f72585;
+            --btn-gradient: linear-gradient(135deg, #7209b7 0%, #00f0ff 100%);
+            --shadow-neon: 0 0 45px rgba(0, 240, 255, 0.25);
+            --modal-bg: rgba(10, 14, 28, 0.92);
         }
 
         [data-theme="light"] {
             --bg-body: #060814;
-            --bg-card: rgba(18, 22, 48, 0.78);
+            --bg-card: rgba(18, 22, 48, 0.55);
             --text-main: #ffffff;
-            --text-muted: #a0b2ce;
+            --text-muted: #b0c2e0;
         }
 
         * {
@@ -63,19 +62,7 @@
             pointer-events: none;
         }
 
-        /* Dark Vignette / Gradient Overlayer Layer to depth-contrast stars */
-        .galaxy-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 1;
-            pointer-events: none;
-            background: radial-gradient(circle at center, rgba(2, 3, 7, 0.25) 0%, rgba(2, 3, 7, 0.75) 100%);
-        }
-
-        /* Glassmorphic Cyber Container Card */
+        /* Glassmorphic Cosmic Profile Container Card */
         .phone-wrapper {
             width: 100%;
             max-width: 400px;
@@ -88,13 +75,13 @@
             box-shadow: var(--shadow-neon);
             position: relative;
             z-index: 2;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            animation: containerEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            animation: containerEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         @keyframes containerEntrance {
-            0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+            0% { opacity: 0; transform: translateY(35px) scale(0.92); }
             100% { opacity: 0.99; transform: translateY(0) scale(1); }
         }
 
@@ -120,12 +107,13 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            box-shadow: 0 0 10px rgba(0, 243, 255, 0.1);
+            box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+            backdrop-filter: blur(8px);
         }
 
         .lang-btn:hover, .theme-btn:hover {
             border-color: var(--accent-cyan);
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+            box-shadow: 0 0 18px rgba(0, 240, 255, 0.5);
             transform: translateY(-2px);
         }
 
@@ -154,19 +142,19 @@
             margin-bottom: 18px;
         }
 
-        /* Multi-ring Rotating Neon Border */
+        /* Rotating Cosmic Orbit Ring */
         .avatar-frame::before {
             content: '';
             position: absolute;
-            top: -6px;
-            left: -6px;
-            right: -6px;
-            bottom: -6px;
+            top: -7px;
+            left: -7px;
+            right: -7px;
+            bottom: -7px;
             border-radius: 50%;
-            background: conic-gradient(from 0deg, var(--accent-cyan), var(--accent-pink), var(--accent-purple), var(--accent-cyan));
+            background: conic-gradient(from 0deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink), var(--accent-cyan));
             animation: spinRing 4s linear infinite;
             z-index: 1;
-            filter: blur(2px);
+            filter: blur(3px);
         }
 
         .avatar-frame::after {
@@ -177,7 +165,7 @@
             right: -2px;
             bottom: -2px;
             border-radius: 50%;
-            background: #080b14;
+            background: #090c1a;
             z-index: 1;
         }
 
@@ -208,21 +196,21 @@
             align-items: center;
             font-size: 0.75rem;
             font-weight: 900;
-            border: 2px solid #080b14;
+            border: 2px solid #090c1a;
             z-index: 3;
-            box-shadow: 0 0 10px var(--accent-cyan);
+            box-shadow: 0 0 12px var(--accent-cyan);
         }
 
-        /* Name Typography with Glitch Glow Effect */
+        /* Name Typography with Gradient Glow */
         .profile-hero h1 {
-            font-size: 1.8rem;
+            font-size: 1.85rem;
             font-weight: 800;
             letter-spacing: -0.5px;
             margin-bottom: 4px;
-            background: linear-gradient(135deg, #ffffff 0%, var(--accent-cyan) 100%);
+            background: linear-gradient(135deg, #ffffff 20%, var(--accent-cyan) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+            text-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
         }
 
         .profile-title {
@@ -239,8 +227,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(0, 243, 255, 0.08);
-            border: 1px solid rgba(0, 243, 255, 0.3);
+            background: rgba(0, 240, 255, 0.08);
+            border: 1px solid rgba(0, 240, 255, 0.35);
             padding: 6px 16px;
             border-radius: 20px;
             font-size: 0.75rem;
@@ -248,7 +236,7 @@
             margin-bottom: 14px;
             color: #ffffff;
             backdrop-filter: blur(5px);
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.15);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
         }
 
         .status-dot {
@@ -288,7 +276,7 @@
             color: var(--accent-cyan);
         }
 
-        /* Glowing Quick Action Grid */
+        /* Action Grid (4 Buttons) */
         .quick-actions-row {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -309,6 +297,7 @@
             text-decoration: none;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(8px);
         }
 
         .action-pill::after {
@@ -318,7 +307,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(60deg, transparent, rgba(0, 243, 255, 0.1), transparent);
+            background: linear-gradient(60deg, transparent, rgba(0, 240, 255, 0.15), transparent);
             transform: rotate(30deg);
             transition: 0.5s;
         }
@@ -329,7 +318,7 @@
 
         .action-pill:hover {
             border-color: var(--accent-cyan);
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
             transform: translateY(-4px);
             background: var(--bg-element-hover);
         }
@@ -346,7 +335,7 @@
             font-weight: 600;
         }
 
-        /* Futuristic Action Buttons */
+        /* Action CTAs */
         .cta-container {
             display: flex;
             flex-direction: column;
@@ -367,20 +356,20 @@
             align-items: center;
             gap: 10px;
             cursor: pointer;
-            box-shadow: 0 0 25px rgba(0, 243, 255, 0.4);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
             letter-spacing: 0.5px;
         }
 
         .btn-primary-neon:hover {
             transform: translateY(-2px);
-            box-shadow: 0 0 35px rgba(255, 0, 85, 0.6);
+            box-shadow: 0 0 35px rgba(0, 240, 255, 0.7);
             filter: brightness(1.1);
         }
 
         .btn-outline-cyber {
             width: 100%;
             height: 52px;
-            background: transparent;
+            background: rgba(0, 240, 255, 0.05);
             color: var(--text-main);
             border: 1px solid var(--border-color);
             border-radius: 16px;
@@ -391,23 +380,23 @@
             align-items: center;
             gap: 10px;
             cursor: pointer;
-            box-shadow: inset 0 0 15px rgba(0, 243, 255, 0.05);
+            backdrop-filter: blur(8px);
         }
 
         .btn-outline-cyber:hover {
             border-color: var(--accent-cyan);
             background: var(--bg-element-hover);
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.25);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
         }
 
-        /* Modal Contact Reminder Overlay */
+        /* Modal Overlay */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(2, 3, 7, 0.85);
+            background: rgba(2, 2, 8, 0.88);
             backdrop-filter: blur(15px);
             display: flex;
             justify-content: center;
@@ -425,7 +414,7 @@
             max-width: 340px;
             background: var(--modal-bg);
             border: 1px solid var(--border-glow);
-            box-shadow: 0 0 50px rgba(0, 243, 255, 0.3);
+            box-shadow: 0 0 50px rgba(0, 240, 255, 0.35);
             border-radius: 28px;
             padding: 24px;
             text-align: center;
@@ -441,7 +430,7 @@
         .vcard-popup-icon {
             width: 60px;
             height: 60px;
-            background: rgba(0, 243, 255, 0.1);
+            background: rgba(0, 240, 255, 0.1);
             color: var(--accent-cyan);
             border-radius: 50%;
             display: flex;
@@ -450,7 +439,7 @@
             font-size: 1.5rem;
             margin-bottom: 16px;
             border: 1px solid var(--border-glow);
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
         }
 
         .vcard-popup-text {
@@ -478,7 +467,7 @@
             font-size: 0.95rem;
             font-weight: 800;
             cursor: pointer;
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+            box-shadow: 0 0 18px rgba(0, 240, 255, 0.35);
         }
 
         .vcard-popup-close-btn {
@@ -502,10 +491,8 @@
 </head>
 <body>
 
-    <!-- Fullscreen Galaxy Starfield & Meteor Canvas -->
+    <!-- Fullscreen Deep Space Galaxy Canvas -->
     <canvas id="galaxy-canvas"></canvas>
-    <!-- Dark Vignette Overlayer Layer -->
-    <div class="galaxy-overlay"></div>
 
     <div class="phone-wrapper">
         
@@ -568,7 +555,7 @@
 
     </div>
 
-    <!-- Contact Modal -->
+    <!-- Contact Modal Overlay -->
     <div id="modal-overlay" class="modal-overlay">
         <div class="vcard-popup-reminder">
             <div class="vcard-popup-icon"><i class="fa-solid fa-user-plus"></i></div>
@@ -605,17 +592,17 @@
                 this.size = Math.random() * 2.4 + 0.6;
                 this.alpha = Math.random();
                 this.alphaChange = (Math.random() * 0.02 + 0.005) * (Math.random() < 0.5 ? 1 : -1);
-                this.color = ['#ffffff', '#00f0ff', '#e0aaff', '#ff0055'][Math.floor(Math.random() * 4)];
+                this.color = ['#ffffff', '#00f0ff', '#e0aaff', '#f72585'][Math.floor(Math.random() * 4)];
             }
             update() {
                 this.alpha += this.alphaChange;
-                if (this.alpha <= 0.2 || this.alpha >= 1) {
+                if (this.alpha <= 0.15 || this.alpha >= 1) {
                     this.alphaChange *= -1;
                 }
             }
             draw() {
                 ctx.save();
-                ctx.globalAlpha = Math.max(0.2, this.alpha);
+                ctx.globalAlpha = Math.max(0.15, this.alpha);
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fillStyle = this.color;
@@ -651,251 +638,11 @@
                     this.x - this.length, this.y - this.length * 0.8
                 );
                 gradient.addColorStop(0, '#00f0ff');
-                gradient.addColorStop(0.5, '#ff0055');
+                gradient.addColorStop(0.5, '#f72585');
                 gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
 
                 ctx.strokeStyle = gradient;
                 ctx.lineWidth = this.size;
                 ctx.beginPath();
                 ctx.moveTo(this.x, this.y);
-                ctx.lineTo(this.x - this.length, this.y - this.length * 0.8);
-                ctx.stroke();
-                ctx.restore();
-            }
-        }
-
-        for (let i = 0; i < 160; i++) {
-            stars.push(new Star());
-        }
-        for (let i = 0; i < 3; i++) {
-            meteors.push(new Meteor());
-        }
-
-        function animateGalaxy() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            stars.forEach(star => {
-                star.update();
-                star.draw();
-            });
-
-            meteors.forEach(meteor => {
-                meteor.update();
-                meteor.draw();
-            });
-
-            requestAnimationFrame(animateGalaxy);
-        }
-        animateGalaxy();
-
-
-        /* ==========================================================================
-           2. TRANSLATION & LANGUAGE ENGINE
-           ========================================================================== */
-        let currentLanguage = 'en';
-        
-        const translations = {
-            en: {
-                name: "Muhammad Asif",
-                title: "Business Operations Executive",
-                location: "Doha, Qatar",
-                call: "Call",
-                meeting: "Meeting",
-                location_pill: "Location",
-                "btn-share": "Share Profile",
-                "btn-vcard": "Download vCard",
-                "vcard_reminder": "Save Muhammad Asif directly to your phone contacts list.",
-                "vcard_save": "Save Contact",
-                "vcard_cancel": "Not Now",
-                "copied": "Link Copied!",
-                "status-on": "Active Now (Qatar Time)",
-                "status-off": "🌙 Standby / Offline"
-            },
-            ar: {
-                name: "محمد آصف",
-                title: "تنفيذي عمليات تجارية",
-                location: "الدوحة، قطر",
-                call: "اتصال",
-                meeting: "اجتماع",
-                location_pill: "الموقع",
-                "btn-share": "مشاركة الملف",
-                "btn-vcard": "حفظ جهة الاتصال",
-                "vcard_reminder": "احفظ جهة اتصال محمد آصف مباشرة في هاتفك.",
-                "vcard_save": "حفظ جهة الاتصال",
-                "vcard_cancel": "ليس الآن",
-                "copied": "تم نسخ الرابط!",
-                "status-on": "نشط حالياً (توقيت قطر)",
-                "status-off": "🌙 خارج أوقات العمل"
-            }
-        };
-
-        const langToggleBtn = document.getElementById('lang-toggle');
-        const langText = document.getElementById('lang-text');
-
-        function setLanguage(lang) {
-            currentLanguage = lang;
-            document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-            document.documentElement.setAttribute('lang', lang);
-            langText.innerText = lang === 'en' ? 'عربي' : 'EN';
-
-            document.getElementById('profile-name').innerText = translations[lang].name;
-            document.getElementById('profile-title').innerText = translations[lang].title;
-            document.getElementById('meta-location').innerText = translations[lang].location;
-            document.getElementById('vcard-reminder-text').innerText = translations[lang]["vcard_reminder"];
-            document.getElementById('vcard-popup-download').innerText = translations[lang]["vcard_save"];
-            document.getElementById('vcard-popup-close').innerText = translations[lang]["vcard_cancel"];
-
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const translationKey = element.getAttribute('data-i18n');
-                if (translations[lang][translationKey]) {
-                    const icon = element.querySelector('i');
-                    if (icon) {
-                        element.innerHTML = '';
-                        element.appendChild(icon);
-                        element.appendChild(document.createTextNode(' ' + translations[lang][translationKey]));
-                    } else {
-                        element.innerText = translations[lang][translationKey];
-                    }
-                }
-            });
-
-            updateQatarStatus(); 
-        }
-
-        langToggleBtn.addEventListener('click', () => {
-            setLanguage(currentLanguage === 'en' ? 'ar' : 'en');
-        });
-
-
-        /* ==========================================================================
-           3. LIVE QATAR TIME ZONE STATUS INDICATOR
-           ========================================================================== */
-        function updateQatarStatus() {
-            const dot = document.getElementById('status-dot');
-            const text = document.getElementById('status-text');
-            
-            const now = new Date();
-            const qatarTimeString = now.toLocaleString("en-US", {timeZone: "Asia/Qatar", hour: 'numeric', hour12: false});
-            const currentQatarHour = parseInt(qatarTimeString, 10);
-
-            if (currentQatarHour >= 8 && currentQatarHour < 18) {
-                dot.style.backgroundColor = "#00ffcc";
-                dot.classList.add('pulse');
-                text.innerText = translations[currentLanguage]["status-on"];
-            } else {
-                dot.style.backgroundColor = "#ff0055";
-                dot.classList.remove('pulse');
-                text.innerText = translations[currentLanguage]["status-off"];
-            }
-        }
-        updateQatarStatus();
-        setInterval(updateQatarStatus, 60000);
-
-
-        /* ==========================================================================
-           4. THEME TOGGLE ENGINE
-           ========================================================================== */
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeIcon = themeToggleBtn.querySelector('i');
-
-        themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            let targetTheme = 'dark';
-            
-            if (currentTheme === 'dark') {
-                targetTheme = 'light';
-                themeIcon.className = 'fa-solid fa-sun';
-            } else {
-                themeIcon.className = 'fa-solid fa-moon';
-            }
-            
-            document.documentElement.setAttribute('data-theme', targetTheme);
-        });
-
-
-        /* ==========================================================================
-           5. VCARD DOWNLOAD & SHARE ENGINE
-           ========================================================================== */
-        const modalOverlay = document.getElementById('modal-overlay');
-        const closePopupBtn = document.getElementById('vcard-popup-close');
-        let hasVcardBeenDownloaded = false;
-        
-        setTimeout(() => {
-            if (!hasVcardBeenDownloaded) {
-                modalOverlay.classList.add('visible');
-            }
-        }, 15000);
-
-        closePopupBtn.addEventListener('click', () => {
-            modalOverlay.classList.remove('visible');
-        });
-
-        document.getElementById('vcard-popup-download').addEventListener('click', () => {
-            modalOverlay.classList.remove('visible');
-            document.getElementById('vcard-btn').click(); 
-        });
-
-        const shareBtn = document.getElementById('share-profile-btn');
-        shareBtn.addEventListener('click', async () => {
-            const shareData = {
-                title: "Muhammad Asif",
-                text: "Muhammad Asif - Contact Profile",
-                url: window.location.href
-            };
-
-            if (navigator.share) {
-                try { await navigator.share(shareData); } catch (err) {}
-            } else {
-                try {
-                    await navigator.clipboard.writeText(window.location.href);
-                    const originalText = shareBtn.innerHTML;
-                    shareBtn.innerHTML = `<i class="fa-solid fa-check"></i> ${translations[currentLanguage].copied}`;
-                    setTimeout(() => { shareBtn.innerHTML = originalText; }, 2500);
-                } catch (err) { alert('URL copied to clipboard.'); }
-            }
-        });
-
-        async function triggerVcardDownload() {
-            hasVcardBeenDownloaded = true;
-            modalOverlay.classList.remove('visible'); 
-            
-            const imageUrl = window.location.origin + window.location.pathname.replace('index.html', '') + 'Screenshot_20260526_003701_WhatsApp.jpg';
-            let base64PhotoText = '';
-            
-            try {
-                const response = await fetch(imageUrl);
-                const blob = await response.blob();
-                base64PhotoText = await new Promise((resolve) => {
-                    const reader = new FileReader();
-                    reader.onloadend = () => resolve(reader.result.split(',')[1]);
-                    reader.readAsDataURL(blob);
-                });
-            } catch (e) {}
-
-            const vcardLines = [
-                "BEGIN:VCARD",
-                "VERSION:3.0",
-                "N:Asif;Muhammad;;;",
-                "FN:Muhammad Asif",
-                "TITLE:Business Operations Executive",
-                "TEL;TYPE=CELL;TYPE=PREF:+97451736746"
-            ];
-            
-            if (base64PhotoText) {
-                vcardLines.push("PHOTO;TYPE=JPEG;ENCODING=b:" + base64PhotoText);
-            } else {
-                vcardLines.push("PHOTO;VALUE=URL:" + imageUrl);
-            }
-            vcardLines.push("END:VCARD");
-
-            const blobFile = new Blob([vcardLines.join("\r\n")], { type: 'text/vcard;charset=utf-8;' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blobFile);
-            link.download = 'Muhammad_Asif.vcf';
-            link.click();
-        }
-
-        document.getElementById('vcard-btn').addEventListener('click', triggerVcardDownload);
-    </script>
-</body>
-</html>
+                ctx.lineTo(this.x - this.length, this.y -

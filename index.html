@@ -3,45 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Asif - Digital Profile</title>
+    <title>Muhammad Asif - Quantum Digital Profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- CSS DESIGN VARIABLES (THEMING & DESIGN SYSTEM) --- */
+        /* --- FUTURISTIC CYBER-THEME DESIGN VARIABLES --- */
         :root {
-            --bg-body: #0d0e12;
-            --bg-card: #07080a;
-            --bg-element: #16181d;
-            --bg-element-hover: #20242c;
-            --bg-dropdown: #101114;
-            --text-main: #ffffff;
-            --text-muted: #98a0a6;
-            --border-color: rgba(255, 255, 255, 0.05);
-            --accent-blue: #3897f1;
-            --btn-primary: #1b74e4;
-            --btn-primary-hover: #155cb4;
-            --shadow-wrapper: rgba(0, 0, 0, 0.8);
-            --overlay-bg: rgba(4, 5, 6, 0.85);
-            --modal-bg: #16181d;
+            --bg-body: #030408;
+            --bg-card: #080b13;
+            --bg-element: rgba(18, 24, 38, 0.7);
+            --bg-element-hover: rgba(28, 38, 59, 0.9);
+            --text-main: #f0f4f8;
+            --text-muted: #8a99ad;
+            --border-color: rgba(0, 243, 255, 0.15);
+            --border-hover: rgba(0, 243, 255, 0.5);
+            --accent-cyan: #00f3ff;
+            --accent-violet: #bd00ff;
+            --btn-primary: linear-gradient(135deg, #00f3ff 0%, #0066ff 100%);
+            --btn-hover-shadow: rgba(0, 243, 255, 0.4);
+            --shadow-wrapper: 0 0 50px rgba(0, 243, 255, 0.08), 0 20px 40px rgba(0, 0, 0, 0.9);
+            --overlay-bg: rgba(3, 4, 8, 0.85);
+            --modal-bg: #0b0f19;
         }
 
         [data-theme="light"] {
-            --bg-body: #f4f6f9;
+            --bg-body: #e8ecf2;
             --bg-card: #ffffff;
-            --bg-element: #f0f2f5;
-            --bg-element-hover: #e4e6eb;
-            --bg-dropdown: #f9fafb;
-            --text-main: #1c1e21;
-            --text-muted: #65676b;
-            --border-color: rgba(0, 0, 0, 0.08);
-            --accent-blue: #1877f2;
-            --btn-primary: #1877f2;
-            --btn-primary-hover: #135cb1;
-            --shadow-wrapper: rgba(0, 0, 0, 0.15);
-            --overlay-bg: rgba(0, 0, 0, 0.4);
+            --bg-element: rgba(240, 244, 250, 0.8);
+            --bg-element-hover: rgba(225, 232, 244, 1);
+            --text-main: #0b0f19;
+            --text-muted: #57657b;
+            --border-color: rgba(0, 102, 255, 0.2);
+            --border-hover: rgba(0, 102, 255, 0.5);
+            --accent-cyan: #0066ff;
+            --accent-violet: #8800cc;
+            --btn-primary: linear-gradient(135deg, #0066ff 0%, #00d2ff 100%);
+            --btn-hover-shadow: rgba(0, 102, 255, 0.3);
+            --shadow-wrapper: 0 20px 40px rgba(0, 0, 0, 0.1);
+            --overlay-bg: rgba(0, 0, 0, 0.5);
             --modal-bg: #ffffff;
         }
 
-        /* Global & Layout Reset */
+        /* Global Reset & Futuristic Backdrop */
         * {
             margin: 0;
             padding: 0;
@@ -58,24 +60,28 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 243, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(189, 0, 255, 0.05) 0%, transparent 40%);
         }
 
-        /* Responsive Mobile Container Layout */
+        /* Responsive Holographic Mobile Container */
         .phone-wrapper {
             width: 100%;
             max-width: 412px;
             background-color: var(--bg-card);
-            border-radius: 40px;
+            border-radius: 36px;
             border: 1px solid var(--border-color);
             padding: 24px;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 30px 70px var(--shadow-wrapper);
+            box-shadow: var(--shadow-wrapper);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(20px);
         }
 
-        /* --- CONTROLS HEADER BAR (THEME & LANGUAGE TOGGLES) --- */
+        /* Controls Header (Theme & Language) */
         .controls-header {
             position: absolute;
             top: 20px;
@@ -87,7 +93,6 @@
             z-index: 10;
         }
 
-        /* Language Toggle Switcher Button Style */
         .lang-btn {
             background: var(--bg-element);
             border: 1px solid var(--border-color);
@@ -99,7 +104,7 @@
             font-weight: 600;
             letter-spacing: 0.5px;
         }
-        .lang-btn:hover { background: var(--bg-element-hover); }
+        .lang-btn:hover { border-color: var(--accent-cyan); background: var(--bg-element-hover); }
 
         .theme-btn {
             background: var(--bg-element);
@@ -114,9 +119,9 @@
             align-items: center;
             font-size: 0.95rem;
         }
-        .theme-btn:hover { background: var(--bg-element-hover); }
+        .theme-btn:hover { border-color: var(--accent-cyan); background: var(--bg-element-hover); }
 
-        /* --- PREMIUM HERO SECTION WITH MESH BACKGROUND --- */
+        /* Futuristic Hero Section */
         .profile-hero {
             display: flex;
             flex-direction: column;
@@ -125,49 +130,41 @@
             margin: -24px -24px 25px -24px;
             padding: 55px 24px 20px 24px;
             position: relative;
-            background: linear-gradient(to bottom, rgba(7, 8, 10, 0.1) 0%, var(--bg-card) 95%), 
-                        url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&q=80&w=600') no-repeat top center;
+            background: linear-gradient(to bottom, rgba(8, 11, 19, 0.2) 0%, var(--bg-card) 95%), 
+                        url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=600') no-repeat top center;
             background-size: cover;
         }
 
         .avatar-container {
             position: relative;
-            width: 96px;
-            height: 96px;
+            width: 100px;
+            height: 100px;
             margin-bottom: 16px;
             z-index: 2;
         }
 
-        /* PREMIUM GOLD RING EFFECT */
+        /* Glowing Cyberpunk Gold/Cyan Ring */
         .avatar-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
-            border: 2.5px solid #d4af37;
-            animation: goldGlowPulse 2.5s infinite ease-in-out;
+            border: 2px solid var(--accent-cyan);
+            animation: cyberGlowPulse 3s infinite ease-in-out;
         }
 
-        @keyframes goldGlowPulse {
-            0% { 
-                box-shadow: 0 0 8px rgba(212, 175, 55, 0.4); 
-            }
-            50% { 
-                box-shadow: 0 0 22px rgba(212, 175, 55, 0.85), 
-                            0 0 30px rgba(212, 175, 55, 0.4); 
-            }
-            100% { 
-                box-shadow: 0 0 8px rgba(212, 175, 55, 0.4); 
-            }
+        @keyframes cyberGlowPulse {
+            0% { box-shadow: 0 0 10px rgba(0, 243, 255, 0.3), inset 0 0 10px rgba(0, 243, 255, 0.2); }
+            50% { box-shadow: 0 0 25px rgba(0, 243, 255, 0.8), 0 0 40px rgba(189, 0, 255, 0.4); }
+            100% { box-shadow: 0 0 10px rgba(0, 243, 255, 0.3), inset 0 0 10px rgba(0, 243, 255, 0.2); }
         }
 
-        /* Verified Tick Badge Styling */
         .verified-badge {
             position: absolute;
-            bottom: 1px;
+            bottom: 2px;
             right: 2px;
-            background-color: #0084ff;
-            color: #ffffff;
+            background-color: var(--accent-cyan);
+            color: #030408;
             width: 22px;
             height: 22px;
             border-radius: 50%;
@@ -175,24 +172,24 @@
             justify-content: center;
             align-items: center;
             font-size: 0.7rem;
+            font-weight: 900;
             border: 2px solid var(--bg-card);
             z-index: 3;
         }
-        /* Fix verified position for RTL orientation */
-        [dir="rtl"] .verified-badge {
-            right: auto;
-            left: 2px;
-        }
+        [dir="rtl"] .verified-badge { right: auto; left: 2px; }
 
         .profile-hero h1 {
-            font-size: 1.65rem;
-            font-weight: 600;
+            font-size: 1.7rem;
+            font-weight: 700;
             letter-spacing: -0.3px;
             margin-bottom: 4px;
             z-index: 2;
+            background: linear-gradient(135deg, var(--text-main) 30%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* --- DYNAMIC STATUS INDICATOR STYLING --- */
+        /* Quantum Status Indicator */
         .status-container {
             display: inline-flex;
             align-items: center;
@@ -206,13 +203,14 @@
             margin-bottom: 14px;
             z-index: 2;
             color: var(--text-main);
+            backdrop-filter: blur(10px);
         }
 
         .status-dot {
             width: 7px;
             height: 7px;
             border-radius: 50%;
-            background-color: #4cd964;
+            background-color: #00ffcc;
         }
 
         .status-dot.pulse {
@@ -220,17 +218,18 @@
         }
 
         @keyframes statusPulse {
-            0% { box-shadow: 0 0 0 0 rgba(76, 217, 100, 0.6); }
-            70% { box-shadow: 0 0 0 6px rgba(76, 217, 100, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(76, 217, 100, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.8); }
+            70% { box-shadow: 0 0 0 8px rgba(0, 255, 204, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0); }
         }
 
         .profile-title {
             font-size: 0.95rem;
-            color: var(--accent-blue);
-            font-weight: 500;
+            color: var(--accent-cyan);
+            font-weight: 600;
             margin-bottom: 14px;
             z-index: 2;
+            letter-spacing: 0.5px;
         }
 
         .meta-info-list {
@@ -250,20 +249,16 @@
         }
 
         .meta-item i {
-            color: var(--accent-blue);
+            color: var(--accent-cyan);
             font-size: 0.9rem;
         }
 
-        [dir="rtl"] .meta-item i.fa-location-arrow {
-            transform: scaleX(-1);
-        }
-
-        /* --- QUICK ACTION PILLS (ROW) --- */
+        /* Quick Action Glass Grid */
         .quick-actions-row {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 8px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .action-pill {
@@ -277,12 +272,14 @@
             height: 64px;
             color: var(--text-main);
             text-decoration: none;
+            backdrop-filter: blur(10px);
         }
-        .action-pill:hover { background: var(--bg-element-hover); }
+        .action-pill:hover { border-color: var(--accent-cyan); background: var(--bg-element-hover); transform: translateY(-2px); }
 
         .action-pill i {
             font-size: 1.1rem;
             margin-bottom: 5px;
+            color: var(--accent-cyan);
         }
 
         .action-pill span {
@@ -291,31 +288,28 @@
             font-weight: 500;
         }
 
-        /* --- SECTION TITLES --- */
+        /* Section Titles */
         .section-heading {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-muted);
-            font-weight: 600;
-            margin-bottom: 16px;
+            letter-spacing: 2px;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            margin-bottom: 14px;
             padding-left: 2px;
         }
-        [dir="rtl"] .section-heading {
-            padding-left: 0;
-            padding-right: 2px;
-            letter-spacing: 0;
-        }
+        [dir="rtl"] .section-heading { padding-left: 0; padding-right: 2px; letter-spacing: 0; }
 
-        /* --- STYLISH NAVIGATION LISTS (BUSINESS) --- */
+        /* Services Navigation List */
         .link-list-group {
             display: flex;
             flex-direction: column;
             background: var(--bg-element);
             border-radius: 16px;
             border: 1px solid var(--border-color);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
         .list-item {
@@ -346,7 +340,7 @@
 
         .list-item-left i {
             font-size: 1.05rem;
-            color: var(--text-muted);
+            color: var(--accent-cyan);
             width: 20px;
             text-align: center;
         }
@@ -356,29 +350,23 @@
             color: var(--text-muted);
             transition: transform 0.3s ease;
         }
+        [dir="rtl"] .list-item .fa-chevron-right { transform: rotate(180deg); }
+        .list-item.active .fa-chevron-right { transform: rotate(90deg) !important; color: var(--accent-cyan); }
 
-        [dir="rtl"] .list-item .fa-chevron-right {
-            transform: rotate(180deg);
-        }
-        .list-item.active .fa-chevron-right {
-            transform: rotate(90deg) !important;
-            color: var(--accent-blue);
-        }
-
-        /* --- INTERACTIVE SERVICES BOX PANEL --- */
+        /* Services Dropdown Panel */
         .services-dropdown-panel {
             max-height: 0;
             overflow: hidden;
-            background: var(--bg-dropdown);
+            background: rgba(11, 15, 25, 0.5);
             transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             border-bottom: 1px solid var(--border-color);
         }
 
         .services-panel-content {
-            padding: 18px 20px;
+            padding: 16px;
             display: grid;
             grid-template-columns: 1fr;
-            gap: 12px;
+            gap: 10px;
         }
 
         .service-tag-item {
@@ -392,102 +380,48 @@
             font-size: 0.85rem;
             color: var(--text-main);
         }
-        .service-tag-item:hover { border-color: var(--accent-blue); }
+        .service-tag-item:hover { border-color: var(--accent-cyan); }
 
         .service-tag-item i {
-            color: var(--accent-blue);
+            color: var(--accent-cyan);
             font-size: 0.95rem;
             width: 16px;
             text-align: center;
         }
 
-        /* --- SOCIAL MEDIA GRID (4x4) --- */
-        .social-media-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-bottom: 35px;
-        }
-
-        .social-box {
-            background: var(--bg-element);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            height: 76px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-        }
-        .social-box:hover {
-            transform: translateY(-3px);
-            background: var(--bg-element-hover);
-        }
-
-        .social-box i {
-            font-size: 1.6rem;
-            margin-bottom: 6px;
-        }
-
-        .social-box span {
-            font-size: 0.68rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        /* Brand Colors */
-        .social-box.instagram i { color: #e1306c; }
-        .social-box.facebook i { color: #1877f2; }
-        .social-box.tiktok i { color: var(--text-main); }
-        .social-box.twitter i { color: var(--text-main); }
-        .social-box.youtube i { color: #ff0000; }
-        .social-box.linkedin i { color: #0077b5; }
-        .social-box.telegram i { color: #26a5e4; }
-        .social-box.snapchat i { color: #fffc00; }
-        .social-box.discord i { color: #5865f2; }
-        .social-box.threads i { color: var(--text-main); }
-        .social-box.pinterest i { color: #bd081c; }
-        .social-box.reddit i { color: #ff4500; }
-
-        [data-theme="light"] .social-box.tiktok i,
-        [data-theme="light"] .social-box.twitter i,
-        [data-theme="light"] .social-box.threads i {
-            color: #1c1e21;
-        }
-
-        /* --- ACTION CTAS --- */
+        /* Action CTAs */
         .cta-container {
             display: flex;
             flex-direction: column;
             gap: 12px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
-        .btn-primary-blue {
+        .btn-primary-glow {
             width: 100%;
             height: 50px;
             background: var(--btn-primary);
-            color: white;
+            color: #ffffff;
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
             font-size: 0.95rem;
-            font-weight: 600;
+            font-weight: 700;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 8px;
             cursor: pointer;
+            box-shadow: 0 4px 20px var(--btn-hover-shadow);
         }
-        .btn-primary-blue:hover { background: var(--btn-primary-hover); }
+        .btn-primary-glow:hover { transform: translateY(-2px); filter: brightness(1.1); }
 
-        .btn-outline-dark {
+        .btn-outline-cyber {
             width: 100%;
             height: 50px;
             background: transparent;
             color: var(--text-main);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 14px;
             font-size: 0.95rem;
             font-weight: 600;
             display: flex;
@@ -496,9 +430,9 @@
             gap: 8px;
             cursor: pointer;
         }
-        .btn-outline-dark:hover { background: var(--bg-element-hover); }
+        .btn-outline-cyber:hover { border-color: var(--accent-cyan); background: var(--bg-element-hover); }
 
-        /* --- PREMIUM CENTERED SCREEN MODAL REMINDER POP-UP --- */
+        /* Holographic Modal Popup */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -506,8 +440,7 @@
             width: 100%;
             height: 100%;
             background: var(--overlay-bg);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(15px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -517,17 +450,14 @@
             transition: opacity 0.4s ease;
         }
 
-        .modal-overlay.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
+        .modal-overlay.visible { opacity: 1; pointer-events: auto; }
 
         .vcard-popup-reminder {
             width: 90%;
             max-width: 340px;
             background: var(--modal-bg);
             border: 1px solid var(--border-color);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 25px 60px rgba(0, 243, 255, 0.15);
             border-radius: 28px;
             padding: 24px;
             text-align: center;
@@ -538,21 +468,20 @@
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .modal-overlay.visible .vcard-popup-reminder {
-            transform: scale(1);
-        }
+        .modal-overlay.visible .vcard-popup-reminder { transform: scale(1); }
 
         .vcard-popup-icon {
             width: 56px;
             height: 56px;
-            background: rgba(56, 151, 241, 0.1);
-            color: var(--accent-blue);
+            background: rgba(0, 243, 255, 0.1);
+            color: var(--accent-cyan);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 1.4rem;
             margin-bottom: 16px;
+            border: 1px solid var(--border-color);
         }
 
         .vcard-popup-text {
@@ -578,10 +507,9 @@
             height: 46px;
             border-radius: 12px;
             font-size: 0.9rem;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
         }
-        .vcard-popup-btn:hover { background: var(--btn-primary-hover); }
 
         .vcard-popup-close-btn {
             background: transparent;
@@ -631,7 +559,6 @@
             <div class="meta-info-list">
                 <div class="meta-item"><i class="fa-solid fa-location-dot"></i> <span id="meta-location">Doha, Qatar</span></div>
                 <div class="meta-item"><i class="fa-solid fa-globe"></i> <span>www.abc.com</span></div>
-                <div class="meta-item"><i class="fa-solid fa-building"></i> <span id="meta-firm">Abc Enterprise Limited</span></div>
             </div>
         </section>
 
@@ -658,15 +585,10 @@
             </a>
         </section>
 
-        <h2 id="heading-business" class="section-heading">Business</h2>
+        <h2 id="heading-services" class="section-heading">Services & Operations</h2>
         <nav class="link-list-group">
-            <a href="https://wa.me/97431697639" target="_blank" class="list-item interaction-track" data-label="Portfolio File Viewed">
-                <div class="list-item-left"><i class="fa-regular fa-folder-open"></i> <span data-i18n="portfolio">Portfolio</span></div>
-                <i class="fa-solid fa-chevron-right"></i>
-            </a>
-            
             <button id="services-trigger" class="list-item interaction-track" data-label="Services Panel Expanded">
-                <div class="list-item-left"><i class="fa-solid fa-briefcase"></i> <span data-i18n="services">Services</span></div>
+                <div class="list-item-left"><i class="fa-solid fa-network-wired"></i> <span data-i18n="services">Core Capabilities</span></div>
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
             
@@ -677,34 +599,11 @@
                     <div class="service-tag-item"><i class="fa-solid fa-gears"></i> <span data-i18n="svc-operations">Operations Services</span></div>
                 </div>
             </div>
-
-            <a href="#" class="list-item">
-                <div class="list-item-left"><i class="fa-regular fa-file-pdf"></i> <span data-i18n="company-profile">Company Profile (PDF)</span></div>
-                <i class="fa-solid fa-chevron-right"></i>
-            </a>
         </nav>
 
-        <h2 id="heading-social" class="section-heading">Social Media</h2>
-        <section class="social-media-grid">
-            <a href="#" class="social-box instagram interaction-track" data-label="Instagram Visited"><i class="fa-brands fa-instagram"></i><span>Instagram</span></a>
-            <a href="#" class="social-box facebook interaction-track" data-label="Facebook Visited"><i class="fa-brands fa-facebook-f"></i><span>Facebook</span></a>
-            <a href="#" class="social-box tiktok interaction-track" data-label="TikTok Visited"><i class="fa-brands fa-tiktok"></i><span>TikTok</span></a>
-            <a href="#" class="social-box twitter interaction-track" data-label="Twitter X Visited"><i class="fa-brands fa-x-twitter"></i><span>X (Twitter)</span></a>
-            
-            <a href="#" class="social-box youtube interaction-track" data-label="YouTube Visited"><i class="fa-brands fa-youtube"></i><span>YouTube</span></a>
-            <a href="#" class="social-box linkedin interaction-track" data-label="LinkedIn Profile Hit"><i class="fa-brands fa-linkedin-in"></i><span>LinkedIn</span></a>
-            <a href="#" class="social-box telegram interaction-track" data-label="Telegram Channel Link"><i class="fa-brands fa-telegram"></i><span>Telegram</span></a>
-            <a href="#" class="social-box snapchat interaction-track" data-label="Snapchat Added"><i class="fa-brands fa-snapchat"></i><span>Snapchat</span></a>
-            
-            <a href="#" class="social-box discord interaction-track" data-label="Discord Joined"><i class="fa-brands fa-discord"></i><span>Discord</span></a>
-            <a href="#" class="social-box threads interaction-track" data-label="Threads Profile Opened"><i class="fa-brands fa-threads"></i><span>Threads</span></a>
-            <a href="#" class="social-box pinterest interaction-track" data-label="Pinterest Board Shared"><i class="fa-brands fa-pinterest-p"></i><span>Pinterest</span></a>
-            <a href="#" class="social-box reddit interaction-track" data-label="Reddit User Linked"><i class="fa-brands fa-reddit-alien"></i><span>Reddit</span></a>
-        </section>
-
         <section class="cta-container">
-            <button id="share-profile-btn" class="btn-primary-blue"><i class="fa-solid fa-share-nodes"></i> <span data-i18n="btn-share">Share My Profile</span></button>
-            <button id="vcard-btn" class="btn-outline-dark"><i class="fa-regular fa-address-card"></i> <span id="vcard-btn-text" data-i18n="btn-vcard">Download vCard</span></button>
+            <button id="share-profile-btn" class="btn-primary-glow"><i class="fa-solid fa-share-nodes"></i> <span data-i18n="btn-share">Share Profile</span></button>
+            <button id="vcard-btn" class="btn-outline-cyber"><i class="fa-regular fa-address-card"></i> <span id="vcard-btn-text" data-i18n="btn-vcard">Download vCard</span></button>
         </section>
 
     </div>
@@ -713,7 +612,7 @@
         <div class="vcard-popup-reminder">
             <div class="vcard-popup-icon"><i class="fa-regular fa-address-book"></i></div>
             <div id="vcard-reminder-text" class="vcard-popup-text">
-                Don't lose touch! Save Muhammad Asif directly to your contacts list.
+                Connect instantly. Save Muhammad Asif directly to your contacts list.
             </div>
             <div class="modal-btn-group">
                 <button id="vcard-popup-download" class="vcard-popup-btn">Save Contact</button>
@@ -724,7 +623,7 @@
 
     <script>
         /* ==========================================================================
-           1. TRANSLATION DICTIONARY MAP & ENGLISH/ARABIC SWITCHER ENGINE
+           1. TRANSLATION DICTIONARY MAP & LANGUAGE SWITCHER
            ========================================================================== */
         let currentLanguage = 'en';
         
@@ -733,52 +632,44 @@
                 name: "Muhammad Asif",
                 title: "Business Operations Executive",
                 location: "Doha, Qatar",
-                firm: "Abc Enterprise Limited",
-                business: "Business",
-                social: "Social Media",
+                services_heading: "Services & Operations",
+                services: "Core Capabilities",
                 call: "Call",
                 email: "Email",
                 meeting: "Meeting",
                 location_pill: "Location",
-                portfolio: "Portfolio",
-                services: "Services",
                 "svc-consultation": "Consultation",
                 "svc-solutions": "Business Solutions",
                 "svc-operations": "Operations Services",
-                "company-profile": "Company Profile (PDF)",
-                "btn-share": "Share My Profile",
+                "btn-share": "Share Profile",
                 "btn-vcard": "Download vCard",
-                "vcard_reminder": "Don't lose touch! Save Muhammad Asif directly to your contacts list.",
+                "vcard_reminder": "Connect instantly. Save Muhammad Asif directly to your contacts list.",
                 "vcard_save": "Save Contact",
                 "vcard_cancel": "Not Now",
                 "copied": "Link Copied!",
-                "status-on": "Available (Qatar Time)",
-                "status-off": "🌙 Out of Office"
+                "status-on": "Quantum Active (Qatar Time)",
+                "status-off": "🌙 Offline / Standby"
             },
             ar: {
                 name: "محمد آصف",
                 title: "تنفيذي عمليات تجارية",
                 location: "الدوحة، قطر",
-                firm: "شركة إيه بي سي للمشاريع المحدودة",
-                business: "الأعمال",
-                social: "مواقع التواصل",
+                services_heading: "الخدمات والعمليات",
+                services: "القدرات الأساسية",
                 call: "اتصال",
                 email: "إيميل",
                 meeting: "اجتماع",
                 location_pill: "الموقع",
-                portfolio: "المحفظة الأعمال",
-                services: "الخدمات",
                 "svc-consultation": "استشارات",
                 "svc-solutions": "حلول الأعمال",
                 "svc-operations": "خدمات العمليات",
-                "company-profile": "ملف الشركة (PDF)",
-                "btn-share": "مشاركة ملفي الشخصي",
+                "btn-share": "مشاركة الملف",
                 "btn-vcard": "حفظ جهة الاتصال",
-                "vcard_reminder": "لا تفقد الاتصال! احفظ محمد آصف مباشرة في قائمة جهات الاتصال الخاصة بك.",
+                "vcard_reminder": "تواصل فوراً. احفظ محمد آصف مباشرة في قائمة جهات الاتصال الخاصة بك.",
                 "vcard_save": "حفظ جهة الاتصال",
                 "vcard_cancel": "ليس الآن",
                 "copied": "تم نسخ الرابط!",
-                "status-on": "متاح حالياً (توقيت قطر)",
+                "status-on": "نشط حالياً (توقيت قطر)",
                 "status-off": "🌙 خارج أوقات العمل"
             }
         };
@@ -794,9 +685,7 @@
             document.getElementById('profile-name').innerText = translations[lang].name;
             document.getElementById('profile-title').innerText = translations[lang].title;
             document.getElementById('meta-location').innerText = translations[lang].location;
-            document.getElementById('meta-firm').innerText = translations[lang].firm;
-            document.getElementById('heading-business').innerText = translations[lang].business;
-            document.getElementById('heading-social').innerText = translations[lang].social;
+            document.getElementById('heading-services').innerText = translations[lang].services_heading;
             document.getElementById('vcard-reminder-text').innerText = translations[lang]["vcard_reminder"];
             document.getElementById('vcard-popup-download').innerText = translations[lang]["vcard_save"];
             document.getElementById('vcard-popup-close').innerText = translations[lang]["vcard_cancel"];
@@ -816,7 +705,6 @@
             });
 
             updateQatarStatus(); 
-            logStartupAnalytics('Language Changed', `Switched view language context to: ${lang}`);
         }
 
         langToggleBtn.addEventListener('click', () => {
@@ -836,7 +724,7 @@
             const currentQatarHour = parseInt(qatarTimeString, 10);
 
             if (currentQatarHour >= 8 && currentQatarHour < 18) {
-                dot.style.backgroundColor = "#4cd964";
+                dot.style.backgroundColor = "#00ffcc";
                 dot.classList.add('pulse');
                 text.innerText = translations[currentLanguage]["status-on"];
             } else {
@@ -867,51 +755,24 @@
             }
             
             document.documentElement.setAttribute('data-theme', targetTheme);
-            logStartupAnalytics('Theme Toggled', `Switched layout presentation theme to: ${targetTheme}`);
         });
 
 
         /* ==========================================================================
-           4. NFC STARTUP ANALYTICS TRACKER HOOK
-           ========================================================================== */
-        let hasVcardBeenDownloaded = false;
-
-        function logStartupAnalytics(actionName, secondaryMetadata) {
-            const hitPayload = {
-                event: actionName,
-                timestamp: new Date().toISOString(),
-                locationUrl: window.location.href,
-                details: secondaryMetadata
-            };
-            console.log(`%c[NFC STARTUP ANALYTICS LOG]:`, "color: #3897f1; font-weight: bold; padding: 4px;", hitPayload);
-        }
-
-        logStartupAnalytics('Profile Page Discovered', 'User landed and viewed the digital profile dashboard.');
-
-        document.querySelectorAll('.interaction-track').forEach(element => {
-            element.addEventListener('click', () => {
-                const label = element.getAttribute('data-label') || element.innerText.trim();
-                logStartupAnalytics('Link Component Clicked', `User clicked link: ${label}`);
-            });
-        });
-
-
-        /* ==========================================================================
-           5. 15-SECOND TIMED VCARD POP-UP REMINDER CONTROLLER
+           4. 15-SECOND TIMED VCARD POP-UP REMINDER CONTROLLER
            ========================================================================== */
         const modalOverlay = document.getElementById('modal-overlay');
         const closePopupBtn = document.getElementById('vcard-popup-close');
+        let hasVcardBeenDownloaded = false;
         
         setTimeout(() => {
             if (!hasVcardBeenDownloaded) {
                 modalOverlay.classList.add('visible');
-                logStartupAnalytics('vCard Popup Shown', '15-second centered contact collection modal appeared.');
             }
         }, 15000);
 
         closePopupBtn.addEventListener('click', () => {
             modalOverlay.classList.remove('visible');
-            logStartupAnalytics('vCard Popup Dismissed', 'User clicked Not Now to cancel contact save.');
         });
 
         document.getElementById('vcard-popup-download').addEventListener('click', () => {
@@ -921,8 +782,8 @@
 
 
         /* ==========================================================================
-           6. CORE PROFILE INTERACTIONS (vCard Generation, Web Sharing & Accordion)
-           ========================================================================= */
+           5. INTERACTIONS & SERVICES ACCORDION
+           ========================================================================== */
         const trigger = document.getElementById('services-trigger');
         const panel = document.getElementById('services-panel');
 
@@ -938,7 +799,6 @@
 
         const shareBtn = document.getElementById('share-profile-btn');
         shareBtn.addEventListener('click', async () => {
-            logStartupAnalytics('Share Button Tapped', 'User requested to generate and share profile link.');
             const shareData = {
                 title: "Muhammad Asif - Digital Profile",
                 text: "Check out the professional digital profile of Muhammad Asif.",
@@ -960,7 +820,6 @@
         async function triggerVcardDownload() {
             hasVcardBeenDownloaded = true;
             modalOverlay.classList.remove('visible'); 
-            logStartupAnalytics('vCard Download Started', 'User clicked and downloaded the vCard file.');
             
             const imageUrl = window.location.origin + window.location.pathname.replace('index.html', '') + 'Screenshot_20260526_003701_WhatsApp.jpg';
             let base64PhotoText = '';
@@ -973,16 +832,13 @@
                     reader.onloadend = () => resolve(reader.result.split(',')[1]);
                     reader.readAsDataURL(blob);
                 });
-            } catch (e) {
-                console.error("Image asset conversion error fallback triggered:", e);
-            }
+            } catch (e) {}
 
             const vcardLines = [
                 "BEGIN:VCARD",
                 "VERSION:3.0",
                 "N:Asif;Muhammad;;;",
                 "FN:Muhammad Asif",
-                "ORG:Abc Enterprise Limited",
                 "TITLE:Business Operations Executive",
                 "TEL;TYPE=CELL;TYPE=PREF:+97431697639",
                 "EMAIL;TYPE=PREF,INTERNET:asifone77@gmail.com",

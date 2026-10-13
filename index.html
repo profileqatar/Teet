@@ -3,55 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Asif - Cyber Profile</title>
-    <!-- FontAwesome Icons -->
+    <title>Muhammad Asif</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
+        /* --- HYPER-CYBERPUNK NEON DESIGN SYSTEM --- */
         :root {
-            --bg-body: #030509;
+            --bg-body: #020307;
             --bg-card: rgba(8, 12, 22, 0.75);
-            --bg-element: rgba(15, 23, 42, 0.6);
+            --bg-element: rgba(0, 243, 255, 0.05);
             --bg-element-hover: rgba(0, 243, 255, 0.15);
-            --text-main: #f1f5f9;
-            --text-muted: #94a3b8;
-            --border-color: rgba(0, 243, 255, 0.2);
-            --border-hover: rgba(0, 243, 255, 0.7);
+            --text-main: #ffffff;
+            --text-muted: #809bb5;
+            --border-color: rgba(0, 243, 255, 0.25);
+            --border-glow: rgba(0, 243, 255, 0.6);
             --accent-cyan: #00f3ff;
-            --accent-violet: #a855f7;
-            --accent-pink: #ec4899;
-            --btn-primary: linear-gradient(135deg, #00f3ff 0%, #3b82f6 50%, #a855f7 100%);
-            --btn-hover-shadow: rgba(0, 243, 255, 0.5);
-            --shadow-wrapper: 0 0 50px rgba(0, 243, 255, 0.12), 0 20px 50px rgba(0, 0, 0, 0.9);
-            --overlay-bg: rgba(3, 5, 9, 0.85);
-            --modal-bg: rgba(11, 15, 25, 0.95);
+            --accent-pink: #ff0055;
+            --accent-purple: #9d00ff;
+            --btn-gradient: linear-gradient(135deg, #00f3ff 0%, #ff0055 100%);
+            --shadow-neon: 0 0 30px rgba(0, 243, 255, 0.25);
+            --modal-bg: rgba(10, 14, 26, 0.95);
         }
 
         [data-theme="light"] {
-            --bg-body: #e2e8f0;
-            --bg-card: rgba(255, 255, 255, 0.85);
-            --bg-element: rgba(241, 245, 249, 0.8);
-            --bg-element-hover: rgba(2, 132, 199, 0.15);
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --border-color: rgba(2, 132, 199, 0.25);
-            --border-hover: rgba(2, 132, 199, 0.7);
-            --accent-cyan: #0284c7;
-            --accent-violet: #7c3aed;
-            --accent-pink: #db2777;
-            --btn-primary: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #7c3aed 100%);
-            --btn-hover-shadow: rgba(2, 132, 199, 0.35);
-            --shadow-wrapper: 0 20px 50px rgba(0, 0, 0, 0.12);
-            --overlay-bg: rgba(15, 23, 42, 0.6);
-            --modal-bg: rgba(255, 255, 255, 0.95);
+            --bg-body: #0c101d;
+            --bg-card: rgba(18, 26, 46, 0.85);
+            --text-main: #ffffff;
+            --text-muted: #a0b2ce;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
         }
 
         body {
@@ -66,161 +51,141 @@
             position: relative;
         }
 
-        #particle-canvas {
+        /* Fullscreen Interactive Canvas Background */
+        #cyber-canvas {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             z-index: 0;
             pointer-events: none;
         }
 
-        /* Futuristic Overlay Scanline FX */
-        body::before {
-            content: " ";
-            display: block;
-            position: fixed;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
-            background-size: 100% 4px;
-            z-index: 1;
-            pointer-events: none;
-            opacity: 0.6;
-        }
-
+        /* Glassmorphic Cyber Container Card */
         .phone-wrapper {
             width: 100%;
-            max-width: 420px;
+            max-width: 400px;
             background: var(--bg-card);
             border-radius: 32px;
             border: 1px solid var(--border-color);
-            padding: 24px;
+            padding: 28px 24px;
             display: flex;
             flex-direction: column;
-            box-shadow: var(--shadow-wrapper);
+            box-shadow: var(--shadow-neon);
             position: relative;
             z-index: 2;
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
-            animation: cardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            overflow: hidden;
+            animation: containerEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        @keyframes cardEntrance {
+        @keyframes containerEntrance {
             0% { opacity: 0; transform: translateY(30px) scale(0.95); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
+            100% { opacity: 0.99; transform: translateY(0) scale(1); }
         }
 
-        /* Animated Glowing Edge Sweep */
-        .phone-wrapper::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(60deg, transparent, rgba(0, 243, 255, 0.1), transparent);
-            transform: rotate(45deg);
-            animation: sweep 6s infinite linear;
-            pointer-events: none;
-        }
-
-        @keyframes sweep {
-            0% { transform: translateY(-100%) rotate(45deg); }
-            100% { transform: translateY(100%) rotate(45deg); }
-        }
-
-        /* Controls Header */
+        /* Header Navigation Tools */
         .controls-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
-            z-index: 5;
+            z-index: 10;
         }
 
-        .lang-btn {
+        .lang-btn, .theme-btn {
             background: var(--bg-element);
             border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 6px 14px;
+            color: var(--accent-cyan);
+            padding: 7px 16px;
             border-radius: 20px;
             cursor: pointer;
             font-size: 0.8rem;
             font-weight: 700;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             display: flex;
             align-items: center;
             gap: 6px;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.1);
         }
-        .lang-btn:hover { border-color: var(--accent-cyan); background: var(--bg-element-hover); transform: scale(1.05); }
+
+        .lang-btn:hover, .theme-btn:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+            transform: translateY(-2px);
+        }
 
         .theme-btn {
-            background: var(--bg-element);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
+            width: 36px;
+            height: 36px;
+            padding: 0;
             justify-content: center;
-            align-items: center;
-            font-size: 0.95rem;
-            backdrop-filter: blur(10px);
+            border-radius: 50%;
         }
-        .theme-btn:hover { border-color: var(--accent-cyan); background: var(--bg-element-hover); transform: rotate(15deg) scale(1.05); }
 
+        /* Hero Avatar Section */
         .profile-hero {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            margin-bottom: 24px;
+            margin-bottom: 25px;
             position: relative;
-            z-index: 5;
         }
 
-        .avatar-container {
+        .avatar-frame {
             position: relative;
             width: 110px;
             height: 110px;
             margin-bottom: 18px;
         }
 
-        .avatar-ring {
+        /* Multi-ring Rotating Neon Border */
+        .avatar-frame::before {
+            content: '';
             position: absolute;
-            inset: -6px;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet), var(--accent-pink));
-            animation: ringRotate 4s linear infinite;
-            filter: blur(4px);
-            opacity: 0.8;
+            background: conic-gradient(from 0deg, var(--accent-cyan), var(--accent-pink), var(--accent-purple), var(--accent-cyan));
+            animation: spinRing 4s linear infinite;
+            z-index: 1;
+            filter: blur(2px);
         }
 
-        @keyframes ringRotate {
-            0% { transform: rotate(0deg); }
+        .avatar-frame::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            z-index: 1;
+        }
+
+        @keyframes spinRing {
             100% { transform: rotate(360deg); }
         }
 
-        .avatar-container img {
+        .avatar-frame img {
+            position: relative;
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
-            position: relative;
             z-index: 2;
-            border: 2px solid var(--bg-card);
-            background-color: var(--bg-element);
         }
 
         .verified-badge {
             position: absolute;
-            bottom: 4px;
-            right: 4px;
-            background: linear-gradient(135deg, var(--accent-cyan), #0066ff);
+            bottom: 2px;
+            right: 2px;
+            background: var(--accent-cyan);
             color: #000;
             width: 24px;
             height: 24px;
@@ -234,43 +199,43 @@
             z-index: 3;
             box-shadow: 0 0 10px var(--accent-cyan);
         }
-        [dir="rtl"] .verified-badge { right: auto; left: 4px; }
 
+        /* Name Typography with Glitch Glow Effect */
         .profile-hero h1 {
             font-size: 1.8rem;
             font-weight: 800;
             letter-spacing: -0.5px;
-            margin-bottom: 6px;
-            background: linear-gradient(135deg, var(--text-main) 30%, var(--accent-cyan) 100%);
+            margin-bottom: 4px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent-cyan) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
         }
 
         .profile-title {
-            font-size: 0.92rem;
+            font-size: 0.95rem;
             color: var(--accent-cyan);
             font-weight: 600;
-            margin-bottom: 12px;
             letter-spacing: 0.5px;
+            margin-bottom: 14px;
             text-transform: uppercase;
         }
 
-        /* Quantum Live Status Indicator */
+        /* Quantum Status Indicator Pill */
         .status-container {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: var(--bg-element);
-            border: 1px solid var(--border-color);
+            background: rgba(0, 243, 255, 0.08);
+            border: 1px solid rgba(0, 243, 255, 0.3);
             padding: 6px 16px;
             border-radius: 20px;
             font-size: 0.75rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--text-main);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-weight: 700;
+            margin-bottom: 14px;
+            color: #ffffff;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.15);
         }
 
         .status-dot {
@@ -278,33 +243,44 @@
             height: 8px;
             border-radius: 50%;
             background-color: #00ffcc;
+            box-shadow: 0 0 10px #00ffcc;
         }
 
         .status-dot.pulse {
-            animation: statusPulse 1.8s infinite ease-in-out;
+            animation: pulseGlow 1.5s infinite ease-in-out;
         }
 
-        @keyframes statusPulse {
-            0% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.8); }
-            70% { box-shadow: 0 0 0 8px rgba(0, 255, 204, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0); }
+        @keyframes pulseGlow {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
-        .meta-location {
-            font-size: 0.85rem;
+        .meta-info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 0.88rem;
             color: var(--text-muted);
+        }
+
+        .meta-item {
             display: flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
+            gap: 8px;
         }
-        .meta-location i { color: var(--accent-cyan); }
 
-        .quick-actions-grid {
+        .meta-item i {
+            color: var(--accent-cyan);
+        }
+
+        /* Glowing Quick Action Grid (4 Columns, No Email) */
+        .quick-actions-row {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 10px;
-            margin-bottom: 28px;
-            z-index: 5;
+            margin-bottom: 25px;
         }
 
         .action-pill {
@@ -314,84 +290,84 @@
             justify-content: center;
             background: var(--bg-element);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            height: 70px;
+            border-radius: 18px;
+            height: 72px;
             color: var(--text-main);
             text-decoration: none;
-            backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
         }
 
-        .action-pill::before {
+        .action-pill::after {
             content: '';
             position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-            transition: left 0.5s ease;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(60deg, transparent, rgba(0, 243, 255, 0.1), transparent);
+            transform: rotate(30deg);
+            transition: 0.5s;
         }
 
-        .action-pill:hover::before { left: 100%; }
+        .action-pill:hover::after {
+            left: 100%;
+        }
 
         .action-pill:hover {
             border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+            transform: translateY(-4px);
             background: var(--bg-element-hover);
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 8px 20px rgba(0, 243, 255, 0.2);
         }
 
         .action-pill i {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             margin-bottom: 6px;
             color: var(--accent-cyan);
-            transition: transform 0.2s ease;
         }
 
-        .action-pill:hover i { transform: scale(1.15); }
-
         .action-pill span {
-            font-size: 0.68rem;
+            font-size: 0.7rem;
             color: var(--text-muted);
             font-weight: 600;
         }
 
+        /* Futuristic Action Buttons */
         .cta-container {
             display: flex;
             flex-direction: column;
             gap: 12px;
-            z-index: 5;
         }
 
-        .btn-primary-glow {
+        .btn-primary-neon {
             width: 100%;
             height: 52px;
-            background: var(--btn-primary);
+            background: var(--btn-gradient);
             color: #ffffff;
             border: none;
             border-radius: 16px;
-            font-size: 0.95rem;
-            font-weight: 700;
+            font-size: 1rem;
+            font-weight: 800;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 10px;
             cursor: pointer;
-            box-shadow: 0 6px 25px var(--btn-hover-shadow);
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.4);
+            letter-spacing: 0.5px;
         }
 
-        .btn-primary-glow:hover {
+        .btn-primary-neon:hover {
             transform: translateY(-2px);
+            box-shadow: 0 0 35px rgba(255, 0, 85, 0.6);
             filter: brightness(1.1);
-            box-shadow: 0 10px 30px var(--btn-hover-shadow);
         }
 
         .btn-outline-cyber {
             width: 100%;
             height: 52px;
-            background: var(--bg-element);
+            background: transparent;
             color: var(--text-main);
             border: 1px solid var(--border-color);
             border-radius: 16px;
@@ -402,23 +378,24 @@
             align-items: center;
             gap: 10px;
             cursor: pointer;
-            backdrop-filter: blur(10px);
+            box-shadow: inset 0 0 15px rgba(0, 243, 255, 0.05);
         }
 
         .btn-outline-cyber:hover {
             border-color: var(--accent-cyan);
             background: var(--bg-element-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 243, 255, 0.15);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.25);
         }
 
-        /* Holographic Timed Modal Overlay */
+        /* Modal Contact Reminder Overlay */
         .modal-overlay {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--overlay-bg);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 3, 7, 0.85);
             backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -430,25 +407,23 @@
 
         .modal-overlay.visible { opacity: 1; pointer-events: auto; }
 
-        .vcard-popup-card {
+        .vcard-popup-reminder {
             width: 90%;
-            max-width: 350px;
+            max-width: 340px;
             background: var(--modal-bg);
-            border: 1px solid var(--border-color);
-            box-shadow: 0 25px 60px rgba(0, 243, 255, 0.2);
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 0 50px rgba(0, 243, 255, 0.3);
             border-radius: 28px;
-            padding: 26px;
+            padding: 24px;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             transform: scale(0.85);
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
         }
 
-        .modal-overlay.visible .vcard-popup-card { transform: scale(1); }
+        .modal-overlay.visible .vcard-popup-reminder { transform: scale(1); }
 
         .vcard-popup-icon {
             width: 60px;
@@ -461,8 +436,8 @@
             align-items: center;
             font-size: 1.5rem;
             margin-bottom: 16px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
         }
 
         .vcard-popup-text {
@@ -480,34 +455,57 @@
             width: 100%;
         }
 
+        .vcard-popup-btn {
+            background: var(--btn-gradient);
+            color: #ffffff;
+            border: none;
+            width: 100%;
+            height: 46px;
+            border-radius: 14px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+        }
+
+        .vcard-popup-close-btn {
+            background: transparent;
+            color: var(--text-muted);
+            border: none;
+            width: 100%;
+            height: 40px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .vcard-popup-close-btn:hover { color: var(--text-main); }
+
         @media (max-width: 480px) {
-            body { padding: 0; background-color: var(--bg-body); }
-            .phone-wrapper { border-radius: 0; border: none; min-height: 100vh; box-shadow: none; justify-content: center; }
+            body { padding: 0; }
+            .phone-wrapper { border-radius: 0; border: none; min-height: 100vh; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Particle Background -->
-    <canvas id="particle-canvas"></canvas>
+    <!-- Dynamic 3D Cyber Matrix Node Canvas -->
+    <canvas id="cyber-canvas"></canvas>
 
     <div class="phone-wrapper">
         
-        <!-- Header Controls -->
         <div class="controls-header">
             <button id="lang-toggle" class="lang-btn" aria-label="Switch Language">
-                <i class="fa-solid fa-language"></i> <span id="lang-text">عربي</span>
+                <i class="fa-solid fa-globe"></i> <span id="lang-text">عربي</span>
             </button>
             <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
                 <i class="fa-solid fa-moon"></i>
             </button>
         </div>
         
-        <!-- Hero Section -->
         <section class="profile-hero">
-            <div class="avatar-container">
-                <div class="avatar-ring"></div>
-                <img id="profile-display-img" src="Screenshot_20260526_003701_WhatsApp.jpg" alt="Muhammad Asif" onerror="this.src='https://placehold.co/200x200/0f172a/00f3ff?text=MA'">
+            <div class="avatar-frame">
+                <img id="profile-display-img" src="Screenshot_20260526_003701_WhatsApp.jpg" alt="Muhammad Asif">
                 <div class="verified-badge"><i class="fa-solid fa-check"></i></div>
             </div>
             
@@ -517,40 +515,36 @@
             </div>
 
             <h1 id="profile-name">Muhammad Asif</h1>
-            <p id="profile-title" class="profile-title">Digital Profile</p>
+            <p id="profile-title" class="profile-title">Business Operations Executive</p>
             
-            <div class="meta-location">
-                <i class="fa-solid fa-location-dot"></i> <span id="meta-location-text">Doha, Qatar</span>
+            <div class="meta-info-list">
+                <div class="meta-item"><i class="fa-solid fa-location-dot"></i> <span id="meta-location">Doha, Qatar</span></div>
+                <div class="meta-item"><i class="fa-solid fa-globe"></i> <span>www.abc.com</span></div>
             </div>
         </section>
 
-        <!-- Quick Actions Row -->
-        <section class="quick-actions-grid">
-            <a href="tel:+97431697639" class="action-pill" aria-label="Call">
+        <!-- Quick Actions Row (Updated Number: 51736746) -->
+        <section class="quick-actions-row">
+            <a href="tel:+97451736746" class="action-pill interaction-track" data-label="Phone Call Clicked">
                 <i class="fa-solid fa-phone"></i>
                 <span data-i18n="call">Call</span>
             </a>
-            <a href="https://wa.me/97431697639" target="_blank" class="action-pill" aria-label="WhatsApp">
+            <a href="https://wa.me/97451736746" target="_blank" class="action-pill interaction-track" data-label="WhatsApp Clicked">
                 <i class="fa-brands fa-whatsapp"></i>
                 <span>WhatsApp</span>
             </a>
-            <a href="mailto:asifone77@gmail.com" class="action-pill" aria-label="Email">
-                <i class="fa-regular fa-envelope"></i>
-                <span data-i18n="email">Email</span>
-            </a>
-            <a href="https://wa.me/97431697639?text=Hello%20Muhammad,%20I%20would%20like%20to%20schedule%20a%20meeting." target="_blank" class="action-pill" aria-label="Meeting">
+            <a href="https://wa.me/97451736746?text=Hey%20can%20we%20schedule%20a%20meeting" target="_blank" class="action-pill interaction-track" data-label="Meeting WhatsApp Clicked">
                 <i class="fa-regular fa-calendar-days"></i>
                 <span data-i18n="meeting">Meeting</span>
             </a>
-            <a href="https://maps.google.com/?q=Doha,+Qatar" target="_blank" class="action-pill" aria-label="Location">
+            <a href="#" target="_blank" class="action-pill interaction-track" data-label="Office Location Mapped">
                 <i class="fa-solid fa-location-arrow"></i>
                 <span data-i18n="location_pill">Location</span>
             </a>
         </section>
 
-        <!-- CTAs -->
         <section class="cta-container">
-            <button id="share-profile-btn" class="btn-primary-glow">
+            <button id="share-profile-btn" class="btn-primary-neon">
                 <i class="fa-solid fa-share-nodes"></i> <span data-i18n="btn-share">Share Profile</span>
             </button>
             <button id="vcard-btn" class="btn-outline-cyber">
@@ -560,21 +554,25 @@
 
     </div>
 
+    <!-- 15-second Save Contact Popup Modal -->
     <div id="modal-overlay" class="modal-overlay">
-        <div class="vcard-popup-card">
-            <div class="vcard-popup-icon"><i class="fa-regular fa-address-book"></i></div>
+        <div class="vcard-popup-reminder">
+            <div class="vcard-popup-icon"><i class="fa-solid fa-user-plus"></i></div>
             <div id="vcard-reminder-text" class="vcard-popup-text">
-                Connect instantly. Save Muhammad Asif directly to your contact list.
+                Save Muhammad Asif directly to your phone contacts list.
             </div>
             <div class="modal-btn-group">
-                <button id="vcard-popup-download" class="btn-primary-glow" style="height:46px; font-size:0.9rem;">Save Contact</button>
-                <button id="vcard-popup-close" class="btn-outline-cyber" style="height:40px; font-size:0.85rem; border:none;">Not Now</button>
+                <button id="vcard-popup-download" class="vcard-popup-btn">Save Contact</button>
+                <button id="vcard-popup-close" class="vcard-popup-close-btn">Not Now</button>
             </div>
         </div>
     </div>
 
     <script>
-        const canvas = document.getElementById('particle-canvas');
+        /* ==========================================================================
+           1. FULLSCREEN INTERACTIVE CYBERPARTICLE CANVAS BACKGROUND
+           ========================================================================== */
+        const canvas = document.getElementById('cyber-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
 
@@ -587,29 +585,22 @@
 
         class Particle {
             constructor() {
-                this.reset();
-            }
-            reset() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
                 this.vx = (Math.random() - 0.5) * 0.8;
                 this.vy = (Math.random() - 0.5) * 0.8;
-                this.radius = Math.random() * 1.5 + 0.5;
-                this.alpha = Math.random() * 0.5 + 0.2;
+                this.radius = Math.random() * 1.8 + 0.5;
             }
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
-                    this.reset();
-                }
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
             }
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(0, 243, 255, ${this.alpha})`;
-                ctx.shadowBlur = 10;
-                ctx.shadowColor = '#00f3ff';
+                ctx.fillStyle = 'rgba(0, 243, 255, 0.6)';
                 ctx.fill();
             }
         }
@@ -618,52 +609,67 @@
             particles.push(new Particle());
         }
 
-        function animateParticles() {
+        function animateCanvas() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            requestAnimationFrame(animateParticles);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(0, 243, 255, ${0.15 - dist / 1200})`;
+                        ctx.lineWidth = 0.6;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateCanvas);
         }
-        animateParticles();
+        animateCanvas();
 
+
+        /* ==========================================================================
+           2. TRANSLATION & LANGUAGE ENGINE
+           ========================================================================== */
         let currentLanguage = 'en';
         
         const translations = {
             en: {
                 name: "Muhammad Asif",
-                title: "Digital Profile",
+                title: "Business Operations Executive",
                 location: "Doha, Qatar",
                 call: "Call",
-                email: "Email",
                 meeting: "Meeting",
                 location_pill: "Location",
                 "btn-share": "Share Profile",
                 "btn-vcard": "Download vCard",
-                "vcard_reminder": "Connect instantly. Save Muhammad Asif directly to your contact list.",
+                "vcard_reminder": "Save Muhammad Asif directly to your phone contacts list.",
                 "vcard_save": "Save Contact",
                 "vcard_cancel": "Not Now",
                 "copied": "Link Copied!",
                 "status-on": "Active Now (Qatar Time)",
-                "status-off": "Offline / Standby"
+                "status-off": "🌙 Standby / Offline"
             },
             ar: {
                 name: "محمد آصف",
-                title: "الملف الرقمي",
+                title: "تنفيذي عمليات تجارية",
                 location: "الدوحة، قطر",
                 call: "اتصال",
-                email: "إيميل",
                 meeting: "اجتماع",
                 location_pill: "الموقع",
                 "btn-share": "مشاركة الملف",
                 "btn-vcard": "حفظ جهة الاتصال",
-                "vcard_reminder": "تواصل فوراً. احفظ محمد آصف مباشرة في قائمة جهات الاتصال الخاصة بك.",
+                "vcard_reminder": "احفظ جهة اتصال محمد آصف مباشرة في هاتفك.",
                 "vcard_save": "حفظ جهة الاتصال",
                 "vcard_cancel": "ليس الآن",
                 "copied": "تم نسخ الرابط!",
                 "status-on": "نشط حالياً (توقيت قطر)",
-                "status-off": "خارج أوقات العمل"
+                "status-off": "🌙 خارج أوقات العمل"
             }
         };
 
@@ -678,15 +684,22 @@
 
             document.getElementById('profile-name').innerText = translations[lang].name;
             document.getElementById('profile-title').innerText = translations[lang].title;
-            document.getElementById('meta-location-text').innerText = translations[lang].location;
+            document.getElementById('meta-location').innerText = translations[lang].location;
             document.getElementById('vcard-reminder-text').innerText = translations[lang]["vcard_reminder"];
             document.getElementById('vcard-popup-download').innerText = translations[lang]["vcard_save"];
             document.getElementById('vcard-popup-close').innerText = translations[lang]["vcard_cancel"];
 
             document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    element.innerText = translations[lang][key];
+                const translationKey = element.getAttribute('data-i18n');
+                if (translations[lang][translationKey]) {
+                    const icon = element.querySelector('i');
+                    if (icon) {
+                        element.innerHTML = '';
+                        element.appendChild(icon);
+                        element.appendChild(document.createTextNode(' ' + translations[lang][translationKey]));
+                    } else {
+                        element.innerText = translations[lang][translationKey];
+                    }
                 }
             });
 
@@ -697,6 +710,10 @@
             setLanguage(currentLanguage === 'en' ? 'ar' : 'en');
         });
 
+
+        /* ==========================================================================
+           3. LIVE QATAR TIME ZONE STATUS INDICATOR
+           ========================================================================== */
         function updateQatarStatus() {
             const dot = document.getElementById('status-dot');
             const text = document.getElementById('status-text');
@@ -710,7 +727,7 @@
                 dot.classList.add('pulse');
                 text.innerText = translations[currentLanguage]["status-on"];
             } else {
-                dot.style.backgroundColor = "#ff3b30";
+                dot.style.backgroundColor = "#ff0055";
                 dot.classList.remove('pulse');
                 text.innerText = translations[currentLanguage]["status-off"];
             }
@@ -718,16 +735,31 @@
         updateQatarStatus();
         setInterval(updateQatarStatus, 60000);
 
+
+        /* ==========================================================================
+           4. THEME TOGGLE ENGINE
+           ========================================================================== */
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeIcon = themeToggleBtn.querySelector('i');
 
         themeToggleBtn.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
-            let targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            themeIcon.className = targetTheme === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+            let targetTheme = 'dark';
+            
+            if (currentTheme === 'dark') {
+                targetTheme = 'light';
+                themeIcon.className = 'fa-solid fa-sun';
+            } else {
+                themeIcon.className = 'fa-solid fa-moon';
+            }
+            
             document.documentElement.setAttribute('data-theme', targetTheme);
         });
 
+
+        /* ==========================================================================
+           5. VCARD DOWNLOAD & SHARE ENGINE (Number: +974 51736746)
+           ========================================================================== */
         const modalOverlay = document.getElementById('modal-overlay');
         const closePopupBtn = document.getElementById('vcard-popup-close');
         let hasVcardBeenDownloaded = false;
@@ -744,14 +776,14 @@
 
         document.getElementById('vcard-popup-download').addEventListener('click', () => {
             modalOverlay.classList.remove('visible');
-            triggerVcardDownload(); 
+            document.getElementById('vcard-btn').click(); 
         });
 
         const shareBtn = document.getElementById('share-profile-btn');
         shareBtn.addEventListener('click', async () => {
             const shareData = {
-                title: "Muhammad Asif - Digital Profile",
-                text: "Connect with Muhammad Asif.",
+                title: "Muhammad Asif",
+                text: "Muhammad Asif - Contact Profile",
                 url: window.location.href
             };
 
@@ -763,9 +795,7 @@
                     const originalText = shareBtn.innerHTML;
                     shareBtn.innerHTML = `<i class="fa-solid fa-check"></i> ${translations[currentLanguage].copied}`;
                     setTimeout(() => { shareBtn.innerHTML = originalText; }, 2500);
-                } catch (err) {
-                    alert('Profile URL copied to clipboard.');
-                }
+                } catch (err) { alert('URL copied to clipboard.'); }
             }
         });
 
@@ -773,7 +803,7 @@
             hasVcardBeenDownloaded = true;
             modalOverlay.classList.remove('visible'); 
             
-            const imageUrl = 'Screenshot_20260526_003701_WhatsApp.jpg';
+            const imageUrl = window.location.origin + window.location.pathname.replace('index.html', '') + 'Screenshot_20260526_003701_WhatsApp.jpg';
             let base64PhotoText = '';
             
             try {
@@ -786,19 +816,22 @@
                 });
             } catch (e) {}
 
+            // Updated vCard Lines with +974 51736746
             const vcardLines = [
                 "BEGIN:VCARD",
                 "VERSION:3.0",
                 "N:Asif;Muhammad;;;",
                 "FN:Muhammad Asif",
-                "TEL;TYPE=CELL;TYPE=PREF:+97431697639",
-                "EMAIL;TYPE=PREF,INTERNET:asifone77@gmail.com"
+                "TITLE:Business Operations Executive",
+                "TEL;TYPE=CELL;TYPE=PREF:+97451736746",
+                "URL:https://www.abc.com"
             ];
             
             if (base64PhotoText) {
                 vcardLines.push("PHOTO;TYPE=JPEG;ENCODING=b:" + base64PhotoText);
+            } else {
+                vcardLines.push("PHOTO;VALUE=URL:" + imageUrl);
             }
-
             vcardLines.push("END:VCARD");
 
             const blobFile = new Blob([vcardLines.join("\r\n")], { type: 'text/vcard;charset=utf-8;' });

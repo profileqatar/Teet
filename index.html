@@ -6,11 +6,11 @@
     <title>Muhammad Asif</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- HIGH-END DARK GLASS & GALAXY DESIGN SYSTEM --- */
+        /* --- GALAXY COSMIC DESIGN SYSTEM WITH GRADIENT OVERLAYER --- */
         :root {
-            --bg-body: #020208;
-            /* Premium translucent dark glass so the shooting stars show through clearly */
-            --bg-card: rgba(8, 11, 20, 0.78);
+            --bg-body: #020207;
+            /* Sleek dark glass card with clean opacity */
+            --bg-card: rgba(8, 11, 20, 0.72);
             --bg-element: rgba(0, 243, 255, 0.06);
             --bg-element-hover: rgba(0, 243, 255, 0.18);
             --text-main: #ffffff;
@@ -27,7 +27,7 @@
 
         [data-theme="light"] {
             --bg-body: #060814;
-            --bg-card: rgba(18, 22, 48, 0.82);
+            --bg-card: rgba(18, 22, 48, 0.78);
             --text-main: #ffffff;
             --text-muted: #a0b2ce;
         }
@@ -63,6 +63,18 @@
             pointer-events: none;
         }
 
+        /* Dark Vignette / Gradient Overlayer Layer to depth-contrast stars */
+        .galaxy-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            pointer-events: none;
+            background: radial-gradient(circle at center, rgba(2, 3, 7, 0.25) 0%, rgba(2, 3, 7, 0.75) 100%);
+        }
+
         /* Glassmorphic Cyber Container Card */
         .phone-wrapper {
             width: 100%;
@@ -76,8 +88,8 @@
             box-shadow: var(--shadow-neon);
             position: relative;
             z-index: 2;
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             animation: containerEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -490,8 +502,10 @@
 </head>
 <body>
 
-    <!-- Fullscreen Galaxy Canvas with Stars & Meteors -->
+    <!-- Fullscreen Galaxy Starfield & Meteor Canvas -->
     <canvas id="galaxy-canvas"></canvas>
+    <!-- Dark Vignette Overlayer Layer -->
+    <div class="galaxy-overlay"></div>
 
     <div class="phone-wrapper">
         
@@ -570,7 +584,7 @@
 
     <script>
         /* ==========================================================================
-           1. HIGH-VISIBILITY DEEP SPACE GALAXY STARFIELD ENGINE
+           1. DEEP SPACE GALAXY & SHOOTING STARS CANVAS ENGINE
            ========================================================================== */
         const canvas = document.getElementById('galaxy-canvas');
         const ctx = canvas.getContext('2d');
@@ -588,24 +602,24 @@
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2.2 + 0.6;
+                this.size = Math.random() * 2.4 + 0.6;
                 this.alpha = Math.random();
                 this.alphaChange = (Math.random() * 0.02 + 0.005) * (Math.random() < 0.5 ? 1 : -1);
                 this.color = ['#ffffff', '#00f0ff', '#e0aaff', '#ff0055'][Math.floor(Math.random() * 4)];
             }
             update() {
                 this.alpha += this.alphaChange;
-                if (this.alpha <= 0.15 || this.alpha >= 1) {
+                if (this.alpha <= 0.2 || this.alpha >= 1) {
                     this.alphaChange *= -1;
                 }
             }
             draw() {
                 ctx.save();
-                ctx.globalAlpha = Math.max(0.15, this.alpha);
+                ctx.globalAlpha = Math.max(0.2, this.alpha);
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fillStyle = this.color;
-                ctx.shadowBlur = this.size * 5;
+                ctx.shadowBlur = this.size * 6;
                 ctx.shadowColor = this.color;
                 ctx.fill();
                 ctx.restore();
@@ -619,8 +633,8 @@
             reset() {
                 this.x = Math.random() * canvas.width * 1.5 - canvas.width * 0.25;
                 this.y = -50;
-                this.length = Math.random() * 100 + 50;
-                this.speed = Math.random() * 8 + 5;
+                this.length = Math.random() * 120 + 60;
+                this.speed = Math.random() * 9 + 5;
                 this.size = Math.random() * 1.8 + 0.8;
             }
             update() {
@@ -650,7 +664,7 @@
             }
         }
 
-        for (let i = 0; i < 150; i++) {
+        for (let i = 0; i < 160; i++) {
             stars.push(new Star());
         }
         for (let i = 0; i < 3; i++) {

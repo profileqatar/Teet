@@ -6,30 +6,30 @@
     <title>Muhammad Asif</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- GALAXY COSMIC NEON DESIGN SYSTEM --- */
+        /* --- HIGH-END DARK GLASS & GALAXY DESIGN SYSTEM --- */
         :root {
             --bg-body: #020208;
-            /* Semi-transparent glass container so background stars remain clearly visible */
-            --bg-card: rgba(10, 12, 28, 0.45);
-            --bg-element: rgba(120, 80, 255, 0.12);
-            --bg-element-hover: rgba(120, 80, 255, 0.25);
+            /* Premium translucent dark glass so the shooting stars show through clearly */
+            --bg-card: rgba(8, 11, 20, 0.78);
+            --bg-element: rgba(0, 243, 255, 0.06);
+            --bg-element-hover: rgba(0, 243, 255, 0.18);
             --text-main: #ffffff;
-            --text-muted: #b0c2e0;
-            --border-color: rgba(140, 100, 255, 0.35);
-            --border-glow: rgba(0, 240, 255, 0.7);
-            --accent-cyan: #00f0ff;
-            --accent-purple: #9d4edd;
-            --accent-pink: #f72585;
-            --btn-gradient: linear-gradient(135deg, #7209b7 0%, #4cc9f0 100%);
-            --shadow-neon: 0 0 35px rgba(114, 9, 183, 0.35);
-            --modal-bg: rgba(12, 14, 32, 0.92);
+            --text-muted: #8a99ad;
+            --border-color: rgba(0, 243, 255, 0.2);
+            --border-glow: rgba(0, 243, 255, 0.6);
+            --accent-cyan: #00f3ff;
+            --accent-pink: #ff0055;
+            --accent-purple: #9d00ff;
+            --btn-gradient: linear-gradient(135deg, #00f3ff 0%, #ff0055 100%);
+            --shadow-neon: 0 0 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 243, 255, 0.15);
+            --modal-bg: rgba(8, 12, 22, 0.95);
         }
 
         [data-theme="light"] {
             --bg-body: #060814;
-            --bg-card: rgba(18, 22, 48, 0.55);
+            --bg-card: rgba(18, 22, 48, 0.82);
             --text-main: #ffffff;
-            --text-muted: #b0c2e0;
+            --text-muted: #a0b2ce;
         }
 
         * {
@@ -63,7 +63,7 @@
             pointer-events: none;
         }
 
-        /* Transparent Glassmorphic Cyber Card */
+        /* Glassmorphic Cyber Container Card */
         .phone-wrapper {
             width: 100%;
             max-width: 400px;
@@ -76,17 +76,17 @@
             box-shadow: var(--shadow-neon);
             position: relative;
             z-index: 2;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            animation: containerEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            animation: containerEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         @keyframes containerEntrance {
-            0% { opacity: 0; transform: translateY(35px) scale(0.92); }
+            0% { opacity: 0; transform: translateY(30px) scale(0.95); }
             100% { opacity: 0.99; transform: translateY(0) scale(1); }
         }
 
-        /* Header Controls */
+        /* Header Navigation Tools */
         .controls-header {
             display: flex;
             justify-content: space-between;
@@ -108,13 +108,12 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            box-shadow: 0 0 12px rgba(114, 9, 183, 0.2);
-            backdrop-filter: blur(8px);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.1);
         }
 
         .lang-btn:hover, .theme-btn:hover {
             border-color: var(--accent-cyan);
-            box-shadow: 0 0 18px rgba(0, 240, 255, 0.5);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
             transform: translateY(-2px);
         }
 
@@ -143,19 +142,19 @@
             margin-bottom: 18px;
         }
 
-        /* Rotating Cosmic Orbit Ring */
+        /* Multi-ring Rotating Neon Border */
         .avatar-frame::before {
             content: '';
             position: absolute;
-            top: -7px;
-            left: -7px;
-            right: -7px;
-            bottom: -7px;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
             border-radius: 50%;
-            background: conic-gradient(from 0deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink), var(--accent-cyan));
-            animation: spinRing 5s linear infinite;
+            background: conic-gradient(from 0deg, var(--accent-cyan), var(--accent-pink), var(--accent-purple), var(--accent-cyan));
+            animation: spinRing 4s linear infinite;
             z-index: 1;
-            filter: blur(3px);
+            filter: blur(2px);
         }
 
         .avatar-frame::after {
@@ -166,7 +165,7 @@
             right: -2px;
             bottom: -2px;
             border-radius: 50%;
-            background: #090c1a;
+            background: #080b14;
             z-index: 1;
         }
 
@@ -197,21 +196,21 @@
             align-items: center;
             font-size: 0.75rem;
             font-weight: 900;
-            border: 2px solid #090c1a;
+            border: 2px solid #080b14;
             z-index: 3;
-            box-shadow: 0 0 12px var(--accent-cyan);
+            box-shadow: 0 0 10px var(--accent-cyan);
         }
 
-        /* Name Typography with Cosmic Glow */
+        /* Name Typography with Glitch Glow Effect */
         .profile-hero h1 {
-            font-size: 1.85rem;
+            font-size: 1.8rem;
             font-weight: 800;
             letter-spacing: -0.5px;
             margin-bottom: 4px;
-            background: linear-gradient(135deg, #ffffff 20%, var(--accent-cyan) 100%);
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent-cyan) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
         }
 
         .profile-title {
@@ -228,8 +227,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(0, 240, 255, 0.08);
-            border: 1px solid rgba(0, 240, 255, 0.35);
+            background: rgba(0, 243, 255, 0.08);
+            border: 1px solid rgba(0, 243, 255, 0.3);
             padding: 6px 16px;
             border-radius: 20px;
             font-size: 0.75rem;
@@ -237,7 +236,7 @@
             margin-bottom: 14px;
             color: #ffffff;
             backdrop-filter: blur(5px);
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.15);
         }
 
         .status-dot {
@@ -277,7 +276,7 @@
             color: var(--accent-cyan);
         }
 
-        /* Action Grid */
+        /* Glowing Quick Action Grid */
         .quick-actions-row {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -298,7 +297,6 @@
             text-decoration: none;
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(8px);
         }
 
         .action-pill::after {
@@ -308,7 +306,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(60deg, transparent, rgba(0, 240, 255, 0.15), transparent);
+            background: linear-gradient(60deg, transparent, rgba(0, 243, 255, 0.1), transparent);
             transform: rotate(30deg);
             transition: 0.5s;
         }
@@ -319,7 +317,7 @@
 
         .action-pill:hover {
             border-color: var(--accent-cyan);
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
             transform: translateY(-4px);
             background: var(--bg-element-hover);
         }
@@ -336,7 +334,7 @@
             font-weight: 600;
         }
 
-        /* CTA Buttons */
+        /* Futuristic Action Buttons */
         .cta-container {
             display: flex;
             flex-direction: column;
@@ -357,20 +355,20 @@
             align-items: center;
             gap: 10px;
             cursor: pointer;
-            box-shadow: 0 0 25px rgba(114, 9, 183, 0.5);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.4);
             letter-spacing: 0.5px;
         }
 
         .btn-primary-neon:hover {
             transform: translateY(-2px);
-            box-shadow: 0 0 35px rgba(76, 201, 240, 0.7);
+            box-shadow: 0 0 35px rgba(255, 0, 85, 0.6);
             filter: brightness(1.1);
         }
 
         .btn-outline-cyber {
             width: 100%;
             height: 52px;
-            background: rgba(120, 80, 255, 0.05);
+            background: transparent;
             color: var(--text-main);
             border: 1px solid var(--border-color);
             border-radius: 16px;
@@ -381,23 +379,23 @@
             align-items: center;
             gap: 10px;
             cursor: pointer;
-            backdrop-filter: blur(8px);
+            box-shadow: inset 0 0 15px rgba(0, 243, 255, 0.05);
         }
 
         .btn-outline-cyber:hover {
             border-color: var(--accent-cyan);
             background: var(--bg-element-hover);
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.25);
         }
 
-        /* Modal Overlay */
+        /* Modal Contact Reminder Overlay */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(2, 2, 8, 0.88);
+            background: rgba(2, 3, 7, 0.85);
             backdrop-filter: blur(15px);
             display: flex;
             justify-content: center;
@@ -415,7 +413,7 @@
             max-width: 340px;
             background: var(--modal-bg);
             border: 1px solid var(--border-glow);
-            box-shadow: 0 0 50px rgba(0, 240, 255, 0.35);
+            box-shadow: 0 0 50px rgba(0, 243, 255, 0.3);
             border-radius: 28px;
             padding: 24px;
             text-align: center;
@@ -431,7 +429,7 @@
         .vcard-popup-icon {
             width: 60px;
             height: 60px;
-            background: rgba(0, 240, 255, 0.1);
+            background: rgba(0, 243, 255, 0.1);
             color: var(--accent-cyan);
             border-radius: 50%;
             display: flex;
@@ -440,7 +438,7 @@
             font-size: 1.5rem;
             margin-bottom: 16px;
             border: 1px solid var(--border-glow);
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
         }
 
         .vcard-popup-text {
@@ -468,7 +466,7 @@
             font-size: 0.95rem;
             font-weight: 800;
             cursor: pointer;
-            box-shadow: 0 0 18px rgba(0, 240, 255, 0.35);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
         }
 
         .vcard-popup-close-btn {
@@ -586,37 +584,34 @@
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        // Bright Twinkling Star Constructor
         class Star {
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                // Bigger star size range so stars stick out clearly
-                this.size = Math.random() * 2.8 + 0.8;
+                this.size = Math.random() * 2.2 + 0.6;
                 this.alpha = Math.random();
-                this.alphaChange = (Math.random() * 0.025 + 0.008) * (Math.random() < 0.5 ? 1 : -1);
-                this.color = ['#ffffff', '#00f0ff', '#e0aaff', '#f72585', '#7209b7'][Math.floor(Math.random() * 5)];
+                this.alphaChange = (Math.random() * 0.02 + 0.005) * (Math.random() < 0.5 ? 1 : -1);
+                this.color = ['#ffffff', '#00f0ff', '#e0aaff', '#ff0055'][Math.floor(Math.random() * 4)];
             }
             update() {
                 this.alpha += this.alphaChange;
-                if (this.alpha <= 0.2 || this.alpha >= 1) {
+                if (this.alpha <= 0.15 || this.alpha >= 1) {
                     this.alphaChange *= -1;
                 }
             }
             draw() {
                 ctx.save();
-                ctx.globalAlpha = Math.max(0.2, this.alpha);
+                ctx.globalAlpha = Math.max(0.15, this.alpha);
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fillStyle = this.color;
-                ctx.shadowBlur = this.size * 6;
+                ctx.shadowBlur = this.size * 5;
                 ctx.shadowColor = this.color;
                 ctx.fill();
                 ctx.restore();
             }
         }
 
-        // Shooting Star / Meteor Constructor
         class Meteor {
             constructor() {
                 this.reset();
@@ -624,9 +619,9 @@
             reset() {
                 this.x = Math.random() * canvas.width * 1.5 - canvas.width * 0.25;
                 this.y = -50;
-                this.length = Math.random() * 110 + 60;
-                this.speed = Math.random() * 10 + 6;
-                this.size = Math.random() * 2 + 1;
+                this.length = Math.random() * 100 + 50;
+                this.speed = Math.random() * 8 + 5;
+                this.size = Math.random() * 1.8 + 0.8;
             }
             update() {
                 this.x += this.speed;
@@ -642,7 +637,7 @@
                     this.x - this.length, this.y - this.length * 0.8
                 );
                 gradient.addColorStop(0, '#00f0ff');
-                gradient.addColorStop(0.5, '#f72585');
+                gradient.addColorStop(0.5, '#ff0055');
                 gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
 
                 ctx.strokeStyle = gradient;
@@ -655,8 +650,7 @@
             }
         }
 
-        // Increased total star count to 180 stars
-        for (let i = 0; i < 180; i++) {
+        for (let i = 0; i < 150; i++) {
             stars.push(new Star());
         }
         for (let i = 0; i < 3; i++) {
@@ -664,22 +658,8 @@
         }
 
         function animateGalaxy() {
-            // Clears canvas without adding dark black box overlays
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
-            // Soft Nebula Background Accents
-            const grad1 = ctx.createRadialGradient(canvas.width * 0.2, canvas.height * 0.25, 10, canvas.width * 0.2, canvas.height * 0.25, 300);
-            grad1.addColorStop(0, 'rgba(114, 9, 183, 0.25)');
-            grad1.addColorStop(1, 'rgba(2, 2, 8, 0)');
-            ctx.fillStyle = grad1;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            const grad2 = ctx.createRadialGradient(canvas.width * 0.8, canvas.height * 0.75, 10, canvas.width * 0.8, canvas.height * 0.75, 350);
-            grad2.addColorStop(0, 'rgba(0, 240, 255, 0.2)');
-            grad2.addColorStop(1, 'rgba(2, 2, 8, 0)');
-            ctx.fillStyle = grad2;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
             stars.forEach(star => {
                 star.update();
                 star.draw();
@@ -789,7 +769,7 @@
                 dot.classList.add('pulse');
                 text.innerText = translations[currentLanguage]["status-on"];
             } else {
-                dot.style.backgroundColor = "#f72585";
+                dot.style.backgroundColor = "#ff0055";
                 dot.classList.remove('pulse');
                 text.innerText = translations[currentLanguage]["status-off"];
             }

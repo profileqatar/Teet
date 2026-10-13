@@ -329,35 +329,11 @@
             font-weight: 600;
         }
 
-        /* Action CTAs */
+        /* Action CTA Container */
         .cta-container {
             display: flex;
             flex-direction: column;
             gap: 12px;
-        }
-
-        .btn-primary-neon {
-            width: 100%;
-            height: 52px;
-            background: var(--btn-gradient);
-            color: #ffffff;
-            border: none;
-            border-radius: 16px;
-            font-size: 1rem;
-            font-weight: 800;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            box-shadow: 0 0 25px rgba(114, 9, 183, 0.5), 0 0 15px rgba(0, 243, 255, 0.3);
-            letter-spacing: 0.5px;
-        }
-
-        .btn-primary-neon:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 40px rgba(0, 243, 255, 0.8), 0 0 25px rgba(114, 9, 183, 0.7);
-            filter: brightness(1.1);
         }
 
         .btn-outline-cyber {
@@ -382,6 +358,7 @@
             border-color: var(--accent-cyan);
             background: var(--bg-element-hover);
             box-shadow: 0 0 22px rgba(0, 243, 255, 0.35);
+            transform: translateY(-2px);
         }
 
         /* Modal Overlay */
@@ -534,9 +511,6 @@
         </section>
 
         <section class="cta-container">
-            <button id="share-profile-btn" class="btn-primary-neon">
-                <i class="fa-solid fa-share-nodes"></i> <span data-i18n="btn-share">Share Profile</span>
-            </button>
             <button id="vcard-btn" class="btn-outline-cyber">
                 <i class="fa-regular fa-address-card"></i> <span id="vcard-btn-text" data-i18n="btn-vcard">Download vCard</span>
             </button>
@@ -681,12 +655,10 @@
                 call: "Call",
                 meeting: "Meeting",
                 location_pill: "Location",
-                "btn-share": "Share Profile",
                 "btn-vcard": "Download vCard",
                 "vcard_reminder": "Save Muhammad Asif directly to your phone contacts list.",
                 "vcard_save": "Save Contact",
                 "vcard_cancel": "Not Now",
-                "copied": "Link Copied!",
                 "status-on": "Active Now (Qatar Time)",
                 "status-off": "🌙 Standby / Offline"
             },
@@ -696,12 +668,10 @@
                 call: "اتصال",
                 meeting: "اجتماع",
                 location_pill: "الموقع",
-                "btn-share": "مشاركة الملف",
                 "btn-vcard": "حفظ جهة الاتصال",
                 "vcard_reminder": "احفظ جهة اتصال محمد آصف مباشرة في هاتفك.",
                 "vcard_save": "حفظ جهة الاتصال",
                 "vcard_cancel": "ليس الآن",
-                "copied": "تم نسخ الرابط!",
                 "status-on": "نشط حالياً (توقيت قطر)",
                 "status-off": "🌙 خارج أوقات العمل"
             }
@@ -794,26 +764,6 @@
         document.getElementById('vcard-popup-download').addEventListener('click', () => {
             modalOverlay.classList.remove('visible');
             document.getElementById('vcard-btn').click(); 
-        });
-
-        const shareBtn = document.getElementById('share-profile-btn');
-        shareBtn.addEventListener('click', async () => {
-            const shareData = {
-                title: "Muhammad Asif",
-                text: "Muhammad Asif - Contact Profile",
-                url: window.location.href
-            };
-
-            if (navigator.share) {
-                try { await navigator.share(shareData); } catch (err) {}
-            } else {
-                try {
-                    await navigator.clipboard.writeText(window.location.href);
-                    const originalText = shareBtn.innerHTML;
-                    shareBtn.innerHTML = `<i class="fa-solid fa-check"></i> ${translations[currentLanguage].copied}`;
-                    setTimeout(() => { shareBtn.innerHTML = originalText; }, 2500);
-                } catch (err) { alert('URL copied to clipboard.'); }
-            }
         });
 
         async function triggerVcardDownload() {
